@@ -54,7 +54,7 @@ public struct DuplicateContactsView: View {
                 }
             }
         }
-        .background(Color(uiColor: .systemGroupedBackground).ignoresSafeArea())
+        .background(AmbientGlassBackdrop())
         .navigationTitle("Contacts Cleaner")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {

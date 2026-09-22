@@ -164,7 +164,7 @@ public struct LivePhotosView: View {
                 }
             }
         }
-        .background(Color(uiColor: .systemGroupedBackground).ignoresSafeArea())
+        .background(AmbientGlassBackdrop())
         .navigationTitle("Live Photo Optimizer")
         .navigationBarTitleDisplayMode(.inline)
         .confirmationDialog(

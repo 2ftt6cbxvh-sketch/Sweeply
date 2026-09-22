@@ -149,16 +149,12 @@ public struct ScreenshotsView: View {
                     .padding(.horizontal, 20)
                     .padding(.bottom, 12)
                 }
-                .background(
-                    LinearGradient(
-                        colors: [Color(uiColor: .systemGroupedBackground).opacity(0), Color(uiColor: .systemGroupedBackground)],
-                        startPoint: .top,
-                        endPoint: .bottom
-                    )
-                )
+                .liquidGlass(cornerRadius: 20, padding: 12)
+                .padding(.horizontal)
+                .padding(.bottom, 8)
             }
         }
-        .background(Color(uiColor: .systemGroupedBackground).ignoresSafeArea())
+        .background(AmbientGlassBackdrop())
         .navigationTitle("Screenshots")
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {

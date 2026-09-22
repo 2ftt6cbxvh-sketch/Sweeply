@@ -31,71 +31,89 @@ public struct DashboardView: View {
     
     public var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack(spacing: 20) {
-                    // Limited Permission Alert Banner (if user selected limited photos)
-                    if permissionService.isPhotosLimited {
-                        HStack {
-                            Image(systemName: "exclamationmark.circle.fill")
-                                .foregroundStyle(.orange)
-                            Text("Limited library access active. Tap to select more photos.")
-                                .font(.caption.weight(.medium))
-                                .foregroundStyle(.primary)
-                            Spacer()
-                            Button("Edit") {
-                                PHPhotoLibrary.shared().presentLimitedLibraryPicker(from: UIApplication.shared.topMostViewController() ?? UIViewController())
-                            }
-                            .font(.caption.weight(.bold))
-                            .buttonStyle(.borderedProminent)
-                            .tint(.orange)
-                        }
-                        .padding(12)
-                        .background(Color.orange.opacity(0.12))
-                        .cornerRadius(12)
-                        .padding(.horizontal)
-                    }
-                    
-                    // Main Storage Progress Ring
-                    StorageRingView(breakdown: viewModel.storage)
-                        .padding(.horizontal)
-                    
-                    // Quick Scan Action Button
-                    VStack(spacing: 8) {
-                        Button {
-                            Task {
-                                await handleScanTapped()
-                            }
-                        } label: {
+            ZStack {
+                // Dynamic ambient colorful glass backdrop
+                AmbientGlassBackdrop()
+                
+                ScrollView {
+                    VStack(spacing: 20) {
+                        // Limited Permission Alert Banner (if user selected limited photos)
+                        if permissionService.isPhotosLimited {
                             HStack {
-                                Image(systemName: viewModel.isScanning ? "arrow.triangle.2.circlepath" : "sparkles")
-                                    .rotationEffect(.degrees(viewModel.isScanning ? 360 : 0))
-                                    .animation(viewModel.isScanning ? .linear(duration: 1).repeatForever(autoreverses: false) : .default, value: viewModel.isScanning)
-                                
-                                Text(viewModel.isScanning ? "Scanning Library..." : "Run Smart Scan")
-                                    .font(.headline)
+                                Image(systemName: "exclamationmark.circle.fill")
+                                    .foregroundStyle(.orange)
+                                Text("Limited library access active. Tap to select more photos.")
+                                    .font(.caption.weight(.medium))
+                                    .foregroundStyle(.primary)
+                                Spacer()
+                                Button("Edit") {
+                                    PHPhotoLibrary.shared().presentLimitedLibraryPicker(from: UIApplication.shared.topMostViewController() ?? UIViewController())
+                                }
+                                .font(.caption.weight(.bold))
+                                .buttonStyle(.borderedProminent)
+                                .tint(.orange)
                             }
-                            .foregroundStyle(.white)
-                            .frame(maxWidth: .infinity)
-                            .frame(height: 52)
-                            .background(
-                                LinearGradient(
-                                    colors: [Color.blue, Color(red: 0.2, green: 0.4, blue: 0.95)],
-                                    startPoint: .leading,
-                                    endPoint: .trailing
-                                )
-                            )
-                            .cornerRadius(16)
-                            .shadow(color: Color.blue.opacity(0.28), radius: 8, x: 0, y: 4)
+                            .liquidGlass(cornerRadius: 16, padding: 12)
+                            .padding(.horizontal)
                         }
-                        .disabled(viewModel.isScanning)
                         
-                        if viewModel.isScanning {
-                            ProgressView(value: viewModel.scanProgress)
-                                .tint(.blue)
-                                .padding(.horizontal, 4)
+                        // Main Storage Progress Ring
+                        StorageRingView(breakdown: viewModel.storage)
+                            .padding(.horizontal)
+                        
+                        // Quick Scan Action Button (Luminous Glass Capsule)
+                        VStack(spacing: 8) {
+                            Button {
+                                Task {
+                                    await handleScanTapped()
+                                }
+                            } label: {
+                                HStack(spacing: 10) {
+                                    Image(systemName: viewModel.isScanning ? "arrow.triangle.2.circlepath" : "sparkles")
+                                        .font(.system(size: 18, weight: .bold))
+                                        .rotationEffect(.degrees(viewModel.isScanning ? 360 : 0))
+                                        .animation(viewModel.isScanning ? .linear(duration: 1).repeatForever(autoreverses: false) : .default, value: viewModel.isScanning)
+                                    
+                                    Text(viewModel.isScanning ? "Scanning Storage..." : "Run Smart Clean Scan")
+                                        .font(.headline.weight(.bold))
+                                }
+                                .foregroundStyle(.white)
+                                .frame(maxWidth: .infinity)
+                                .frame(height: 54)
+                                .background(
+                                    LinearGradient(
+                                        colors: [
+                                            Color(red: 0.1, green: 0.5, blue: 1.0),
+                                            Color(red: 0.35, green: 0.35, blue: 0.98)
+                                        ],
+                                        startPoint: .leading,
+                                        endPoint: .trailing
+                                    )
+                                )
+                                .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 18, style: .continuous)
+                                        .stroke(
+                                            LinearGradient(
+                                                colors: [Color.white.opacity(0.6), Color.white.opacity(0.15)],
+                                                startPoint: .topLeading,
+                                                endPoint: .bottomTrailing
+                                            ),
+                                            lineWidth: 1.2
+                                        )
+                                )
+                                .shadow(color: Color.blue.opacity(0.40), radius: 14, x: 0, y: 6)
+                            }
+                            .buttonStyle(GlassButtonStyle())
+                            .disabled(viewModel.isScanning)
+                            
+                            if viewModel.isScanning {
+                                ProgressView(value: viewModel.scanProgress)
+                                    .tint(.blue)
+                                    .padding(.horizontal, 8)
+                            }
                         }
-                    }
-                    .padding(.horizontal)
+                        .padding(.horizontal)
                     
                     // Category List
                     VStack(alignment: .leading, spacing: 14) {
@@ -226,60 +244,80 @@ public struct DashboardView: View {
                         }
                         .padding(.horizontal)
                     }
-                    .padding(.bottom, 24)
+                    .padding(.bottom, 28)
                 }
                 .padding(.top, 8)
             }
-            .background(Color(uiColor: .systemGroupedBackground).ignoresSafeArea())
+            }
             .navigationTitle("Sweeply")
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
                         showingProfileSheet = true
                     } label: {
-                        HStack(spacing: 6) {
-                            ZStack {
-                                Circle()
-                                    .fill(authService.isAuthenticated && authService.currentUser?.provider != .guest ? Color.blue : Color(uiColor: .systemGray4))
-                                    .frame(width: 32, height: 32)
-                                
-                                if let user = authService.currentUser, authService.isAuthenticated && user.provider != .guest {
-                                    if user.provider == .apple {
-                                        Image(systemName: "apple.logo")
-                                            .font(.system(size: 14))
-                                            .foregroundStyle(.white)
-                                    } else {
-                                        Image(systemName: "envelope.fill")
-                                            .font(.system(size: 13))
-                                            .foregroundStyle(.white)
-                                    }
+                        ZStack {
+                            Circle()
+                                .fill(.ultraThinMaterial)
+                                .frame(width: 36, height: 36)
+                                .overlay(Circle().stroke(Color.white.opacity(0.35), lineWidth: 1))
+                            
+                            if let user = authService.currentUser, authService.isAuthenticated && user.provider != .guest {
+                                if user.provider == .apple {
+                                    Image(systemName: "apple.logo")
+                                        .font(.system(size: 14, weight: .bold))
+                                        .foregroundStyle(Color.primary)
                                 } else {
-                                    Image(systemName: "person.fill")
-                                        .font(.system(size: 14))
-                                        .foregroundStyle(.white)
+                                    Image(systemName: "envelope.fill")
+                                        .font(.system(size: 13, weight: .bold))
+                                        .foregroundStyle(Color.red)
                                 }
+                            } else {
+                                Image(systemName: "person.fill")
+                                    .font(.system(size: 14))
+                                    .foregroundStyle(Color.primary)
                             }
                         }
+                        .shadow(color: Color.black.opacity(0.06), radius: 6)
                     }
+                    .buttonStyle(GlassButtonStyle())
                 }
                 
                 ToolbarItem(placement: .topBarTrailing) {
-                    HStack(spacing: 12) {
+                    HStack(spacing: 10) {
                         Button {
                             themeManager.toggleTheme()
                         } label: {
-                            Image(systemName: themeManager.currentTheme == .dark ? "moon.stars.fill" : "sun.max.fill")
-                                .font(.system(size: 16, weight: .semibold))
-                                .foregroundStyle(themeManager.currentTheme == .dark ? Color.yellow : Color.orange)
-                                .contentTransition(.symbolEffect(.replace))
+                            ZStack {
+                                Circle()
+                                    .fill(.ultraThinMaterial)
+                                    .frame(width: 36, height: 36)
+                                    .overlay(Circle().stroke(Color.white.opacity(0.35), lineWidth: 1))
+                                
+                                Image(systemName: themeManager.currentTheme == .dark ? "moon.stars.fill" : "sun.max.fill")
+                                    .font(.system(size: 15, weight: .semibold))
+                                    .foregroundStyle(themeManager.currentTheme == .dark ? Color.yellow : Color.orange)
+                                    .contentTransition(.symbolEffect(.replace))
+                            }
+                            .shadow(color: Color.black.opacity(0.06), radius: 6)
                         }
+                        .buttonStyle(GlassButtonStyle())
                         
                         Button {
                             viewModel.refreshStorage()
                         } label: {
-                            Image(systemName: "arrow.clockwise")
-                                .font(.system(size: 15, weight: .semibold))
+                            ZStack {
+                                Circle()
+                                    .fill(.ultraThinMaterial)
+                                    .frame(width: 36, height: 36)
+                                    .overlay(Circle().stroke(Color.white.opacity(0.35), lineWidth: 1))
+                                
+                                Image(systemName: "arrow.clockwise")
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .foregroundStyle(Color.primary)
+                            }
+                            .shadow(color: Color.black.opacity(0.06), radius: 6)
                         }
+                        .buttonStyle(GlassButtonStyle())
                     }
                 }
             }

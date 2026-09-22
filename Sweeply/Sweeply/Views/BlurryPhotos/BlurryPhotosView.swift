@@ -43,7 +43,7 @@ public struct BlurryPhotosView: View {
                     Text("Scanning Clarity & Focus...")
                         .font(.headline)
                     
-                    Text("\(Int(viewModel.scanProgress * 100))% • Laplacian Edge Variance")
+                    Text("\(Int(viewModel.scanProgress * 100))% • AI Sobel Clarity Analysis")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
@@ -172,7 +172,7 @@ public struct BlurryPhotosView: View {
                 }
             }
         }
-        .background(Color(uiColor: .systemGroupedBackground).ignoresSafeArea())
+        .background(AmbientGlassBackdrop())
         .navigationTitle("Blurry Photos")
         .navigationBarTitleDisplayMode(.inline)
         .task {

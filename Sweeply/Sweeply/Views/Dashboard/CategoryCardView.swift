@@ -9,6 +9,8 @@ public struct CategoryCardView: View {
     public let countText: String?
     public let isProcessing: Bool
     
+    @Environment(\.colorScheme) private var colorScheme
+    
     public init(
         icon: String,
         iconColor: Color,
@@ -29,14 +31,40 @@ public struct CategoryCardView: View {
     
     public var body: some View {
         HStack(spacing: 16) {
-            // Icon container
+            // Glowing Glass Icon Badge
             ZStack {
-                RoundedRectangle(cornerRadius: 14, style: .continuous)
-                    .fill(iconColor.opacity(0.14))
+                // Colored ambient glow behind the icon
+                Circle()
+                    .fill(iconColor.opacity(colorScheme == .dark ? 0.35 : 0.20))
+                    .frame(width: 48, height: 48)
+                    .blur(radius: 6)
+                
+                RoundedRectangle(cornerRadius: 15, style: .continuous)
+                    .fill(
+                        LinearGradient(
+                            colors: [
+                                iconColor.opacity(0.25),
+                                iconColor.opacity(0.10)
+                            ],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 15, style: .continuous)
+                            .stroke(
+                                LinearGradient(
+                                    colors: [iconColor.opacity(0.6), iconColor.opacity(0.1)],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                ),
+                                lineWidth: 1.2
+                            )
+                    )
                     .frame(width: 48, height: 48)
                 
                 Image(systemName: icon)
-                    .font(.system(size: 22, weight: .semibold))
+                    .font(.system(size: 20, weight: .bold))
                     .foregroundStyle(iconColor)
             }
             
@@ -44,7 +72,7 @@ public struct CategoryCardView: View {
             VStack(alignment: .leading, spacing: 3) {
                 Text(title)
                     .font(.headline)
-                    .foregroundStyle(.primary)
+                    .foregroundStyle(Color.primary)
                 
                 Text(subtitle)
                     .font(.subheadline)
@@ -53,35 +81,40 @@ public struct CategoryCardView: View {
             
             Spacer()
             
-            // Count / Badge & Chevron
+            // Count / Badge & Glass Chevron
             HStack(spacing: 8) {
                 if isProcessing {
                     ProgressView()
                         .scaleEffect(0.8)
                 } else {
-                    VStack(alignment: .trailing, spacing: 2) {
+                    VStack(alignment: .trailing, spacing: 3) {
                         if let count = countText {
                             Text(count)
-                                .font(.subheadline.weight(.semibold))
-                                .foregroundStyle(.primary)
+                                .font(.subheadline.weight(.bold))
+                                .foregroundStyle(Color.primary)
                         }
                         if let badge = badgeText {
                             Text(badge)
                                 .font(.caption2.weight(.bold))
                                 .foregroundStyle(iconColor)
-                                .padding(.horizontal, 6)
-                                .padding(.vertical, 2)
-                                .background(iconColor.opacity(0.12))
-                                .cornerRadius(6)
+                                .padding(.horizontal, 7)
+                                .padding(.vertical, 3)
+                                .background(
+                                    Capsule()
+                                        .fill(iconColor.opacity(colorScheme == .dark ? 0.20 : 0.12))
+                                        .overlay(
+                                            Capsule().stroke(iconColor.opacity(0.35), lineWidth: 0.8)
+                                        )
+                                )
                         }
                     }
                 }
                 
                 Image(systemName: "chevron.right")
-                    .font(.system(size: 14, weight: .bold))
-                    .foregroundStyle(Color(uiColor: .tertiaryLabel))
+                    .font(.system(size: 13, weight: .bold))
+                    .foregroundStyle(Color.secondary.opacity(0.6))
             }
         }
-        .liquidGlass(cornerRadius: 20, padding: 16)
+        .liquidGlass(cornerRadius: 22, padding: 16)
     }
 }

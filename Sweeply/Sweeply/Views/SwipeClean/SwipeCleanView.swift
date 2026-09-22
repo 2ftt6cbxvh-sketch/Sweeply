@@ -13,7 +13,7 @@ public struct SwipeCleanView: View {
     
     public var body: some View {
         ZStack {
-            Color(uiColor: .systemGroupedBackground).ignoresSafeArea()
+            AmbientGlassBackdrop()
             
             VStack(spacing: 16) {
                 // Top Counter

@@ -15,8 +15,8 @@ public struct LivePhotoItem: Identifiable {
         self.id = phAsset.localIdentifier
         self.phAsset = phAsset
         self.totalSize = totalSize
-        // Stills typically take ~30% of Live Photo file size
-        self.estimatedStillSize = Int64(Double(totalSize) * 0.32)
+        // The still photo typically takes only ~28-32% of total combined Live Photo storage
+        self.estimatedStillSize = Int64(Double(totalSize) * 0.30)
     }
 }
 
@@ -27,16 +27,22 @@ public final class LivePhotoService {
     
     public func fetchLivePhotos() async -> [LivePhotoItem] {
         let options = PHFetchOptions()
-        options.predicate = NSPredicate(format: "(mediaSubtype & %d) != 0", PHAssetMediaSubtype.photoLive.rawValue)
         options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         
+        // Fetch all image assets and filter strictly in Swift
         let fetchResult = PHAsset.fetchAssets(with: .image, options: options)
         var items: [LivePhotoItem] = []
         
         fetchResult.enumerateObjects { asset, _, _ in
+            // Strict Check 1: Must have photoLive media subtype
+            guard asset.mediaSubtypes.contains(.photoLive) else { return }
+            
+            // Strict Check 2: Must contain a genuine paired video resource (.mov)
             let resources = PHAssetResource.assetResources(for: asset)
+            let hasPairedVideo = resources.contains { $0.type == .pairedVideo }
+            guard hasPairedVideo else { return }
+            
             let totalBytes = resources.compactMap { $0.value(forKey: "fileSize") as? Int64 }.reduce(0, +)
-            // If resource size is zero, fallback to estimated 6.5 MB per Live Photo
             let finalSize = totalBytes > 0 ? totalBytes : Int64(6.5 * 1024 * 1024)
             items.append(LivePhotoItem(phAsset: asset, totalSize: finalSize))
         }
@@ -59,7 +65,7 @@ public final class LivePhotoService {
                 }
                 
                 PHPhotoLibrary.shared().performChanges({
-                    // 1. Create still photo
+                    // 1. Create high-resolution still photo
                     let creationRequest = PHAssetChangeRequest.creationRequestForAsset(from: image)
                     creationRequest.creationDate = item.phAsset.creationDate
                     creationRequest.location = item.phAsset.location
