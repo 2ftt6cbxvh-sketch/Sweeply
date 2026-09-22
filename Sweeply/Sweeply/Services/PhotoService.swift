@@ -37,6 +37,22 @@ public final class PhotoService {
             let cachedSize = self.getCachedSize(for: asset.localIdentifier)
             assets.append(MediaAsset(phAsset: asset, fileSize: cachedSize ?? 0))
         }
+        
+        if assets.isEmpty {
+            let allOptions = PHFetchOptions()
+            allOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+            let all = PHAsset.fetchAssets(with: .image, options: allOptions)
+            all.enumerateObjects { asset, _, _ in
+                let maxDim = max(asset.pixelWidth, asset.pixelHeight)
+                let minDim = min(asset.pixelWidth, asset.pixelHeight)
+                let ratio = Double(maxDim) / Double(max(minDim, 1))
+                if ratio >= 1.95 && ratio <= 2.25 {
+                    let cachedSize = self.getCachedSize(for: asset.localIdentifier)
+                    assets.append(MediaAsset(phAsset: asset, fileSize: cachedSize ?? 0))
+                }
+            }
+        }
+        
         return assets
     }
     

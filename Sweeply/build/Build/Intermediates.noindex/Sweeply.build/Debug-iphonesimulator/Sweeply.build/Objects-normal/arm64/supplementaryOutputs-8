@@ -1,0 +1,23 @@
+{
+  "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/Sweeply/Views/Common/AuthView.swift" : {
+    "const-values" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/AuthView.swiftconstvalues",
+    "dependencies" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/AuthView.d",
+    "diagnostics" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/AuthView.dia",
+    "object" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/AuthView.o",
+    "swift-dependencies" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/AuthView.swiftdeps"
+  },
+  "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/Sweeply/Views/Dashboard/CategoryCardView.swift" : {
+    "const-values" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/CategoryCardView.swiftconstvalues",
+    "dependencies" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/CategoryCardView.d",
+    "diagnostics" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/CategoryCardView.dia",
+    "object" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/CategoryCardView.o",
+    "swift-dependencies" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/CategoryCardView.swiftdeps"
+  },
+  "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/Sweeply/Views/Dashboard/StorageRingView.swift" : {
+    "const-values" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/StorageRingView.swiftconstvalues",
+    "dependencies" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/StorageRingView.d",
+    "diagnostics" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/StorageRingView.dia",
+    "object" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/StorageRingView.o",
+    "swift-dependencies" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/StorageRingView.swiftdeps"
+  }
+}

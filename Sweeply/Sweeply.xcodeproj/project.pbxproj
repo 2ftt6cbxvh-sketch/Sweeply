@@ -5,52 +5,53 @@
 	};
 	objectVersion = 56;
 	objects = {
+
 /* Begin PBXBuildFile section */
-		320C8B70BE35492F87F9ACB8 /* SwipeCleanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8CA073B99E4F9483D2CA54 /* SwipeCleanViewModel.swift */; };
-		412684272833433AB6B26469 /* LargeVideosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50CCC1BB5D64C72B566855D /* LargeVideosViewModel.swift */; };
-		041CC3F4055F44ACA109E46C /* SimilarPhotosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADB819DFE404900A6FFB8AC /* SimilarPhotosViewModel.swift */; };
-		378B2FC575584C46A922CEBD /* ReviewDeleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A11F8DC810460FB53BDFC4 /* ReviewDeleteViewModel.swift */; };
-		25B4AF32C9D642F7A3177685 /* ContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02625ECE19A4FF0B41A72B1 /* ContactsViewModel.swift */; };
-		CA52878A31924305A65DBE55 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB6D5356A9544B1BB996542 /* DashboardViewModel.swift */; };
-		777DD9C7C1AD40C69E8AB5C7 /* ScreenshotsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E18B76667F4DB194672A01 /* ScreenshotsViewModel.swift */; };
-		EE35C00F0AD549B195264354 /* SweeplyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAC2023F43F46BE9B2D50FC /* SweeplyApp.swift */; };
-		A62E54AE9FC44DFD8B96879C /* MediaAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D17100D237145CAA64FBF87 /* MediaAsset.swift */; };
-		CACD7AF7CDED4193BE16710E /* ContactGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8B9C677E3B4F33AC4071AB /* ContactGroup.swift */; };
-		DC8B907911FF4B248D6DC128 /* ContactItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7262C1D3E54EFF8E437C38 /* ContactItem.swift */; };
-		9226737D0CCD4BE59FB4DBCB /* CleanBatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726BFB48ECA4D02BB901775 /* CleanBatch.swift */; };
-		7F68ED5DB0AC4F3398EAF459 /* SimilarGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD56073E8D1841E0818E2915 /* SimilarGroup.swift */; };
-		A274D82C11A6493AA9088EC5 /* StorageBreakdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B320A2B7E434E4188634A76 /* StorageBreakdown.swift */; };
-		B5599D69F61E4DD291513335 /* ScreenshotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F90D541E7341989D2B4BAC /* ScreenshotsView.swift */; };
-		3CAC9E893A794956B64738D7 /* SimilarPhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C20574D26F4013A4BBFFCA /* SimilarPhotosView.swift */; };
-		6940FF2D6C3F4054A5B33ACC /* SimilarGroupRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B125287425644626BAE16C83 /* SimilarGroupRowView.swift */; };
-		EA7FC74AEFB04EC8A7FEC620 /* ContactMergeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7018CCD1E0B543D687051AE0 /* ContactMergeDetailView.swift */; };
-		61A3D393A6DE4ABEA66363FB /* DuplicateContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F17FD1509624863B9423310 /* DuplicateContactsView.swift */; };
-		77213FC83F5E41E3A1183607 /* SwipeCleanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679B99C711E04C63B4B3F99F /* SwipeCleanView.swift */; };
-		769217D93153405B9D070A6A /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E7E4CA734E4C00846B5151 /* DashboardView.swift */; };
-		7DB1925FFC7949379931B18A /* StorageRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8207BBAE241A41E78299677A /* StorageRingView.swift */; };
-		C890394F24BF4C0880AFC66C /* CategoryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70815E86CBE481F8B2CD296 /* CategoryCardView.swift */; };
-		B1A46D3C4FE14BAB8C10D72F /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C13116154CB4B0EAC1FA1BF /* AuthView.swift */; };
-		7DB7391A093A427EBE5D7089 /* ThumbnailImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBC2EF461314C7982EBCD59 /* ThumbnailImageView.swift */; };
-		8139214B91A249B9B46D2068 /* PermissionNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222A6524C7E14F20B7E07A32 /* PermissionNoticeView.swift */; };
-		EC9636561BEE4711A2E2CADC /* UserProfileSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECB136BB2B447E6BB6DC18F /* UserProfileSheet.swift */; };
-		3E3D7FB74C8B47038E0664B5 /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823D4A1F7B914E22BF01D46F /* ConfettiView.swift */; };
-		0C998650E2C642358EC6ACC8 /* CleanSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FEF51018941C0BF67C894 /* CleanSuccessView.swift */; };
-		3A773171DEFF4350856BAA1E /* ReviewDeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6198784CBD694CFDA1EA8A85 /* ReviewDeleteView.swift */; };
-		289F7F0569D14B218CC08C50 /* LargeVideosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15629953968F4E69A7119906 /* LargeVideosView.swift */; };
-		939FE59701F3454D81B6B143 /* VideoPreviewSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D27971074F4A778913E3B1 /* VideoPreviewSheet.swift */; };
-		6F994F755BBA44748AC17554 /* VideoCompressSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F691F0E66245E98CFD171E /* VideoCompressSheet.swift */; };
-		2821D66A3AB84BE48728B217 /* BlurryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA2915A656C49CC9DD2DCE2 /* BlurryService.swift */; };
-		0F522503B2FB498DBB438FD0 /* ContactService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F12AE54F1B4F51879CAD93 /* ContactService.swift */; };
-		732F7D13FA2C40E09FE9CC8D /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66821ACC0E164AA58EEAA3C4 /* StorageService.swift */; };
-		FEEF7810DA1E4256978FAB1E /* SimilarityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41E830AAF404B90B1D1E476 /* SimilarityService.swift */; };
-		B3469EA30D6940EABEC31165 /* VideoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C22194ED39E4D218A04237E /* VideoService.swift */; };
-		CDFD42CE4D394FA1A5231430 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7811CC044DAB4769BBD2696B /* AuthService.swift */; };
-		7C507B8FFA6D4BC0ADC7186B /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C552FC47FB03453AA5B6FBAF /* PhotoService.swift */; };
-		67D2C867CC2844B3983A61C8 /* PermissionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A00E67DE2404F5F8C4228EB /* PermissionService.swift */; };
-		F84B5114DD8C4D808A62ADC4 /* ContactServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1997A0AC2B46C087707202 /* ContactServiceTests.swift */; };
-		5388861E02EA4231998C6BCB /* SimilarityServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34356D60E033445DAA290610 /* SimilarityServiceTests.swift */; };
-		F386670F2A0046F09124063C /* StorageFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185C05F61B64727ABF6E35F /* StorageFormatterTests.swift */; };
-		5D622E1F705743098EDB8FE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED1F42901F6546A98B2CA78A /* Assets.xcassets */; };
+		041CC3F4055F44ACA109E46C /* Sweeply/ViewModels/SimilarPhotosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADB819DFE404900A6FFB8AC /* Sweeply/ViewModels/SimilarPhotosViewModel.swift */; };
+		0C998650E2C642358EC6ACC8 /* Sweeply/Views/Review/CleanSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FEF51018941C0BF67C894 /* Sweeply/Views/Review/CleanSuccessView.swift */; };
+		0F522503B2FB498DBB438FD0 /* Sweeply/Services/ContactService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F12AE54F1B4F51879CAD93 /* Sweeply/Services/ContactService.swift */; };
+		25B4AF32C9D642F7A3177685 /* Sweeply/ViewModels/ContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02625ECE19A4FF0B41A72B1 /* Sweeply/ViewModels/ContactsViewModel.swift */; };
+		2821D66A3AB84BE48728B217 /* Sweeply/Services/BlurryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA2915A656C49CC9DD2DCE2 /* Sweeply/Services/BlurryService.swift */; };
+		289F7F0569D14B218CC08C50 /* Sweeply/Views/LargeVideos/LargeVideosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15629953968F4E69A7119906 /* Sweeply/Views/LargeVideos/LargeVideosView.swift */; };
+		320C8B70BE35492F87F9ACB8 /* Sweeply/ViewModels/SwipeCleanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8CA073B99E4F9483D2CA54 /* Sweeply/ViewModels/SwipeCleanViewModel.swift */; };
+		378B2FC575584C46A922CEBD /* Sweeply/ViewModels/ReviewDeleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A11F8DC810460FB53BDFC4 /* Sweeply/ViewModels/ReviewDeleteViewModel.swift */; };
+		3A773171DEFF4350856BAA1E /* Sweeply/Views/Review/ReviewDeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6198784CBD694CFDA1EA8A85 /* Sweeply/Views/Review/ReviewDeleteView.swift */; };
+		3CAC9E893A794956B64738D7 /* Sweeply/Views/SimilarPhotos/SimilarPhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C20574D26F4013A4BBFFCA /* Sweeply/Views/SimilarPhotos/SimilarPhotosView.swift */; };
+		3E3D7FB74C8B47038E0664B5 /* Sweeply/Views/Common/ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823D4A1F7B914E22BF01D46F /* Sweeply/Views/Common/ConfettiView.swift */; };
+		412684272833433AB6B26469 /* Sweeply/ViewModels/LargeVideosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50CCC1BB5D64C72B566855D /* Sweeply/ViewModels/LargeVideosViewModel.swift */; };
+		5388861E02EA4231998C6BCB /* SweeplyTests/SimilarityServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34356D60E033445DAA290610 /* SweeplyTests/SimilarityServiceTests.swift */; };
+		5D622E1F705743098EDB8FE1 /* Sweeply/Resources/Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED1F42901F6546A98B2CA78A /* Sweeply/Resources/Assets.xcassets */; };
+		61A3D393A6DE4ABEA66363FB /* Sweeply/Views/Contacts/DuplicateContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F17FD1509624863B9423310 /* Sweeply/Views/Contacts/DuplicateContactsView.swift */; };
+		67D2C867CC2844B3983A61C8 /* Sweeply/Services/PermissionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A00E67DE2404F5F8C4228EB /* Sweeply/Services/PermissionService.swift */; };
+		6940FF2D6C3F4054A5B33ACC /* Sweeply/Views/SimilarPhotos/SimilarGroupRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B125287425644626BAE16C83 /* Sweeply/Views/SimilarPhotos/SimilarGroupRowView.swift */; };
+		6F994F755BBA44748AC17554 /* Sweeply/Views/LargeVideos/VideoCompressSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F691F0E66245E98CFD171E /* Sweeply/Views/LargeVideos/VideoCompressSheet.swift */; };
+		732F7D13FA2C40E09FE9CC8D /* Sweeply/Services/StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66821ACC0E164AA58EEAA3C4 /* Sweeply/Services/StorageService.swift */; };
+		769217D93153405B9D070A6A /* Sweeply/Views/Dashboard/DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E7E4CA734E4C00846B5151 /* Sweeply/Views/Dashboard/DashboardView.swift */; };
+		77213FC83F5E41E3A1183607 /* Sweeply/Views/SwipeClean/SwipeCleanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679B99C711E04C63B4B3F99F /* Sweeply/Views/SwipeClean/SwipeCleanView.swift */; };
+		777DD9C7C1AD40C69E8AB5C7 /* Sweeply/ViewModels/ScreenshotsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E18B76667F4DB194672A01 /* Sweeply/ViewModels/ScreenshotsViewModel.swift */; };
+		7C507B8FFA6D4BC0ADC7186B /* Sweeply/Services/PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C552FC47FB03453AA5B6FBAF /* Sweeply/Services/PhotoService.swift */; };
+		7DB1925FFC7949379931B18A /* Sweeply/Views/Dashboard/StorageRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8207BBAE241A41E78299677A /* Sweeply/Views/Dashboard/StorageRingView.swift */; };
+		7DB7391A093A427EBE5D7089 /* Sweeply/Views/Common/ThumbnailImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBC2EF461314C7982EBCD59 /* Sweeply/Views/Common/ThumbnailImageView.swift */; };
+		7F68ED5DB0AC4F3398EAF459 /* Sweeply/Models/SimilarGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD56073E8D1841E0818E2915 /* Sweeply/Models/SimilarGroup.swift */; };
+		8139214B91A249B9B46D2068 /* Sweeply/Views/Common/PermissionNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222A6524C7E14F20B7E07A32 /* Sweeply/Views/Common/PermissionNoticeView.swift */; };
+		9226737D0CCD4BE59FB4DBCB /* Sweeply/Models/CleanBatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726BFB48ECA4D02BB901775 /* Sweeply/Models/CleanBatch.swift */; };
+		939FE59701F3454D81B6B143 /* Sweeply/Views/LargeVideos/VideoPreviewSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D27971074F4A778913E3B1 /* Sweeply/Views/LargeVideos/VideoPreviewSheet.swift */; };
+		A274D82C11A6493AA9088EC5 /* Sweeply/Models/StorageBreakdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B320A2B7E434E4188634A76 /* Sweeply/Models/StorageBreakdown.swift */; };
+		A62E54AE9FC44DFD8B96879C /* Sweeply/Models/MediaAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D17100D237145CAA64FBF87 /* Sweeply/Models/MediaAsset.swift */; };
+		B1A46D3C4FE14BAB8C10D72F /* Sweeply/Views/Common/AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C13116154CB4B0EAC1FA1BF /* Sweeply/Views/Common/AuthView.swift */; };
+		B3469EA30D6940EABEC31165 /* Sweeply/Services/VideoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C22194ED39E4D218A04237E /* Sweeply/Services/VideoService.swift */; };
+		B5599D69F61E4DD291513335 /* Sweeply/Views/Screenshots/ScreenshotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F90D541E7341989D2B4BAC /* Sweeply/Views/Screenshots/ScreenshotsView.swift */; };
+		C890394F24BF4C0880AFC66C /* Sweeply/Views/Dashboard/CategoryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70815E86CBE481F8B2CD296 /* Sweeply/Views/Dashboard/CategoryCardView.swift */; };
+		CA52878A31924305A65DBE55 /* Sweeply/ViewModels/DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB6D5356A9544B1BB996542 /* Sweeply/ViewModels/DashboardViewModel.swift */; };
+		CACD7AF7CDED4193BE16710E /* Sweeply/Models/ContactGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8B9C677E3B4F33AC4071AB /* Sweeply/Models/ContactGroup.swift */; };
+		CDFD42CE4D394FA1A5231430 /* Sweeply/Services/AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7811CC044DAB4769BBD2696B /* Sweeply/Services/AuthService.swift */; };
+		DC8B907911FF4B248D6DC128 /* Sweeply/Models/ContactItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7262C1D3E54EFF8E437C38 /* Sweeply/Models/ContactItem.swift */; };
+		EA7FC74AEFB04EC8A7FEC620 /* Sweeply/Views/Contacts/ContactMergeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7018CCD1E0B543D687051AE0 /* Sweeply/Views/Contacts/ContactMergeDetailView.swift */; };
+		EC9636561BEE4711A2E2CADC /* Sweeply/Views/Common/UserProfileSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECB136BB2B447E6BB6DC18F /* Sweeply/Views/Common/UserProfileSheet.swift */; };
+		EE35C00F0AD549B195264354 /* Sweeply/App/SweeplyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAC2023F43F46BE9B2D50FC /* Sweeply/App/SweeplyApp.swift */; };
+		F386670F2A0046F09124063C /* SweeplyTests/StorageFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185C05F61B64727ABF6E35F /* SweeplyTests/StorageFormatterTests.swift */; };
+		F84B5114DD8C4D808A62ADC4 /* SweeplyTests/ContactServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1997A0AC2B46C087707202 /* SweeplyTests/ContactServiceTests.swift */; };
+		FEEF7810DA1E4256978FAB1E /* Sweeply/Services/SimilarityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41E830AAF404B90B1D1E476 /* Sweeply/Services/SimilarityService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,65 +65,65 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B1E7EEDC9A364E3F9A404F0C /* Sweeply.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sweeply.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08423159382C4B3E996178E3 /* SweeplyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SweeplyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF8CA073B99E4F9483D2CA54 /* SwipeCleanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/ViewModels/SwipeCleanViewModel.swift"; sourceTree = "<group>"; };
-		F50CCC1BB5D64C72B566855D /* LargeVideosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/ViewModels/LargeVideosViewModel.swift"; sourceTree = "<group>"; };
-		BADB819DFE404900A6FFB8AC /* SimilarPhotosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/ViewModels/SimilarPhotosViewModel.swift"; sourceTree = "<group>"; };
-		B0A11F8DC810460FB53BDFC4 /* ReviewDeleteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/ViewModels/ReviewDeleteViewModel.swift"; sourceTree = "<group>"; };
-		A02625ECE19A4FF0B41A72B1 /* ContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/ViewModels/ContactsViewModel.swift"; sourceTree = "<group>"; };
-		4CB6D5356A9544B1BB996542 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/ViewModels/DashboardViewModel.swift"; sourceTree = "<group>"; };
-		18E18B76667F4DB194672A01 /* ScreenshotsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/ViewModels/ScreenshotsViewModel.swift"; sourceTree = "<group>"; };
-		5BAC2023F43F46BE9B2D50FC /* SweeplyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/App/SweeplyApp.swift"; sourceTree = "<group>"; };
-		8D17100D237145CAA64FBF87 /* MediaAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Models/MediaAsset.swift"; sourceTree = "<group>"; };
-		0B8B9C677E3B4F33AC4071AB /* ContactGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Models/ContactGroup.swift"; sourceTree = "<group>"; };
-		EE7262C1D3E54EFF8E437C38 /* ContactItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Models/ContactItem.swift"; sourceTree = "<group>"; };
-		5726BFB48ECA4D02BB901775 /* CleanBatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Models/CleanBatch.swift"; sourceTree = "<group>"; };
-		AD56073E8D1841E0818E2915 /* SimilarGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Models/SimilarGroup.swift"; sourceTree = "<group>"; };
-		6B320A2B7E434E4188634A76 /* StorageBreakdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Models/StorageBreakdown.swift"; sourceTree = "<group>"; };
-		F8F90D541E7341989D2B4BAC /* ScreenshotsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Views/Screenshots/ScreenshotsView.swift"; sourceTree = "<group>"; };
-		52C20574D26F4013A4BBFFCA /* SimilarPhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Views/SimilarPhotos/SimilarPhotosView.swift"; sourceTree = "<group>"; };
-		B125287425644626BAE16C83 /* SimilarGroupRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Views/SimilarPhotos/SimilarGroupRowView.swift"; sourceTree = "<group>"; };
-		7018CCD1E0B543D687051AE0 /* ContactMergeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Views/Contacts/ContactMergeDetailView.swift"; sourceTree = "<group>"; };
-		7F17FD1509624863B9423310 /* DuplicateContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Views/Contacts/DuplicateContactsView.swift"; sourceTree = "<group>"; };
-		679B99C711E04C63B4B3F99F /* SwipeCleanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Views/SwipeClean/SwipeCleanView.swift"; sourceTree = "<group>"; };
-		A5E7E4CA734E4C00846B5151 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Views/Dashboard/DashboardView.swift"; sourceTree = "<group>"; };
-		8207BBAE241A41E78299677A /* StorageRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Views/Dashboard/StorageRingView.swift"; sourceTree = "<group>"; };
-		B70815E86CBE481F8B2CD296 /* CategoryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Views/Dashboard/CategoryCardView.swift"; sourceTree = "<group>"; };
-		1C13116154CB4B0EAC1FA1BF /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Views/Common/AuthView.swift"; sourceTree = "<group>"; };
-		DBBC2EF461314C7982EBCD59 /* ThumbnailImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Views/Common/ThumbnailImageView.swift"; sourceTree = "<group>"; };
-		222A6524C7E14F20B7E07A32 /* PermissionNoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Views/Common/PermissionNoticeView.swift"; sourceTree = "<group>"; };
-		8ECB136BB2B447E6BB6DC18F /* UserProfileSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Views/Common/UserProfileSheet.swift"; sourceTree = "<group>"; };
-		823D4A1F7B914E22BF01D46F /* ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Views/Common/ConfettiView.swift"; sourceTree = "<group>"; };
-		CA4FEF51018941C0BF67C894 /* CleanSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Views/Review/CleanSuccessView.swift"; sourceTree = "<group>"; };
-		6198784CBD694CFDA1EA8A85 /* ReviewDeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Views/Review/ReviewDeleteView.swift"; sourceTree = "<group>"; };
-		15629953968F4E69A7119906 /* LargeVideosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Views/LargeVideos/LargeVideosView.swift"; sourceTree = "<group>"; };
-		20D27971074F4A778913E3B1 /* VideoPreviewSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Views/LargeVideos/VideoPreviewSheet.swift"; sourceTree = "<group>"; };
-		96F691F0E66245E98CFD171E /* VideoCompressSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Views/LargeVideos/VideoCompressSheet.swift"; sourceTree = "<group>"; };
-		0CA2915A656C49CC9DD2DCE2 /* BlurryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Services/BlurryService.swift"; sourceTree = "<group>"; };
-		91F12AE54F1B4F51879CAD93 /* ContactService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Services/ContactService.swift"; sourceTree = "<group>"; };
-		66821ACC0E164AA58EEAA3C4 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Services/StorageService.swift"; sourceTree = "<group>"; };
-		D41E830AAF404B90B1D1E476 /* SimilarityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Services/SimilarityService.swift"; sourceTree = "<group>"; };
-		6C22194ED39E4D218A04237E /* VideoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Services/VideoService.swift"; sourceTree = "<group>"; };
-		7811CC044DAB4769BBD2696B /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Services/AuthService.swift"; sourceTree = "<group>"; };
-		C552FC47FB03453AA5B6FBAF /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Services/PhotoService.swift"; sourceTree = "<group>"; };
-		2A00E67DE2404F5F8C4228EB /* PermissionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Services/PermissionService.swift"; sourceTree = "<group>"; };
-		DE1997A0AC2B46C087707202 /* ContactServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SweeplyTests/ContactServiceTests.swift"; sourceTree = "<group>"; };
-		34356D60E033445DAA290610 /* SimilarityServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SweeplyTests/SimilarityServiceTests.swift"; sourceTree = "<group>"; };
-		2185C05F61B64727ABF6E35F /* StorageFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SweeplyTests/StorageFormatterTests.swift"; sourceTree = "<group>"; };
-		ED1F42901F6546A98B2CA78A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Sweeply/Resources/Assets.xcassets"; sourceTree = "<group>"; };
-		5D123E0409DD4B278CA916B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Sweeply/App/Info.plist"; sourceTree = "<group>"; };
+		0B8B9C677E3B4F33AC4071AB /* Sweeply/Models/ContactGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Models/ContactGroup.swift; sourceTree = "<group>"; };
+		0CA2915A656C49CC9DD2DCE2 /* Sweeply/Services/BlurryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Services/BlurryService.swift; sourceTree = "<group>"; };
+		15629953968F4E69A7119906 /* Sweeply/Views/LargeVideos/LargeVideosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Views/LargeVideos/LargeVideosView.swift; sourceTree = "<group>"; };
+		18E18B76667F4DB194672A01 /* Sweeply/ViewModels/ScreenshotsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/ViewModels/ScreenshotsViewModel.swift; sourceTree = "<group>"; };
+		1C13116154CB4B0EAC1FA1BF /* Sweeply/Views/Common/AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Views/Common/AuthView.swift; sourceTree = "<group>"; };
+		20D27971074F4A778913E3B1 /* Sweeply/Views/LargeVideos/VideoPreviewSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Views/LargeVideos/VideoPreviewSheet.swift; sourceTree = "<group>"; };
+		2185C05F61B64727ABF6E35F /* SweeplyTests/StorageFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweeplyTests/StorageFormatterTests.swift; sourceTree = "<group>"; };
+		222A6524C7E14F20B7E07A32 /* Sweeply/Views/Common/PermissionNoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Views/Common/PermissionNoticeView.swift; sourceTree = "<group>"; };
+		2A00E67DE2404F5F8C4228EB /* Sweeply/Services/PermissionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Services/PermissionService.swift; sourceTree = "<group>"; };
+		34356D60E033445DAA290610 /* SweeplyTests/SimilarityServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweeplyTests/SimilarityServiceTests.swift; sourceTree = "<group>"; };
+		4CB6D5356A9544B1BB996542 /* Sweeply/ViewModels/DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/ViewModels/DashboardViewModel.swift; sourceTree = "<group>"; };
+		52C20574D26F4013A4BBFFCA /* Sweeply/Views/SimilarPhotos/SimilarPhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Views/SimilarPhotos/SimilarPhotosView.swift; sourceTree = "<group>"; };
+		5726BFB48ECA4D02BB901775 /* Sweeply/Models/CleanBatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Models/CleanBatch.swift; sourceTree = "<group>"; };
+		5BAC2023F43F46BE9B2D50FC /* Sweeply/App/SweeplyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/App/SweeplyApp.swift; sourceTree = "<group>"; };
+		5D123E0409DD4B278CA916B1 /* Sweeply/App/Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Sweeply/App/Info.plist; sourceTree = "<group>"; };
+		6198784CBD694CFDA1EA8A85 /* Sweeply/Views/Review/ReviewDeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Views/Review/ReviewDeleteView.swift; sourceTree = "<group>"; };
+		66821ACC0E164AA58EEAA3C4 /* Sweeply/Services/StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Services/StorageService.swift; sourceTree = "<group>"; };
+		679B99C711E04C63B4B3F99F /* Sweeply/Views/SwipeClean/SwipeCleanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Views/SwipeClean/SwipeCleanView.swift; sourceTree = "<group>"; };
+		6B320A2B7E434E4188634A76 /* Sweeply/Models/StorageBreakdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Models/StorageBreakdown.swift; sourceTree = "<group>"; };
+		6C22194ED39E4D218A04237E /* Sweeply/Services/VideoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Services/VideoService.swift; sourceTree = "<group>"; };
+		7018CCD1E0B543D687051AE0 /* Sweeply/Views/Contacts/ContactMergeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Views/Contacts/ContactMergeDetailView.swift; sourceTree = "<group>"; };
+		7811CC044DAB4769BBD2696B /* Sweeply/Services/AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Services/AuthService.swift; sourceTree = "<group>"; };
+		7F17FD1509624863B9423310 /* Sweeply/Views/Contacts/DuplicateContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Views/Contacts/DuplicateContactsView.swift; sourceTree = "<group>"; };
+		8207BBAE241A41E78299677A /* Sweeply/Views/Dashboard/StorageRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Views/Dashboard/StorageRingView.swift; sourceTree = "<group>"; };
+		823D4A1F7B914E22BF01D46F /* Sweeply/Views/Common/ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Views/Common/ConfettiView.swift; sourceTree = "<group>"; };
+		8D17100D237145CAA64FBF87 /* Sweeply/Models/MediaAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Models/MediaAsset.swift; sourceTree = "<group>"; };
+		8ECB136BB2B447E6BB6DC18F /* Sweeply/Views/Common/UserProfileSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Views/Common/UserProfileSheet.swift; sourceTree = "<group>"; };
+		91F12AE54F1B4F51879CAD93 /* Sweeply/Services/ContactService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Services/ContactService.swift; sourceTree = "<group>"; };
+		96F691F0E66245E98CFD171E /* Sweeply/Views/LargeVideos/VideoCompressSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Views/LargeVideos/VideoCompressSheet.swift; sourceTree = "<group>"; };
+		A02625ECE19A4FF0B41A72B1 /* Sweeply/ViewModels/ContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/ViewModels/ContactsViewModel.swift; sourceTree = "<group>"; };
+		A5E7E4CA734E4C00846B5151 /* Sweeply/Views/Dashboard/DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Views/Dashboard/DashboardView.swift; sourceTree = "<group>"; };
+		AD56073E8D1841E0818E2915 /* Sweeply/Models/SimilarGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Models/SimilarGroup.swift; sourceTree = "<group>"; };
+		B0A11F8DC810460FB53BDFC4 /* Sweeply/ViewModels/ReviewDeleteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/ViewModels/ReviewDeleteViewModel.swift; sourceTree = "<group>"; };
+		B125287425644626BAE16C83 /* Sweeply/Views/SimilarPhotos/SimilarGroupRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Views/SimilarPhotos/SimilarGroupRowView.swift; sourceTree = "<group>"; };
+		B1E7EEDC9A364E3F9A404F0C /* Sweeply.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sweeply.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B70815E86CBE481F8B2CD296 /* Sweeply/Views/Dashboard/CategoryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Views/Dashboard/CategoryCardView.swift; sourceTree = "<group>"; };
+		BADB819DFE404900A6FFB8AC /* Sweeply/ViewModels/SimilarPhotosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/ViewModels/SimilarPhotosViewModel.swift; sourceTree = "<group>"; };
+		C552FC47FB03453AA5B6FBAF /* Sweeply/Services/PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Services/PhotoService.swift; sourceTree = "<group>"; };
+		CA4FEF51018941C0BF67C894 /* Sweeply/Views/Review/CleanSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Views/Review/CleanSuccessView.swift; sourceTree = "<group>"; };
+		D41E830AAF404B90B1D1E476 /* Sweeply/Services/SimilarityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Services/SimilarityService.swift; sourceTree = "<group>"; };
+		DBBC2EF461314C7982EBCD59 /* Sweeply/Views/Common/ThumbnailImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Views/Common/ThumbnailImageView.swift; sourceTree = "<group>"; };
+		DE1997A0AC2B46C087707202 /* SweeplyTests/ContactServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweeplyTests/ContactServiceTests.swift; sourceTree = "<group>"; };
+		ED1F42901F6546A98B2CA78A /* Sweeply/Resources/Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Sweeply/Resources/Assets.xcassets; sourceTree = "<group>"; };
+		EE7262C1D3E54EFF8E437C38 /* Sweeply/Models/ContactItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Models/ContactItem.swift; sourceTree = "<group>"; };
+		F50CCC1BB5D64C72B566855D /* Sweeply/ViewModels/LargeVideosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/ViewModels/LargeVideosViewModel.swift; sourceTree = "<group>"; };
+		F8F90D541E7341989D2B4BAC /* Sweeply/Views/Screenshots/ScreenshotsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Views/Screenshots/ScreenshotsView.swift; sourceTree = "<group>"; };
+		FF8CA073B99E4F9483D2CA54 /* Sweeply/ViewModels/SwipeCleanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/ViewModels/SwipeCleanViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		CE8420B45CA543AFB9AAB9FD /* Frameworks */ = {
+		8AEBAB93506146DCA1D8302C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8AEBAB93506146DCA1D8302C /* Frameworks */ = {
+		CE8420B45CA543AFB9AAB9FD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -132,6 +133,56 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A6AFFAFB93242B0A8F1E241 /* Sweeply */ = {
+			isa = PBXGroup;
+			children = (
+				FF8CA073B99E4F9483D2CA54 /* Sweeply/ViewModels/SwipeCleanViewModel.swift */,
+				F50CCC1BB5D64C72B566855D /* Sweeply/ViewModels/LargeVideosViewModel.swift */,
+				BADB819DFE404900A6FFB8AC /* Sweeply/ViewModels/SimilarPhotosViewModel.swift */,
+				B0A11F8DC810460FB53BDFC4 /* Sweeply/ViewModels/ReviewDeleteViewModel.swift */,
+				A02625ECE19A4FF0B41A72B1 /* Sweeply/ViewModels/ContactsViewModel.swift */,
+				4CB6D5356A9544B1BB996542 /* Sweeply/ViewModels/DashboardViewModel.swift */,
+				18E18B76667F4DB194672A01 /* Sweeply/ViewModels/ScreenshotsViewModel.swift */,
+				5BAC2023F43F46BE9B2D50FC /* Sweeply/App/SweeplyApp.swift */,
+				8D17100D237145CAA64FBF87 /* Sweeply/Models/MediaAsset.swift */,
+				0B8B9C677E3B4F33AC4071AB /* Sweeply/Models/ContactGroup.swift */,
+				EE7262C1D3E54EFF8E437C38 /* Sweeply/Models/ContactItem.swift */,
+				5726BFB48ECA4D02BB901775 /* Sweeply/Models/CleanBatch.swift */,
+				AD56073E8D1841E0818E2915 /* Sweeply/Models/SimilarGroup.swift */,
+				6B320A2B7E434E4188634A76 /* Sweeply/Models/StorageBreakdown.swift */,
+				F8F90D541E7341989D2B4BAC /* Sweeply/Views/Screenshots/ScreenshotsView.swift */,
+				52C20574D26F4013A4BBFFCA /* Sweeply/Views/SimilarPhotos/SimilarPhotosView.swift */,
+				B125287425644626BAE16C83 /* Sweeply/Views/SimilarPhotos/SimilarGroupRowView.swift */,
+				7018CCD1E0B543D687051AE0 /* Sweeply/Views/Contacts/ContactMergeDetailView.swift */,
+				7F17FD1509624863B9423310 /* Sweeply/Views/Contacts/DuplicateContactsView.swift */,
+				679B99C711E04C63B4B3F99F /* Sweeply/Views/SwipeClean/SwipeCleanView.swift */,
+				A5E7E4CA734E4C00846B5151 /* Sweeply/Views/Dashboard/DashboardView.swift */,
+				8207BBAE241A41E78299677A /* Sweeply/Views/Dashboard/StorageRingView.swift */,
+				B70815E86CBE481F8B2CD296 /* Sweeply/Views/Dashboard/CategoryCardView.swift */,
+				1C13116154CB4B0EAC1FA1BF /* Sweeply/Views/Common/AuthView.swift */,
+				DBBC2EF461314C7982EBCD59 /* Sweeply/Views/Common/ThumbnailImageView.swift */,
+				222A6524C7E14F20B7E07A32 /* Sweeply/Views/Common/PermissionNoticeView.swift */,
+				8ECB136BB2B447E6BB6DC18F /* Sweeply/Views/Common/UserProfileSheet.swift */,
+				823D4A1F7B914E22BF01D46F /* Sweeply/Views/Common/ConfettiView.swift */,
+				CA4FEF51018941C0BF67C894 /* Sweeply/Views/Review/CleanSuccessView.swift */,
+				6198784CBD694CFDA1EA8A85 /* Sweeply/Views/Review/ReviewDeleteView.swift */,
+				15629953968F4E69A7119906 /* Sweeply/Views/LargeVideos/LargeVideosView.swift */,
+				20D27971074F4A778913E3B1 /* Sweeply/Views/LargeVideos/VideoPreviewSheet.swift */,
+				96F691F0E66245E98CFD171E /* Sweeply/Views/LargeVideos/VideoCompressSheet.swift */,
+				0CA2915A656C49CC9DD2DCE2 /* Sweeply/Services/BlurryService.swift */,
+				91F12AE54F1B4F51879CAD93 /* Sweeply/Services/ContactService.swift */,
+				66821ACC0E164AA58EEAA3C4 /* Sweeply/Services/StorageService.swift */,
+				D41E830AAF404B90B1D1E476 /* Sweeply/Services/SimilarityService.swift */,
+				6C22194ED39E4D218A04237E /* Sweeply/Services/VideoService.swift */,
+				7811CC044DAB4769BBD2696B /* Sweeply/Services/AuthService.swift */,
+				C552FC47FB03453AA5B6FBAF /* Sweeply/Services/PhotoService.swift */,
+				2A00E67DE2404F5F8C4228EB /* Sweeply/Services/PermissionService.swift */,
+				ED1F42901F6546A98B2CA78A /* Sweeply/Resources/Assets.xcassets */,
+				5D123E0409DD4B278CA916B1 /* Sweeply/App/Info.plist */,
+			);
+			name = Sweeply;
+			sourceTree = "<group>";
+		};
 		8188444ED4C54DBBA1697D5A = {
 			isa = PBXGroup;
 			children = (
@@ -150,62 +201,12 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1A6AFFAFB93242B0A8F1E241 /* Sweeply */ = {
-			isa = PBXGroup;
-			children = (
-				FF8CA073B99E4F9483D2CA54,
-				F50CCC1BB5D64C72B566855D,
-				BADB819DFE404900A6FFB8AC,
-				B0A11F8DC810460FB53BDFC4,
-				A02625ECE19A4FF0B41A72B1,
-				4CB6D5356A9544B1BB996542,
-				18E18B76667F4DB194672A01,
-				5BAC2023F43F46BE9B2D50FC,
-				8D17100D237145CAA64FBF87,
-				0B8B9C677E3B4F33AC4071AB,
-				EE7262C1D3E54EFF8E437C38,
-				5726BFB48ECA4D02BB901775,
-				AD56073E8D1841E0818E2915,
-				6B320A2B7E434E4188634A76,
-				F8F90D541E7341989D2B4BAC,
-				52C20574D26F4013A4BBFFCA,
-				B125287425644626BAE16C83,
-				7018CCD1E0B543D687051AE0,
-				7F17FD1509624863B9423310,
-				679B99C711E04C63B4B3F99F,
-				A5E7E4CA734E4C00846B5151,
-				8207BBAE241A41E78299677A,
-				B70815E86CBE481F8B2CD296,
-				1C13116154CB4B0EAC1FA1BF,
-				DBBC2EF461314C7982EBCD59,
-				222A6524C7E14F20B7E07A32,
-				8ECB136BB2B447E6BB6DC18F,
-				823D4A1F7B914E22BF01D46F,
-				CA4FEF51018941C0BF67C894,
-				6198784CBD694CFDA1EA8A85,
-				15629953968F4E69A7119906,
-				20D27971074F4A778913E3B1,
-				96F691F0E66245E98CFD171E,
-				0CA2915A656C49CC9DD2DCE2,
-				91F12AE54F1B4F51879CAD93,
-				66821ACC0E164AA58EEAA3C4,
-				D41E830AAF404B90B1D1E476,
-				6C22194ED39E4D218A04237E,
-				7811CC044DAB4769BBD2696B,
-				C552FC47FB03453AA5B6FBAF,
-				2A00E67DE2404F5F8C4228EB,
-				ED1F42901F6546A98B2CA78A,
-				5D123E0409DD4B278CA916B1,
-			);
-			name = Sweeply;
-			sourceTree = "<group>";
-		};
 		FC4D31BC2FDC4A7890C84EF3 /* SweeplyTests */ = {
 			isa = PBXGroup;
 			children = (
-				DE1997A0AC2B46C087707202,
-				34356D60E033445DAA290610,
-				2185C05F61B64727ABF6E35F,
+				DE1997A0AC2B46C087707202 /* SweeplyTests/ContactServiceTests.swift */,
+				34356D60E033445DAA290610 /* SweeplyTests/SimilarityServiceTests.swift */,
+				2185C05F61B64727ABF6E35F /* SweeplyTests/StorageFormatterTests.swift */,
 			);
 			name = SweeplyTests;
 			sourceTree = "<group>";
@@ -213,23 +214,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5695AAAC7A304D3090F9A78F /* Sweeply */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B9EA12AB2EC04B499DA70014 /* Build configuration list for PBXNativeTarget "Sweeply" */;
-			buildPhases = (
-				779FCAB7C35C41C1847D0FC1 /* Sources */,
-				CE8420B45CA543AFB9AAB9FD /* Frameworks */,
-				0FAF03254A9F4F518285A309 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Sweeply;
-			productName = Sweeply;
-			productReference = B1E7EEDC9A364E3F9A404F0C /* Sweeply.app */;
-			productType = "com.apple.product-type.application";
-		};
 		0E0F78EED57C49229D6FB128 /* SweeplyTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BB52685A2145487EB4D6FB7A /* Build configuration list for PBXNativeTarget "SweeplyTests" */;
@@ -248,6 +232,23 @@
 			productReference = 08423159382C4B3E996178E3 /* SweeplyTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		5695AAAC7A304D3090F9A78F /* Sweeply */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B9EA12AB2EC04B499DA70014 /* Build configuration list for PBXNativeTarget "Sweeply" */;
+			buildPhases = (
+				779FCAB7C35C41C1847D0FC1 /* Sources */,
+				CE8420B45CA543AFB9AAB9FD /* Frameworks */,
+				0FAF03254A9F4F518285A309 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Sweeply;
+			productName = Sweeply;
+			productReference = B1E7EEDC9A364E3F9A404F0C /* Sweeply.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -257,12 +258,12 @@
 				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					5695AAAC7A304D3090F9A78F = {
-						CreatedOnToolsVersion = 15.0;
-					};
 					0E0F78EED57C49229D6FB128 = {
 						CreatedOnToolsVersion = 15.0;
 						TestTargetID = 5695AAAC7A304D3090F9A78F;
+					};
+					5695AAAC7A304D3090F9A78F = {
+						CreatedOnToolsVersion = 15.0;
 					};
 				};
 			};
@@ -290,7 +291,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D622E1F705743098EDB8FE1 /* Assets.xcassets in Resources */,
+				5D622E1F705743098EDB8FE1 /* Sweeply/Resources/Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,61 +305,61 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		779FCAB7C35C41C1847D0FC1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				320C8B70BE35492F87F9ACB8,
-				412684272833433AB6B26469,
-				041CC3F4055F44ACA109E46C,
-				378B2FC575584C46A922CEBD,
-				25B4AF32C9D642F7A3177685,
-				CA52878A31924305A65DBE55,
-				777DD9C7C1AD40C69E8AB5C7,
-				EE35C00F0AD549B195264354,
-				A62E54AE9FC44DFD8B96879C,
-				CACD7AF7CDED4193BE16710E,
-				DC8B907911FF4B248D6DC128,
-				9226737D0CCD4BE59FB4DBCB,
-				7F68ED5DB0AC4F3398EAF459,
-				A274D82C11A6493AA9088EC5,
-				B5599D69F61E4DD291513335,
-				3CAC9E893A794956B64738D7,
-				6940FF2D6C3F4054A5B33ACC,
-				EA7FC74AEFB04EC8A7FEC620,
-				61A3D393A6DE4ABEA66363FB,
-				77213FC83F5E41E3A1183607,
-				769217D93153405B9D070A6A,
-				7DB1925FFC7949379931B18A,
-				C890394F24BF4C0880AFC66C,
-				B1A46D3C4FE14BAB8C10D72F,
-				7DB7391A093A427EBE5D7089,
-				8139214B91A249B9B46D2068,
-				EC9636561BEE4711A2E2CADC,
-				3E3D7FB74C8B47038E0664B5,
-				0C998650E2C642358EC6ACC8,
-				3A773171DEFF4350856BAA1E,
-				289F7F0569D14B218CC08C50,
-				939FE59701F3454D81B6B143,
-				6F994F755BBA44748AC17554,
-				2821D66A3AB84BE48728B217,
-				0F522503B2FB498DBB438FD0,
-				732F7D13FA2C40E09FE9CC8D,
-				FEEF7810DA1E4256978FAB1E,
-				B3469EA30D6940EABEC31165,
-				CDFD42CE4D394FA1A5231430,
-				7C507B8FFA6D4BC0ADC7186B,
-				67D2C867CC2844B3983A61C8,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		6B6A3E7232334D98B63B5A81 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F84B5114DD8C4D808A62ADC4,
-				5388861E02EA4231998C6BCB,
-				F386670F2A0046F09124063C,
+				F84B5114DD8C4D808A62ADC4 /* SweeplyTests/ContactServiceTests.swift in Sources */,
+				5388861E02EA4231998C6BCB /* SweeplyTests/SimilarityServiceTests.swift in Sources */,
+				F386670F2A0046F09124063C /* SweeplyTests/StorageFormatterTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		779FCAB7C35C41C1847D0FC1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				320C8B70BE35492F87F9ACB8 /* Sweeply/ViewModels/SwipeCleanViewModel.swift in Sources */,
+				412684272833433AB6B26469 /* Sweeply/ViewModels/LargeVideosViewModel.swift in Sources */,
+				041CC3F4055F44ACA109E46C /* Sweeply/ViewModels/SimilarPhotosViewModel.swift in Sources */,
+				378B2FC575584C46A922CEBD /* Sweeply/ViewModels/ReviewDeleteViewModel.swift in Sources */,
+				25B4AF32C9D642F7A3177685 /* Sweeply/ViewModels/ContactsViewModel.swift in Sources */,
+				CA52878A31924305A65DBE55 /* Sweeply/ViewModels/DashboardViewModel.swift in Sources */,
+				777DD9C7C1AD40C69E8AB5C7 /* Sweeply/ViewModels/ScreenshotsViewModel.swift in Sources */,
+				EE35C00F0AD549B195264354 /* Sweeply/App/SweeplyApp.swift in Sources */,
+				A62E54AE9FC44DFD8B96879C /* Sweeply/Models/MediaAsset.swift in Sources */,
+				CACD7AF7CDED4193BE16710E /* Sweeply/Models/ContactGroup.swift in Sources */,
+				DC8B907911FF4B248D6DC128 /* Sweeply/Models/ContactItem.swift in Sources */,
+				9226737D0CCD4BE59FB4DBCB /* Sweeply/Models/CleanBatch.swift in Sources */,
+				7F68ED5DB0AC4F3398EAF459 /* Sweeply/Models/SimilarGroup.swift in Sources */,
+				A274D82C11A6493AA9088EC5 /* Sweeply/Models/StorageBreakdown.swift in Sources */,
+				B5599D69F61E4DD291513335 /* Sweeply/Views/Screenshots/ScreenshotsView.swift in Sources */,
+				3CAC9E893A794956B64738D7 /* Sweeply/Views/SimilarPhotos/SimilarPhotosView.swift in Sources */,
+				6940FF2D6C3F4054A5B33ACC /* Sweeply/Views/SimilarPhotos/SimilarGroupRowView.swift in Sources */,
+				EA7FC74AEFB04EC8A7FEC620 /* Sweeply/Views/Contacts/ContactMergeDetailView.swift in Sources */,
+				61A3D393A6DE4ABEA66363FB /* Sweeply/Views/Contacts/DuplicateContactsView.swift in Sources */,
+				77213FC83F5E41E3A1183607 /* Sweeply/Views/SwipeClean/SwipeCleanView.swift in Sources */,
+				769217D93153405B9D070A6A /* Sweeply/Views/Dashboard/DashboardView.swift in Sources */,
+				7DB1925FFC7949379931B18A /* Sweeply/Views/Dashboard/StorageRingView.swift in Sources */,
+				C890394F24BF4C0880AFC66C /* Sweeply/Views/Dashboard/CategoryCardView.swift in Sources */,
+				B1A46D3C4FE14BAB8C10D72F /* Sweeply/Views/Common/AuthView.swift in Sources */,
+				7DB7391A093A427EBE5D7089 /* Sweeply/Views/Common/ThumbnailImageView.swift in Sources */,
+				8139214B91A249B9B46D2068 /* Sweeply/Views/Common/PermissionNoticeView.swift in Sources */,
+				EC9636561BEE4711A2E2CADC /* Sweeply/Views/Common/UserProfileSheet.swift in Sources */,
+				3E3D7FB74C8B47038E0664B5 /* Sweeply/Views/Common/ConfettiView.swift in Sources */,
+				0C998650E2C642358EC6ACC8 /* Sweeply/Views/Review/CleanSuccessView.swift in Sources */,
+				3A773171DEFF4350856BAA1E /* Sweeply/Views/Review/ReviewDeleteView.swift in Sources */,
+				289F7F0569D14B218CC08C50 /* Sweeply/Views/LargeVideos/LargeVideosView.swift in Sources */,
+				939FE59701F3454D81B6B143 /* Sweeply/Views/LargeVideos/VideoPreviewSheet.swift in Sources */,
+				6F994F755BBA44748AC17554 /* Sweeply/Views/LargeVideos/VideoCompressSheet.swift in Sources */,
+				2821D66A3AB84BE48728B217 /* Sweeply/Services/BlurryService.swift in Sources */,
+				0F522503B2FB498DBB438FD0 /* Sweeply/Services/ContactService.swift in Sources */,
+				732F7D13FA2C40E09FE9CC8D /* Sweeply/Services/StorageService.swift in Sources */,
+				FEEF7810DA1E4256978FAB1E /* Sweeply/Services/SimilarityService.swift in Sources */,
+				B3469EA30D6940EABEC31165 /* Sweeply/Services/VideoService.swift in Sources */,
+				CDFD42CE4D394FA1A5231430 /* Sweeply/Services/AuthService.swift in Sources */,
+				7C507B8FFA6D4BC0ADC7186B /* Sweeply/Services/PhotoService.swift in Sources */,
+				67D2C867CC2844B3983A61C8 /* Sweeply/Services/PermissionService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,6 +374,29 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		3B7C7B2C651B479EB02340AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		51FF81BF75DA4A8A8D3092D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -401,68 +425,20 @@
 			};
 			name = Debug;
 		};
-		3B7C7B2C651B479EB02340AC /* Release */ = {
+		637D7B76BD6745A2AE35069B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_OPTIMIZATION_LEVEL = s;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = "wholemodule";
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		85684D567CD34E189F4621A2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = Sweeply/App/Info.plist;
+				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.appfactory.Sweeply;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appfactory.SweeplyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
 				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Debug;
-		};
-		7EB8E73265D54612B4DE9CF5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = Sweeply/App/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.appfactory.Sweeply;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sweeply.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Sweeply";
 			};
 			name = Release;
 		};
@@ -483,22 +459,49 @@
 			};
 			name = Debug;
 		};
-		637D7B76BD6745A2AE35069B /* Release */ = {
+		7EB8E73265D54612B4DE9CF5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
+				DEVELOPMENT_TEAM = KCB62CF49N;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Sweeply/App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.appfactory.SweeplyTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appfactory.Sweeply;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sweeply.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Sweeply";
 			};
 			name = Release;
+		};
+		85684D567CD34E189F4621A2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KCB62CF49N;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Sweeply/App/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appfactory.Sweeply;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
@@ -531,7 +534,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
 	};
 	rootObject = 7DBD86B7A7524428B2CCB1FD /* Project object */;
 }

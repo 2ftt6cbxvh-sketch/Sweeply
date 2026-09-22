@@ -1,0 +1,40 @@
+{
+  "source": "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/Sweeply/Views/SimilarPhotos/SimilarGroupRowView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Potential saving: %@",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 32
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld Similar Photos",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 26
+        }
+      },
+      {
+        "comment": "",
+        "key": "BEST",
+        "location": {
+          "startingColumn": 46,
+          "startingLine": 60
+        }
+      },
+      {
+        "comment": "",
+        "key": "Keep",
+        "location": {
+          "startingColumn": 44,
+          "startingLine": 91
+        }
+      }
+    ]
+  },
+  "version": 1
+}

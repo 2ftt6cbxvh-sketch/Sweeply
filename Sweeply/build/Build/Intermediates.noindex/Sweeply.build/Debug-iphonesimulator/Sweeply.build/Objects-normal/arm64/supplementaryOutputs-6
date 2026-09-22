@@ -1,0 +1,23 @@
+{
+  "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/Sweeply/Views/Contacts/ContactMergeDetailView.swift" : {
+    "const-values" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/ContactMergeDetailView.swiftconstvalues",
+    "dependencies" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/ContactMergeDetailView.d",
+    "diagnostics" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/ContactMergeDetailView.dia",
+    "object" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/ContactMergeDetailView.o",
+    "swift-dependencies" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/ContactMergeDetailView.swiftdeps"
+  },
+  "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/Sweeply/Views/SimilarPhotos/SimilarGroupRowView.swift" : {
+    "const-values" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/SimilarGroupRowView.swiftconstvalues",
+    "dependencies" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/SimilarGroupRowView.d",
+    "diagnostics" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/SimilarGroupRowView.dia",
+    "object" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/SimilarGroupRowView.o",
+    "swift-dependencies" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/SimilarGroupRowView.swiftdeps"
+  },
+  "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/Sweeply/Views/SimilarPhotos/SimilarPhotosView.swift" : {
+    "const-values" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/SimilarPhotosView.swiftconstvalues",
+    "dependencies" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/SimilarPhotosView.d",
+    "diagnostics" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/SimilarPhotosView.dia",
+    "object" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/SimilarPhotosView.o",
+    "swift-dependencies" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/SimilarPhotosView.swiftdeps"
+  }
+}

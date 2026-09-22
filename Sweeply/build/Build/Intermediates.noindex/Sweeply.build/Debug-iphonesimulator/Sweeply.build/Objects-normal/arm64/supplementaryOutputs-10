@@ -1,0 +1,23 @@
+{
+  "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/Sweeply/Views/Common/ConfettiView.swift" : {
+    "const-values" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/ConfettiView.swiftconstvalues",
+    "dependencies" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/ConfettiView.d",
+    "diagnostics" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/ConfettiView.dia",
+    "object" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/ConfettiView.o",
+    "swift-dependencies" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/ConfettiView.swiftdeps"
+  },
+  "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/Sweeply/Views/Review/CleanSuccessView.swift" : {
+    "const-values" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/CleanSuccessView.swiftconstvalues",
+    "dependencies" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/CleanSuccessView.d",
+    "diagnostics" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/CleanSuccessView.dia",
+    "object" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/CleanSuccessView.o",
+    "swift-dependencies" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/CleanSuccessView.swiftdeps"
+  },
+  "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/Sweeply/Views/Review/ReviewDeleteView.swift" : {
+    "const-values" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/ReviewDeleteView.swiftconstvalues",
+    "dependencies" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/ReviewDeleteView.d",
+    "diagnostics" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/ReviewDeleteView.dia",
+    "object" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/ReviewDeleteView.o",
+    "swift-dependencies" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/ReviewDeleteView.swiftdeps"
+  }
+}

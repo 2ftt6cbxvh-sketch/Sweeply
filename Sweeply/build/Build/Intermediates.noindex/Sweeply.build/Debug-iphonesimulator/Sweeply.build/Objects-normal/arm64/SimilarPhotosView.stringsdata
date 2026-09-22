@@ -1,0 +1,96 @@
+{
+  "source": "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/Sweeply/Views/SimilarPhotos/SimilarPhotosView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Similar Photos",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 154
+        }
+      },
+      {
+        "comment": "",
+        "key": "Analyzing photo library for duplicates...",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 37
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld%% complete",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 41
+        }
+      },
+      {
+        "comment": "",
+        "key": "No Duplicates Found",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 52
+        }
+      },
+      {
+        "comment": "",
+        "key": "Your photo library is clean! Check back after taking new photos.",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 55
+        }
+      },
+      {
+        "comment": "",
+        "key": "Scan Again",
+        "location": {
+          "startingColumn": 32,
+          "startingLine": 61
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld Groups · %lld Duplicates",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 76
+        }
+      },
+      {
+        "comment": "",
+        "key": "•",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 88
+        }
+      },
+      {
+        "comment": "",
+        "key": "Select All",
+        "location": {
+          "startingColumn": 40,
+          "startingLine": 82
+        }
+      },
+      {
+        "comment": "",
+        "key": "Deselect",
+        "location": {
+          "startingColumn": 40,
+          "startingLine": 91
+        }
+      },
+      {
+        "comment": "",
+        "key": "Clean %lld Photos (%@)",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 131
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -158,19 +158,138 @@ public struct AuthView: View {
                     }
                 }
             }
-            .alert("Sign in with Google", isPresented: $showingGooglePrompt) {
-                TextField("Enter Gmail Address", text: $inputGoogleEmail)
-                    .textInputAutocapitalization(.never)
-                Button("Sign In") {
-                    let email = inputGoogleEmail.trimmingCharacters(in: .whitespacesAndNewlines)
-                    let finalEmail = email.isEmpty ? "user@gmail.com" : email
-                    let name = finalEmail.components(separatedBy: "@").first?.capitalized ?? "Google User"
-                    authService.signInWithGoogle(email: finalEmail, name: name)
+            .sheet(isPresented: $showingGooglePrompt) {
+                GoogleSignInSheet { email, name in
+                    authService.signInWithGoogle(email: email, name: name)
+                    showingGooglePrompt = false
                     dismiss()
                 }
-                Button("Cancel", role: .cancel) {}
-            } message: {
-                Text("Enter your Gmail address to connect your account for free.")
+            }
+        }
+    }
+}
+
+public struct GoogleSignInSheet: View {
+    @Environment(\.dismiss) private var dismiss
+    public let onSignIn: (String, String) -> Void
+    
+    @State private var email: String = "ganeshvarma@gmail.com"
+    @State private var name: String = "Ganesh Varma"
+    
+    public init(onSignIn: @escaping (String, String) -> Void) {
+        self.onSignIn = onSignIn
+    }
+    
+    public var body: some View {
+        NavigationStack {
+            VStack(spacing: 24) {
+                // Header
+                VStack(spacing: 10) {
+                    ZStack {
+                        Circle()
+                            .fill(Color.red.opacity(0.12))
+                            .frame(width: 72, height: 72)
+                        
+                        Image(systemName: "envelope.fill")
+                            .font(.system(size: 32))
+                            .foregroundStyle(Color.red)
+                    }
+                    .padding(.top, 16)
+                    
+                    Text("Sign in with Google")
+                        .font(.title2.weight(.bold))
+                    
+                    Text("Connect your Gmail account to sync your cleaning reports across devices.")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 32)
+                }
+                
+                // Form Fields
+                VStack(spacing: 16) {
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text("GMAIL / GOOGLE EMAIL")
+                            .font(.caption2.weight(.bold))
+                            .foregroundStyle(.secondary)
+                        
+                        TextField("name@gmail.com", text: $email)
+                            .textInputAutocapitalization(.never)
+                            .keyboardType(.emailAddress)
+                            .padding(14)
+                            .background(Color(uiColor: .secondarySystemBackground))
+                            .cornerRadius(12)
+                    }
+                    
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text("FULL NAME")
+                            .font(.caption2.weight(.bold))
+                            .foregroundStyle(.secondary)
+                        
+                        TextField("Your Name", text: $name)
+                            .padding(14)
+                            .background(Color(uiColor: .secondarySystemBackground))
+                            .cornerRadius(12)
+                    }
+                }
+                .padding(.horizontal, 24)
+                
+                // Quick 1-tap Account preset
+                Button {
+                    onSignIn("ganeshvarma@gmail.com", "Ganesh Varma")
+                } label: {
+                    HStack(spacing: 12) {
+                        Image(systemName: "person.circle.fill")
+                            .font(.system(size: 28))
+                            .foregroundStyle(.blue)
+                        
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("Quick 1-Tap Sign In")
+                                .font(.subheadline.weight(.semibold))
+                                .foregroundStyle(.primary)
+                            Text("ganeshvarma@gmail.com")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                        
+                        Spacer()
+                        
+                        Image(systemName: "arrow.right")
+                            .font(.caption.weight(.bold))
+                            .foregroundStyle(.secondary)
+                    }
+                    .padding(12)
+                    .background(Color.blue.opacity(0.08))
+                    .cornerRadius(12)
+                }
+                .padding(.horizontal, 24)
+                
+                Spacer()
+                
+                // Submit Button
+                Button {
+                    let finalEmail = email.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? "user@gmail.com" : email.trimmingCharacters(in: .whitespacesAndNewlines)
+                    let finalName = name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? "Google User" : name.trimmingCharacters(in: .whitespacesAndNewlines)
+                    onSignIn(finalEmail, finalName)
+                } label: {
+                    Text("Sign In with Google")
+                        .font(.headline)
+                        .foregroundStyle(.white)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 52)
+                        .background(Color.red)
+                        .cornerRadius(16)
+                }
+                .padding(.horizontal, 24)
+                .padding(.bottom, 20)
+            }
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Cancel") {
+                        dismiss()
+                    }
+                }
             }
         }
     }

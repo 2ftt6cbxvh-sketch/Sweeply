@@ -1,0 +1,88 @@
+{
+  "source": "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/Sweeply/Views/SwipeClean/SwipeCleanView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Swipe to Clean",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 240
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld Kept",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 24
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld To Clean (%@)",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 33
+        }
+      },
+      {
+        "comment": "",
+        "key": "All Caught Up!",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 48
+        }
+      },
+      {
+        "comment": "",
+        "key": "You've reviewed all photos in this deck.",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 51
+        }
+      },
+      {
+        "comment": "",
+        "key": "Load More Photos",
+        "location": {
+          "startingColumn": 36,
+          "startingLine": 75
+        }
+      },
+      {
+        "comment": "",
+        "key": "Review & Clean %lld Photos",
+        "location": {
+          "startingColumn": 46,
+          "startingLine": 63
+        }
+      },
+      {
+        "comment": "",
+        "key": "KEEP",
+        "location": {
+          "startingColumn": 46,
+          "startingLine": 108
+        }
+      },
+      {
+        "comment": "",
+        "key": "CLEAN",
+        "location": {
+          "startingColumn": 46,
+          "startingLine": 120
+        }
+      },
+      {
+        "comment": "",
+        "key": "Review (%lld)",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 245
+        }
+      }
+    ]
+  },
+  "version": 1
+}

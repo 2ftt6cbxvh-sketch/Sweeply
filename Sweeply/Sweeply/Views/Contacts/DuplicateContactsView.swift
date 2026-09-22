@@ -43,6 +43,24 @@ public struct DuplicateContactsView: View {
                         .foregroundStyle(.secondary)
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, 32)
+                    
+                    Button {
+                        Task {
+                            await viewModel.createDemoContacts()
+                        }
+                    } label: {
+                        HStack(spacing: 8) {
+                            Image(systemName: "plus.circle.fill")
+                            Text("Create Demo Duplicate Contacts")
+                        }
+                        .font(.headline)
+                        .foregroundStyle(.white)
+                        .padding(.horizontal, 20)
+                        .padding(.vertical, 12)
+                        .background(Color.green)
+                        .cornerRadius(14)
+                    }
+                    .padding(.top, 8)
                 }
                 .frame(maxHeight: .infinity)
             } else {

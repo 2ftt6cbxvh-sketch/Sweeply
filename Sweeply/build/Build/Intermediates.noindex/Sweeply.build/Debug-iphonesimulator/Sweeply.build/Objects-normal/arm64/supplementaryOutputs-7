@@ -1,0 +1,23 @@
+{
+  "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/Sweeply/Views/Contacts/DuplicateContactsView.swift" : {
+    "const-values" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/DuplicateContactsView.swiftconstvalues",
+    "dependencies" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/DuplicateContactsView.d",
+    "diagnostics" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/DuplicateContactsView.dia",
+    "object" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/DuplicateContactsView.o",
+    "swift-dependencies" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/DuplicateContactsView.swiftdeps"
+  },
+  "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/Sweeply/Views/Dashboard/DashboardView.swift" : {
+    "const-values" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/DashboardView.swiftconstvalues",
+    "dependencies" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/DashboardView.d",
+    "diagnostics" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/DashboardView.dia",
+    "object" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/DashboardView.o",
+    "swift-dependencies" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/DashboardView.swiftdeps"
+  },
+  "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/Sweeply/Views/SwipeClean/SwipeCleanView.swift" : {
+    "const-values" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/SwipeCleanView.swiftconstvalues",
+    "dependencies" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/SwipeCleanView.d",
+    "diagnostics" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/SwipeCleanView.dia",
+    "object" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/SwipeCleanView.o",
+    "swift-dependencies" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/SwipeCleanView.swiftdeps"
+  }
+}

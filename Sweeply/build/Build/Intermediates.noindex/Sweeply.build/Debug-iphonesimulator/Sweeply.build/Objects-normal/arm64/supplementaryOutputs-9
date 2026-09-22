@@ -1,0 +1,23 @@
+{
+  "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/Sweeply/Views/Common/PermissionNoticeView.swift" : {
+    "const-values" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/PermissionNoticeView.swiftconstvalues",
+    "dependencies" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/PermissionNoticeView.d",
+    "diagnostics" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/PermissionNoticeView.dia",
+    "object" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/PermissionNoticeView.o",
+    "swift-dependencies" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/PermissionNoticeView.swiftdeps"
+  },
+  "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/Sweeply/Views/Common/ThumbnailImageView.swift" : {
+    "const-values" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/ThumbnailImageView.swiftconstvalues",
+    "dependencies" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/ThumbnailImageView.d",
+    "diagnostics" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/ThumbnailImageView.dia",
+    "object" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/ThumbnailImageView.o",
+    "swift-dependencies" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/ThumbnailImageView.swiftdeps"
+  },
+  "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/Sweeply/Views/Common/UserProfileSheet.swift" : {
+    "const-values" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/UserProfileSheet.swiftconstvalues",
+    "dependencies" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/UserProfileSheet.d",
+    "diagnostics" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/UserProfileSheet.dia",
+    "object" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/UserProfileSheet.o",
+    "swift-dependencies" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/Sweeply.build/Objects-normal/arm64/UserProfileSheet.swiftdeps"
+  }
+}

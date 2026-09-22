@@ -186,4 +186,39 @@ public final class ContactService {
         
         try contactStore.execute(saveRequest)
     }
+    
+    public func createSampleDuplicateContacts() async throws {
+        let saveRequest = CNSaveRequest()
+        
+        let c1 = CNMutableContact()
+        c1.givenName = "John"
+        c1.familyName = "Appleseed"
+        c1.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: "+1 (555) 123-4567"))]
+        c1.emailAddresses = [CNLabeledValue(label: CNLabelHome, value: "john.appleseed@example.com")]
+        
+        let c2 = CNMutableContact()
+        c2.givenName = "John"
+        c2.familyName = "Appleseed"
+        c2.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberMain, value: CNPhoneNumber(stringValue: "555-123-4567"))]
+        c2.emailAddresses = [CNLabeledValue(label: CNLabelWork, value: "john.work@apple.com" as NSString)]
+        
+        let c3 = CNMutableContact()
+        c3.givenName = "Alice"
+        c3.familyName = "Smith"
+        c3.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: "+1 555-0199"))]
+        c3.emailAddresses = [CNLabeledValue(label: CNLabelHome, value: "alice.smith@icloud.com" as NSString)]
+        
+        let c4 = CNMutableContact()
+        c4.givenName = "Alice"
+        c4.familyName = "Smith"
+        c4.phoneNumbers = [CNLabeledValue(label: CNLabelWork, value: CNPhoneNumber(stringValue: "+1 555-0188"))]
+        c4.emailAddresses = [CNLabeledValue(label: CNLabelWork, value: "alice.smith@icloud.com" as NSString)]
+        
+        saveRequest.add(c1, toContainerWithIdentifier: nil)
+        saveRequest.add(c2, toContainerWithIdentifier: nil)
+        saveRequest.add(c3, toContainerWithIdentifier: nil)
+        saveRequest.add(c4, toContainerWithIdentifier: nil)
+        
+        try contactStore.execute(saveRequest)
+    }
 }

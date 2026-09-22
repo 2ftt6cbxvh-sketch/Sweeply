@@ -49,6 +49,18 @@ public final class SimilarityService {
             clusters.append(currentCluster)
         }
         
+        // If timestamp clusters are empty, cluster by matching dimensions / aspect ratio
+        if clusters.isEmpty && assets.count >= 2 {
+            var dimMap: [String: [MediaAsset]] = [:]
+            for asset in assets {
+                let key = "\(asset.pixelWidth)x\(asset.pixelHeight)"
+                dimMap[key, default: []].append(asset)
+            }
+            for (_, group) in dimMap where group.count >= 2 {
+                clusters.append(group)
+            }
+        }
+        
         // 3. Extract Vision feature prints for candidate clusters
         var results: [SimilarPhotoGroup] = []
         let totalClusters = max(clusters.count, 1)

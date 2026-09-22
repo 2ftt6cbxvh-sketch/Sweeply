@@ -1,0 +1,64 @@
+{
+  "source": "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/Sweeply/Views/Dashboard/DashboardView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Sweeply",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 197
+        }
+      },
+      {
+        "comment": "",
+        "key": "Limited library access active. Tap to select more photos.",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 38
+        }
+      },
+      {
+        "comment": "",
+        "key": "Edit",
+        "location": {
+          "startingColumn": 36,
+          "startingLine": 42
+        }
+      },
+      {
+        "comment": "",
+        "key": "Scanning Library...",
+        "location": {
+          "startingColumn": 61,
+          "startingLine": 71
+        }
+      },
+      {
+        "comment": "",
+        "key": "Run Smart Scan",
+        "location": {
+          "startingColumn": 85,
+          "startingLine": 71
+        }
+      },
+      {
+        "comment": "",
+        "key": "CLEANUP CATEGORIES",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 99
+        }
+      },
+      {
+        "comment": "",
+        "key": "Settings",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 256
+        }
+      }
+    ]
+  },
+  "version": 1
+}

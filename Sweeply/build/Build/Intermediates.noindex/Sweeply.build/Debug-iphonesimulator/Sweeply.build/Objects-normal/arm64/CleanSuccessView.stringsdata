@@ -1,0 +1,40 @@
+{
+  "source": "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/Sweeply/Views/Review/CleanSuccessView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Space Freed!",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 50
+        }
+      },
+      {
+        "comment": "",
+        "key": "Successfully cleaned from your device storage.",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 58
+        }
+      },
+      {
+        "comment": "",
+        "key": "Items can be recovered from Recently Deleted for 30 days",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 69
+        }
+      },
+      {
+        "comment": "",
+        "key": "Back to Dashboard",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 81
+        }
+      }
+    ]
+  },
+  "version": 1
+}

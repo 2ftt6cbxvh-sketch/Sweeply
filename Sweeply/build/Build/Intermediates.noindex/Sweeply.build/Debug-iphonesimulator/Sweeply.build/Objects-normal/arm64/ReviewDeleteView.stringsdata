@@ -1,0 +1,72 @@
+{
+  "source": "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/Sweeply/Views/Review/ReviewDeleteView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Review",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 157
+        }
+      },
+      {
+        "comment": "",
+        "key": "Review Before Clean",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 31
+        }
+      },
+      {
+        "comment": "",
+        "key": "Ready to free %@",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 34
+        }
+      },
+      {
+        "comment": "",
+        "key": "Nothing is permanently erased immediately. Photos are moved to iOS's \"Recently Deleted\" album where you have 30 days to restore them.",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 44
+        }
+      },
+      {
+        "comment": "",
+        "key": "ITEMS TO REMOVE (%lld)",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 65
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cleaning...",
+        "location": {
+          "startingColumn": 57,
+          "startingLine": 134
+        }
+      },
+      {
+        "comment": "",
+        "key": "Confirm & Clean %lld Items",
+        "location": {
+          "startingColumn": 73,
+          "startingLine": 134
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cancel",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 161
+        }
+      }
+    ]
+  },
+  "version": 1
+}

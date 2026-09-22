@@ -1,0 +1,39 @@
+{
+  "" : {
+    "diagnostics" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/SweeplyTests.build/Objects-normal/arm64/SweeplyTests-primary.dia",
+    "emit-module-dependencies" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/SweeplyTests.build/Objects-normal/arm64/SweeplyTests-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/SweeplyTests.build/Objects-normal/arm64/SweeplyTests-primary-emit-module.dia",
+    "pch" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/SweeplyTests.build/Objects-normal/arm64/SweeplyTests-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/SweeplyTests.build/Objects-normal/arm64/SweeplyTests-primary.swiftdeps"
+  },
+  "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/SweeplyTests/ContactServiceTests.swift" : {
+    "const-values" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/SweeplyTests.build/Objects-normal/arm64/ContactServiceTests.swiftconstvalues",
+    "dependencies" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/SweeplyTests.build/Objects-normal/arm64/ContactServiceTests.d",
+    "diagnostics" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/SweeplyTests.build/Objects-normal/arm64/ContactServiceTests.dia",
+    "index-unit-output-path" : "/Sweeply.build/Debug-iphonesimulator/SweeplyTests.build/Objects-normal/arm64/ContactServiceTests.o",
+    "llvm-bc" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/SweeplyTests.build/Objects-normal/arm64/ContactServiceTests.bc",
+    "object" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/SweeplyTests.build/Objects-normal/arm64/ContactServiceTests.o",
+    "swift-dependencies" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/SweeplyTests.build/Objects-normal/arm64/ContactServiceTests.swiftdeps",
+    "swiftmodule" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/SweeplyTests.build/Objects-normal/arm64/ContactServiceTests~partial.swiftmodule"
+  },
+  "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/SweeplyTests/SimilarityServiceTests.swift" : {
+    "const-values" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/SweeplyTests.build/Objects-normal/arm64/SimilarityServiceTests.swiftconstvalues",
+    "dependencies" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/SweeplyTests.build/Objects-normal/arm64/SimilarityServiceTests.d",
+    "diagnostics" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/SweeplyTests.build/Objects-normal/arm64/SimilarityServiceTests.dia",
+    "index-unit-output-path" : "/Sweeply.build/Debug-iphonesimulator/SweeplyTests.build/Objects-normal/arm64/SimilarityServiceTests.o",
+    "llvm-bc" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/SweeplyTests.build/Objects-normal/arm64/SimilarityServiceTests.bc",
+    "object" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/SweeplyTests.build/Objects-normal/arm64/SimilarityServiceTests.o",
+    "swift-dependencies" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/SweeplyTests.build/Objects-normal/arm64/SimilarityServiceTests.swiftdeps",
+    "swiftmodule" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/SweeplyTests.build/Objects-normal/arm64/SimilarityServiceTests~partial.swiftmodule"
+  },
+  "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/SweeplyTests/StorageFormatterTests.swift" : {
+    "const-values" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/SweeplyTests.build/Objects-normal/arm64/StorageFormatterTests.swiftconstvalues",
+    "dependencies" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/SweeplyTests.build/Objects-normal/arm64/StorageFormatterTests.d",
+    "diagnostics" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/SweeplyTests.build/Objects-normal/arm64/StorageFormatterTests.dia",
+    "index-unit-output-path" : "/Sweeply.build/Debug-iphonesimulator/SweeplyTests.build/Objects-normal/arm64/StorageFormatterTests.o",
+    "llvm-bc" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/SweeplyTests.build/Objects-normal/arm64/StorageFormatterTests.bc",
+    "object" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/SweeplyTests.build/Objects-normal/arm64/StorageFormatterTests.o",
+    "swift-dependencies" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/SweeplyTests.build/Objects-normal/arm64/StorageFormatterTests.swiftdeps",
+    "swiftmodule" : "/Users/ganeshvarma/Desktop/assignment_maail/Sweeply/build/Build/Intermediates.noindex/Sweeply.build/Debug-iphonesimulator/SweeplyTests.build/Objects-normal/arm64/StorageFormatterTests~partial.swiftmodule"
+  }
+}

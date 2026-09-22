@@ -72,4 +72,11 @@ public final class ContactsViewModel: ObservableObject {
         feedbackMessage = "Cleaned and merged \(mergedCount) contact group(s)!"
         isMerging = false
     }
+    
+    public func createDemoContacts() async {
+        isLoading = true
+        try? await contactService.createSampleDuplicateContacts()
+        await load()
+        isLoading = false
+    }
 }
