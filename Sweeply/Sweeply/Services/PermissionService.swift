@@ -28,6 +28,10 @@ public final class PermissionService: ObservableObject {
         photoStatus == .limited
     }
     
+    public var isPhotosDenied: Bool {
+        photoStatus == .denied || photoStatus == .restricted
+    }
+    
     public var hasContactsAccess: Bool {
         contactStatus == .authorized
     }

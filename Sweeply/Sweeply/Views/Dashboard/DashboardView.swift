@@ -7,8 +7,10 @@ public struct DashboardView: View {
     @StateObject private var permissionService = PermissionService.shared
     @ObservedObject private var authService = AuthService.shared
     @ObservedObject private var themeManager = ThemeManager.shared
+    @ObservedObject private var undoService = UndoService.shared
     @State private var showingPermissionSheet = false
     @State private var showingProfileSheet = false
+    @State private var showingShakeUndoAlert = false
     @State private var activeSheet: ActiveDashboardSheet? = nil
     
     private enum ActiveDashboardSheet: Identifiable {
@@ -157,7 +159,41 @@ public struct DashboardView: View {
                         }
                         .padding(.horizontal)
                         
-                        // 4. Duplicate Contacts
+                        // 4. Blurry Photos
+                        NavigationLink {
+                            BlurryPhotosView(onCleanRequested: { batch in
+                                activeSheet = .review(batch)
+                            })
+                        } label: {
+                            CategoryCardView(
+                                icon: "eye.slash.fill",
+                                iconColor: .orange,
+                                title: "Blurry Photos",
+                                subtitle: "Low-clarity & out-of-focus shots",
+                                badgeText: "Vision AI",
+                                countText: "Analyze",
+                                isProcessing: viewModel.isScanning
+                            )
+                        }
+                        .padding(.horizontal)
+                        
+                        // 5. Live Photo Optimizer
+                        NavigationLink {
+                            LivePhotosView()
+                        } label: {
+                            CategoryCardView(
+                                icon: "livephoto",
+                                iconColor: .cyan,
+                                title: "Live Photo Optimizer",
+                                subtitle: "Strip video & save ~70% storage",
+                                badgeText: "Save 70%",
+                                countText: "Convert",
+                                isProcessing: viewModel.isScanning
+                            )
+                        }
+                        .padding(.horizontal)
+                        
+                        // 6. Duplicate Contacts
                         NavigationLink {
                             DuplicateContactsView()
                         } label: {
@@ -165,7 +201,7 @@ public struct DashboardView: View {
                                 icon: "person.2.fill",
                                 iconColor: .green,
                                 title: "Duplicate Contacts",
-                                subtitle: "Merge or clean repeated contacts",
+                                subtitle: "Merge duplicates & purge incomplete",
                                 badgeText: "\(viewModel.storage.duplicateContactsSets) sets",
                                 countText: "\(viewModel.storage.duplicateContactsCount) contacts",
                                 isProcessing: viewModel.isScanning
@@ -268,6 +304,24 @@ public struct DashboardView: View {
                     Text("Settings")
                 }
             }
+            .onReceive(NotificationCenter.default.publisher(for: .deviceDidShake)) { _ in
+                HapticService.shared.notification(.warning)
+                showingShakeUndoAlert = true
+            }
+            .alert("Shake to Undo Detected", isPresented: $showingShakeUndoAlert) {
+                if let lastAction = undoService.lastCleanAction {
+                    Button("Clear History") {
+                        undoService.clearLastAction()
+                    }
+                }
+                Button("Got it", role: .cancel) {}
+            } message: {
+                if let lastAction = undoService.lastCleanAction {
+                    Text("Recent Action: \(lastAction.title) (\(lastAction.itemCount) item(s)).\n\nYour items are kept in Apple's 'Recently Deleted' album for 30 days. You can open Photos at any time to restore them.")
+                } else {
+                    Text("Sweeply uses Apple's official 'Recently Deleted' recovery net. Any photo or video cleaned is safely recoverable for 30 days.")
+                }
+            }
             .task {
                 if permissionService.hasPhotosAccess {
                     await viewModel.runQuickScan()
@@ -277,6 +331,7 @@ public struct DashboardView: View {
     }
     
     private func handleScanTapped() async {
+        HapticService.shared.impact(.medium)
         if !permissionService.hasPhotosAccess {
             let status = await permissionService.requestPhotosPermission()
             if status == .authorized || status == .limited {

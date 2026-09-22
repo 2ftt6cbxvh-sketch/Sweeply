@@ -82,9 +82,6 @@ public struct CategoryCardView: View {
                     .foregroundStyle(Color(uiColor: .tertiaryLabel))
             }
         }
-        .padding(16)
-        .background(Color(uiColor: .systemBackground))
-        .cornerRadius(18)
-        .shadow(color: Color.black.opacity(0.03), radius: 8, x: 0, y: 3)
+        .liquidGlass(cornerRadius: 20, padding: 16)
     }
 }

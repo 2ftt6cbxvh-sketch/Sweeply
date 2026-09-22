@@ -51,10 +51,13 @@ public final class ReviewDeleteViewModel: ObservableObject {
             self.actuallyFreedBytes = freedBytes
             self.hasCompleted = true
             self.isDeleting = false
+            UndoService.shared.recordClean(title: "Cleaned \(batch.category.rawValue)", count: batch.totalItemsCount, bytes: freedBytes)
+            HapticService.shared.notification(.success)
             return true
         } catch {
             self.deletionError = error.localizedDescription
             self.isDeleting = false
+            HapticService.shared.notification(.error)
             return false
         }
     }

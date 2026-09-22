@@ -96,9 +96,6 @@ public struct StorageRingView: View {
             .background(Color(uiColor: .secondarySystemGroupedBackground))
             .cornerRadius(14)
         }
-        .padding(20)
-        .background(Color(uiColor: .systemBackground))
-        .cornerRadius(24)
-        .shadow(color: Color.black.opacity(0.04), radius: 10, x: 0, y: 4)
+        .liquidGlass(cornerRadius: 26, padding: 20)
     }
 }

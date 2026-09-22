@@ -221,4 +221,37 @@ public final class ContactService {
         
         try contactStore.execute(saveRequest)
     }
+    
+    public func findIncompleteContacts(from contacts: [ContactItem]) -> [ContactItem] {
+        return contacts.filter { contact in
+            let hasNoName = contact.givenName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
+                            contact.familyName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
+                            contact.organizationName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+            let hasNoPhoneOrEmail = contact.phoneNumbers.isEmpty && contact.emailAddresses.isEmpty
+            return hasNoName || hasNoPhoneOrEmail
+        }
+    }
+    
+    public func createSampleIncompleteContacts() async throws {
+        let saveRequest = CNSaveRequest()
+        
+        // 1. Contact with no name (phone only)
+        let c1 = CNMutableContact()
+        c1.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: "555-098-7654"))]
+        
+        // 2. Contact with name but neither phone nor email
+        let c2 = CNMutableContact()
+        c2.givenName = "Unknown"
+        c2.familyName = "Draft"
+        
+        // 3. Contact with email only, no name or phone
+        let c3 = CNMutableContact()
+        c3.emailAddresses = [CNLabeledValue(label: CNLabelHome, value: "noreply@spam-newsletter.com" as NSString)]
+        
+        saveRequest.add(c1, toContainerWithIdentifier: nil)
+        saveRequest.add(c2, toContainerWithIdentifier: nil)
+        saveRequest.add(c3, toContainerWithIdentifier: nil)
+        
+        try contactStore.execute(saveRequest)
+    }
 }

@@ -54,6 +54,15 @@
 		F84B5114DD8C4D808A62ADC4 /* SweeplyTests/ContactServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1997A0AC2B46C087707202 /* SweeplyTests/ContactServiceTests.swift */; };
 		A7B200012A00000100000001 /* SweeplyTests/ThemeManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B200022A00000100000001 /* SweeplyTests/ThemeManagerTests.swift */; };
 		FEEF7810DA1E4256978FAB1E /* Sweeply/Services/SimilarityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41E830AAF404B90B1D1E476 /* Sweeply/Services/SimilarityService.swift */; };
+		E10000012A00000100000001 /* Sweeply/Views/Common/LiquidGlassModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20000012A00000100000001 /* Sweeply/Views/Common/LiquidGlassModifier.swift */; };
+		E10000022A00000100000001 /* Sweeply/Services/HapticService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20000022A00000100000001 /* Sweeply/Services/HapticService.swift */; };
+		E10000032A00000100000001 /* Sweeply/Services/MotionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20000032A00000100000001 /* Sweeply/Services/MotionService.swift */; };
+		E10000042A00000100000001 /* Sweeply/Services/LivePhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20000042A00000100000001 /* Sweeply/Services/LivePhotoService.swift */; };
+		E10000052A00000100000001 /* Sweeply/ViewModels/BlurryPhotosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20000052A00000100000001 /* Sweeply/ViewModels/BlurryPhotosViewModel.swift */; };
+		E10000062A00000100000001 /* Sweeply/ViewModels/LivePhotosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20000062A00000100000001 /* Sweeply/ViewModels/LivePhotosViewModel.swift */; };
+		E10000072A00000100000001 /* Sweeply/Views/BlurryPhotos/BlurryPhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20000072A00000100000001 /* Sweeply/Views/BlurryPhotos/BlurryPhotosView.swift */; };
+		E10000082A00000100000001 /* Sweeply/Views/LivePhotos/LivePhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20000082A00000100000001 /* Sweeply/Views/LivePhotos/LivePhotosView.swift */; };
+		E10000092A00000100000001 /* SweeplyTests/StandoutFeaturesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20000092A00000100000001 /* SweeplyTests/StandoutFeaturesTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +126,15 @@
 		F50CCC1BB5D64C72B566855D /* Sweeply/ViewModels/LargeVideosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/ViewModels/LargeVideosViewModel.swift; sourceTree = "<group>"; };
 		F8F90D541E7341989D2B4BAC /* Sweeply/Views/Screenshots/ScreenshotsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Views/Screenshots/ScreenshotsView.swift; sourceTree = "<group>"; };
 		FF8CA073B99E4F9483D2CA54 /* Sweeply/ViewModels/SwipeCleanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/ViewModels/SwipeCleanViewModel.swift; sourceTree = "<group>"; };
+		E20000012A00000100000001 /* Sweeply/Views/Common/LiquidGlassModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Views/Common/LiquidGlassModifier.swift; sourceTree = "<group>"; };
+		E20000022A00000100000001 /* Sweeply/Services/HapticService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Services/HapticService.swift; sourceTree = "<group>"; };
+		E20000032A00000100000001 /* Sweeply/Services/MotionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Services/MotionService.swift; sourceTree = "<group>"; };
+		E20000042A00000100000001 /* Sweeply/Services/LivePhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Services/LivePhotoService.swift; sourceTree = "<group>"; };
+		E20000052A00000100000001 /* Sweeply/ViewModels/BlurryPhotosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/ViewModels/BlurryPhotosViewModel.swift; sourceTree = "<group>"; };
+		E20000062A00000100000001 /* Sweeply/ViewModels/LivePhotosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/ViewModels/LivePhotosViewModel.swift; sourceTree = "<group>"; };
+		E20000072A00000100000001 /* Sweeply/Views/BlurryPhotos/BlurryPhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Views/BlurryPhotos/BlurryPhotosView.swift; sourceTree = "<group>"; };
+		E20000082A00000100000001 /* Sweeply/Views/LivePhotos/LivePhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Views/LivePhotos/LivePhotosView.swift; sourceTree = "<group>"; };
+		E20000092A00000100000001 /* SweeplyTests/StandoutFeaturesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweeplyTests/StandoutFeaturesTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +202,14 @@
 				2A00E67DE2404F5F8C4228EB /* Sweeply/Services/PermissionService.swift */,
 				ED1F42901F6546A98B2CA78A /* Sweeply/Resources/Assets.xcassets */,
 				5D123E0409DD4B278CA916B1 /* Sweeply/App/Info.plist */,
+				E20000012A00000100000001 /* Sweeply/Views/Common/LiquidGlassModifier.swift */,
+				E20000022A00000100000001 /* Sweeply/Services/HapticService.swift */,
+				E20000032A00000100000001 /* Sweeply/Services/MotionService.swift */,
+				E20000042A00000100000001 /* Sweeply/Services/LivePhotoService.swift */,
+				E20000052A00000100000001 /* Sweeply/ViewModels/BlurryPhotosViewModel.swift */,
+				E20000062A00000100000001 /* Sweeply/ViewModels/LivePhotosViewModel.swift */,
+				E20000072A00000100000001 /* Sweeply/Views/BlurryPhotos/BlurryPhotosView.swift */,
+				E20000082A00000100000001 /* Sweeply/Views/LivePhotos/LivePhotosView.swift */,
 			);
 			name = Sweeply;
 			sourceTree = "<group>";
@@ -213,6 +239,7 @@
 				34356D60E033445DAA290610 /* SweeplyTests/SimilarityServiceTests.swift */,
 				2185C05F61B64727ABF6E35F /* SweeplyTests/StorageFormatterTests.swift */,
 				A7B200022A00000100000001 /* SweeplyTests/ThemeManagerTests.swift */,
+				E20000092A00000100000001 /* SweeplyTests/StandoutFeaturesTests.swift */,
 			);
 			name = SweeplyTests;
 			sourceTree = "<group>";
@@ -319,6 +346,7 @@
 				5388861E02EA4231998C6BCB /* SweeplyTests/SimilarityServiceTests.swift in Sources */,
 				F386670F2A0046F09124063C /* SweeplyTests/StorageFormatterTests.swift in Sources */,
 				A7B200012A00000100000001 /* SweeplyTests/ThemeManagerTests.swift in Sources */,
+				E10000092A00000100000001 /* SweeplyTests/StandoutFeaturesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,6 +396,14 @@
 				A7B100012A00000100000001 /* Sweeply/Services/ThemeManager.swift in Sources */,
 				7C507B8FFA6D4BC0ADC7186B /* Sweeply/Services/PhotoService.swift in Sources */,
 				67D2C867CC2844B3983A61C8 /* Sweeply/Services/PermissionService.swift in Sources */,
+				E10000012A00000100000001 /* Sweeply/Views/Common/LiquidGlassModifier.swift in Sources */,
+				E10000022A00000100000001 /* Sweeply/Services/HapticService.swift in Sources */,
+				E10000032A00000100000001 /* Sweeply/Services/MotionService.swift in Sources */,
+				E10000042A00000100000001 /* Sweeply/Services/LivePhotoService.swift in Sources */,
+				E10000052A00000100000001 /* Sweeply/ViewModels/BlurryPhotosViewModel.swift in Sources */,
+				E10000062A00000100000001 /* Sweeply/ViewModels/LivePhotosViewModel.swift in Sources */,
+				E10000072A00000100000001 /* Sweeply/Views/BlurryPhotos/BlurryPhotosView.swift in Sources */,
+				E10000082A00000100000001 /* Sweeply/Views/LivePhotos/LivePhotosView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
