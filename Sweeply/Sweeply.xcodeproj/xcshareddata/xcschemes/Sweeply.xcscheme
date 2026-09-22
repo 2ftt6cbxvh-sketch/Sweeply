@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5813761C05D74F76960DECC1"
+               BlueprintIdentifier = "5695AAAC7A304D3090F9A78F"
                BuildableName = "Sweeply.app"
                BlueprintName = "Sweeply"
                ReferencedContainer = "container:Sweeply.xcodeproj">
@@ -33,7 +33,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8AB4B56C731747909F3B87D7"
+               BlueprintIdentifier = "0E0F78EED57C49229D6FB128"
                BuildableName = "SweeplyTests.xctest"
                BlueprintName = "SweeplyTests"
                ReferencedContainer = "container:Sweeply.xcodeproj">
@@ -55,7 +55,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5813761C05D74F76960DECC1"
+            BlueprintIdentifier = "5695AAAC7A304D3090F9A78F"
             BuildableName = "Sweeply.app"
             BlueprintName = "Sweeply"
             ReferencedContainer = "container:Sweeply.xcodeproj">
@@ -72,7 +72,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5813761C05D74F76960DECC1"
+            BlueprintIdentifier = "5695AAAC7A304D3090F9A78F"
             BuildableName = "Sweeply.app"
             BlueprintName = "Sweeply"
             ReferencedContainer = "container:Sweeply.xcodeproj">

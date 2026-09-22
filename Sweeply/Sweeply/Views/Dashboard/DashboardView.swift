@@ -5,7 +5,9 @@ import PhotosUI
 public struct DashboardView: View {
     @StateObject private var viewModel = DashboardViewModel()
     @StateObject private var permissionService = PermissionService.shared
+    @ObservedObject private var authService = AuthService.shared
     @State private var showingPermissionSheet = false
+    @State private var showingProfileSheet = false
     @State private var activeSheet: ActiveDashboardSheet? = nil
     
     private enum ActiveDashboardSheet: Identifiable {
@@ -194,6 +196,36 @@ public struct DashboardView: View {
             .background(Color(uiColor: .systemGroupedBackground).ignoresSafeArea())
             .navigationTitle("Sweeply")
             .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        showingProfileSheet = true
+                    } label: {
+                        HStack(spacing: 6) {
+                            ZStack {
+                                Circle()
+                                    .fill(authService.isAuthenticated && authService.currentUser?.provider != .guest ? Color.blue : Color(uiColor: .systemGray4))
+                                    .frame(width: 32, height: 32)
+                                
+                                if let user = authService.currentUser, authService.isAuthenticated && user.provider != .guest {
+                                    if user.provider == .apple {
+                                        Image(systemName: "apple.logo")
+                                            .font(.system(size: 14))
+                                            .foregroundStyle(.white)
+                                    } else {
+                                        Image(systemName: "envelope.fill")
+                                            .font(.system(size: 13))
+                                            .foregroundStyle(.white)
+                                    }
+                                } else {
+                                    Image(systemName: "person.fill")
+                                        .font(.system(size: 14))
+                                        .foregroundStyle(.white)
+                                }
+                            }
+                        }
+                    }
+                }
+                
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         viewModel.refreshStorage()
@@ -202,6 +234,9 @@ public struct DashboardView: View {
                             .font(.system(size: 15, weight: .semibold))
                     }
                 }
+            }
+            .sheet(isPresented: $showingProfileSheet) {
+                UserProfileSheet()
             }
             .refreshable {
                 await viewModel.runQuickScan()
