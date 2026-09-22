@@ -45,12 +45,14 @@
 		CA52878A31924305A65DBE55 /* Sweeply/ViewModels/DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB6D5356A9544B1BB996542 /* Sweeply/ViewModels/DashboardViewModel.swift */; };
 		CACD7AF7CDED4193BE16710E /* Sweeply/Models/ContactGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8B9C677E3B4F33AC4071AB /* Sweeply/Models/ContactGroup.swift */; };
 		CDFD42CE4D394FA1A5231430 /* Sweeply/Services/AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7811CC044DAB4769BBD2696B /* Sweeply/Services/AuthService.swift */; };
+		A7B100012A00000100000001 /* Sweeply/Services/ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B100022A00000100000001 /* Sweeply/Services/ThemeManager.swift */; };
 		DC8B907911FF4B248D6DC128 /* Sweeply/Models/ContactItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7262C1D3E54EFF8E437C38 /* Sweeply/Models/ContactItem.swift */; };
 		EA7FC74AEFB04EC8A7FEC620 /* Sweeply/Views/Contacts/ContactMergeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7018CCD1E0B543D687051AE0 /* Sweeply/Views/Contacts/ContactMergeDetailView.swift */; };
 		EC9636561BEE4711A2E2CADC /* Sweeply/Views/Common/UserProfileSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECB136BB2B447E6BB6DC18F /* Sweeply/Views/Common/UserProfileSheet.swift */; };
 		EE35C00F0AD549B195264354 /* Sweeply/App/SweeplyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAC2023F43F46BE9B2D50FC /* Sweeply/App/SweeplyApp.swift */; };
 		F386670F2A0046F09124063C /* SweeplyTests/StorageFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185C05F61B64727ABF6E35F /* SweeplyTests/StorageFormatterTests.swift */; };
 		F84B5114DD8C4D808A62ADC4 /* SweeplyTests/ContactServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1997A0AC2B46C087707202 /* SweeplyTests/ContactServiceTests.swift */; };
+		A7B200012A00000100000001 /* SweeplyTests/ThemeManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B200022A00000100000001 /* SweeplyTests/ThemeManagerTests.swift */; };
 		FEEF7810DA1E4256978FAB1E /* Sweeply/Services/SimilarityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41E830AAF404B90B1D1E476 /* Sweeply/Services/SimilarityService.swift */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +90,7 @@
 		6C22194ED39E4D218A04237E /* Sweeply/Services/VideoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Services/VideoService.swift; sourceTree = "<group>"; };
 		7018CCD1E0B543D687051AE0 /* Sweeply/Views/Contacts/ContactMergeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Views/Contacts/ContactMergeDetailView.swift; sourceTree = "<group>"; };
 		7811CC044DAB4769BBD2696B /* Sweeply/Services/AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Services/AuthService.swift; sourceTree = "<group>"; };
+		A7B100022A00000100000001 /* Sweeply/Services/ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Services/ThemeManager.swift; sourceTree = "<group>"; };
 		7F17FD1509624863B9423310 /* Sweeply/Views/Contacts/DuplicateContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Views/Contacts/DuplicateContactsView.swift; sourceTree = "<group>"; };
 		8207BBAE241A41E78299677A /* Sweeply/Views/Dashboard/StorageRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Views/Dashboard/StorageRingView.swift; sourceTree = "<group>"; };
 		823D4A1F7B914E22BF01D46F /* Sweeply/Views/Common/ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Views/Common/ConfettiView.swift; sourceTree = "<group>"; };
@@ -108,6 +111,7 @@
 		D41E830AAF404B90B1D1E476 /* Sweeply/Services/SimilarityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Services/SimilarityService.swift; sourceTree = "<group>"; };
 		DBBC2EF461314C7982EBCD59 /* Sweeply/Views/Common/ThumbnailImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Views/Common/ThumbnailImageView.swift; sourceTree = "<group>"; };
 		DE1997A0AC2B46C087707202 /* SweeplyTests/ContactServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweeplyTests/ContactServiceTests.swift; sourceTree = "<group>"; };
+		A7B200022A00000100000001 /* SweeplyTests/ThemeManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweeplyTests/ThemeManagerTests.swift; sourceTree = "<group>"; };
 		ED1F42901F6546A98B2CA78A /* Sweeply/Resources/Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Sweeply/Resources/Assets.xcassets; sourceTree = "<group>"; };
 		EE7262C1D3E54EFF8E437C38 /* Sweeply/Models/ContactItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Models/ContactItem.swift; sourceTree = "<group>"; };
 		F50CCC1BB5D64C72B566855D /* Sweeply/ViewModels/LargeVideosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/ViewModels/LargeVideosViewModel.swift; sourceTree = "<group>"; };
@@ -175,6 +179,7 @@
 				D41E830AAF404B90B1D1E476 /* Sweeply/Services/SimilarityService.swift */,
 				6C22194ED39E4D218A04237E /* Sweeply/Services/VideoService.swift */,
 				7811CC044DAB4769BBD2696B /* Sweeply/Services/AuthService.swift */,
+				A7B100022A00000100000001 /* Sweeply/Services/ThemeManager.swift */,
 				C552FC47FB03453AA5B6FBAF /* Sweeply/Services/PhotoService.swift */,
 				2A00E67DE2404F5F8C4228EB /* Sweeply/Services/PermissionService.swift */,
 				ED1F42901F6546A98B2CA78A /* Sweeply/Resources/Assets.xcassets */,
@@ -207,6 +212,7 @@
 				DE1997A0AC2B46C087707202 /* SweeplyTests/ContactServiceTests.swift */,
 				34356D60E033445DAA290610 /* SweeplyTests/SimilarityServiceTests.swift */,
 				2185C05F61B64727ABF6E35F /* SweeplyTests/StorageFormatterTests.swift */,
+				A7B200022A00000100000001 /* SweeplyTests/ThemeManagerTests.swift */,
 			);
 			name = SweeplyTests;
 			sourceTree = "<group>";
@@ -312,6 +318,7 @@
 				F84B5114DD8C4D808A62ADC4 /* SweeplyTests/ContactServiceTests.swift in Sources */,
 				5388861E02EA4231998C6BCB /* SweeplyTests/SimilarityServiceTests.swift in Sources */,
 				F386670F2A0046F09124063C /* SweeplyTests/StorageFormatterTests.swift in Sources */,
+				A7B200012A00000100000001 /* SweeplyTests/ThemeManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +365,7 @@
 				FEEF7810DA1E4256978FAB1E /* Sweeply/Services/SimilarityService.swift in Sources */,
 				B3469EA30D6940EABEC31165 /* Sweeply/Services/VideoService.swift in Sources */,
 				CDFD42CE4D394FA1A5231430 /* Sweeply/Services/AuthService.swift in Sources */,
+				A7B100012A00000100000001 /* Sweeply/Services/ThemeManager.swift in Sources */,
 				7C507B8FFA6D4BC0ADC7186B /* Sweeply/Services/PhotoService.swift in Sources */,
 				67D2C867CC2844B3983A61C8 /* Sweeply/Services/PermissionService.swift in Sources */,
 			);

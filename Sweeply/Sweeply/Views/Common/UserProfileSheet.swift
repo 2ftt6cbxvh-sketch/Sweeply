@@ -2,6 +2,7 @@ import SwiftUI
 
 public struct UserProfileSheet: View {
     @ObservedObject private var authService = AuthService.shared
+    @ObservedObject private var themeManager = ThemeManager.shared
     @Environment(\.dismiss) private var dismiss
     @State private var showingAuthSheet = false
     
@@ -70,6 +71,8 @@ public struct UserProfileSheet: View {
                     .cornerRadius(16)
                     .padding(.horizontal)
                     
+                    appearanceSection
+                    
                     Spacer()
                     
                     // Sign Out Button
@@ -128,10 +131,12 @@ public struct UserProfileSheet: View {
                         .padding(.top, 8)
                     }
                     
+                    appearanceSection
+                    
                     Spacer()
                 }
             }
-            .navigationTitle("Account")
+            .navigationTitle("Account & Settings")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -144,5 +149,28 @@ public struct UserProfileSheet: View {
                 AuthView()
             }
         }
+    }
+    
+    private var appearanceSection: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("APPEARANCE")
+                .font(.caption.weight(.bold))
+                .foregroundStyle(.secondary)
+            
+            Picker("Theme", selection: Binding(
+                get: { themeManager.currentTheme },
+                set: { themeManager.setTheme($0) }
+            )) {
+                ForEach(ThemeMode.allCases) { mode in
+                    Text(mode.rawValue).tag(mode)
+                }
+            }
+            .pickerStyle(.segmented)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(18)
+        .background(Color(uiColor: .secondarySystemBackground))
+        .cornerRadius(16)
+        .padding(.horizontal)
     }
 }

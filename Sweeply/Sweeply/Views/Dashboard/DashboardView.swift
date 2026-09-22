@@ -6,6 +6,7 @@ public struct DashboardView: View {
     @StateObject private var viewModel = DashboardViewModel()
     @StateObject private var permissionService = PermissionService.shared
     @ObservedObject private var authService = AuthService.shared
+    @ObservedObject private var themeManager = ThemeManager.shared
     @State private var showingPermissionSheet = false
     @State private var showingProfileSheet = false
     @State private var activeSheet: ActiveDashboardSheet? = nil
@@ -227,11 +228,22 @@ public struct DashboardView: View {
                 }
                 
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        viewModel.refreshStorage()
-                    } label: {
-                        Image(systemName: "arrow.clockwise")
-                            .font(.system(size: 15, weight: .semibold))
+                    HStack(spacing: 12) {
+                        Button {
+                            themeManager.toggleTheme()
+                        } label: {
+                            Image(systemName: themeManager.currentTheme == .dark ? "moon.stars.fill" : "sun.max.fill")
+                                .font(.system(size: 16, weight: .semibold))
+                                .foregroundStyle(themeManager.currentTheme == .dark ? Color.yellow : Color.orange)
+                                .contentTransition(.symbolEffect(.replace))
+                        }
+                        
+                        Button {
+                            viewModel.refreshStorage()
+                        } label: {
+                            Image(systemName: "arrow.clockwise")
+                                .font(.system(size: 15, weight: .semibold))
+                        }
                     }
                 }
             }
