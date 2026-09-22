@@ -1,4 +1,0 @@
-Target dependency graph (2 targets)
-Target 'SweeplyTests' in project 'Sweeply'
-➜ Explicit dependency on target 'Sweeply' in project 'Sweeply'
-Target 'Sweeply' in project 'Sweeply' (no dependencies)
