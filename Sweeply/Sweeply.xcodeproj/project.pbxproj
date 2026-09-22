@@ -1,0 +1,525 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+/* Begin PBXBuildFile section */
+		838FDAA17AD3437CBB023179 /* SwipeCleanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3365346BD924F1CAD1E09F6 /* SwipeCleanViewModel.swift */; };
+		408E48B32EED4E86B772930A /* LargeVideosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B6EBB4803A40ADA581D1A2 /* LargeVideosViewModel.swift */; };
+		F4F48BBF7A1641CA8B138BDA /* SimilarPhotosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472D9DCA955646A3959C2A6F /* SimilarPhotosViewModel.swift */; };
+		98E168136B9249EB9E311FE6 /* ReviewDeleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0420381260A54285B12FF516 /* ReviewDeleteViewModel.swift */; };
+		5F871309609740719447E0DE /* ContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7839F2BDAAAE47268F2BB7DA /* ContactsViewModel.swift */; };
+		04AA55B7B54142ED8F2AFBFD /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5C4F127166461A8E4769B9 /* DashboardViewModel.swift */; };
+		EEF8CF73DCC84B2586FC0545 /* ScreenshotsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CC1872B72E446FAAA78555 /* ScreenshotsViewModel.swift */; };
+		BF81C921B4AF47AC9697765F /* SweeplyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AA0D6DAC214B1CBC90ED47 /* SweeplyApp.swift */; };
+		052D2BBFD6904D50B3A46D0C /* MediaAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F359C8A9FA04F6E8AB69FE4 /* MediaAsset.swift */; };
+		7AEE3058A71845308AC4A76A /* ContactGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD5348B367743F8B0105E03 /* ContactGroup.swift */; };
+		8880F06AEEB24537B72DB7B4 /* ContactItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7761A9661E75495EAAEDF6D1 /* ContactItem.swift */; };
+		A3F9FD9805014187BE476538 /* CleanBatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59157C944D8448CB6663A3F /* CleanBatch.swift */; };
+		B349993EABA34E92A65378DC /* SimilarGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386DDAC7F995421DB035196E /* SimilarGroup.swift */; };
+		C5551F19347E43A39F818D6B /* StorageBreakdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EB893FAE91424F95C8A792 /* StorageBreakdown.swift */; };
+		D82F59B60DCC4296A54AF3E8 /* ScreenshotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D57F94C77DF49C091126C9F /* ScreenshotsView.swift */; };
+		77412F2DCE204A18AE571933 /* SimilarPhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284F9BF53C7A4DEC995467C3 /* SimilarPhotosView.swift */; };
+		168582BE07294EB89256F56E /* SimilarGroupRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629364A4E248473B9E98516E /* SimilarGroupRowView.swift */; };
+		A6A9CBA431654C0A992DD035 /* ContactMergeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E985DA6EB8AE4A9F9796590B /* ContactMergeDetailView.swift */; };
+		263AA6CFBB7140AB99B6767E /* DuplicateContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDF483EFF8640479117BBDC /* DuplicateContactsView.swift */; };
+		12909576A77C49D592E260E6 /* SwipeCleanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408110EE342E49598369D7D8 /* SwipeCleanView.swift */; };
+		EECB4CFA93434E998CDC072D /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF397BFB5CCD49318D582AF4 /* DashboardView.swift */; };
+		02EE84A063A6405B9A39E7F9 /* StorageRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FF4F2DF4CE4E4694DBF29F /* StorageRingView.swift */; };
+		2895278D242D4E28AED3F803 /* CategoryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B228BB4DE74C6182DC04A7 /* CategoryCardView.swift */; };
+		5ED79EFB943A4740A1AA513D /* ThumbnailImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1BD0565B684C3DABF018CA /* ThumbnailImageView.swift */; };
+		86AE502A068640889F16F106 /* PermissionNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DE7054A8B64CCC93F9510E /* PermissionNoticeView.swift */; };
+		C3D3D582B8EB4EF7BF51720D /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5C5BFDA47244059D715A59 /* ConfettiView.swift */; };
+		AA4D6264B21E49518A024267 /* CleanSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F070BE8C4144DC7A833A4B0 /* CleanSuccessView.swift */; };
+		010DCA6C99224F4AB9706C86 /* ReviewDeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A490933C8345018D80B684 /* ReviewDeleteView.swift */; };
+		D50508EA082F47A6A9204488 /* LargeVideosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EA07F1482C4BEBA235238C /* LargeVideosView.swift */; };
+		FC7CDA042D1F40D198F8C33B /* VideoPreviewSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363334AE9F154AA0949C3BDE /* VideoPreviewSheet.swift */; };
+		3A1FFB6BB8904A6FB21EFC72 /* VideoCompressSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72419C4082DF4DFA9426AE63 /* VideoCompressSheet.swift */; };
+		8EDB5CD1753F4914AE84E556 /* BlurryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF1697C904B4F58ACA9347D /* BlurryService.swift */; };
+		D1D75911B6E549C6AEB49784 /* ContactService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B9A1CD23274421BD122575 /* ContactService.swift */; };
+		42568CEEB9084291ADFA4F3F /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAF0E7236C747AD800E9226 /* StorageService.swift */; };
+		045440EE762A49CB869105B3 /* SimilarityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E47766DE8094F68985576CB /* SimilarityService.swift */; };
+		6D8EF327FA3144E3878E417A /* VideoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF2850E052A46F7845BFC70 /* VideoService.swift */; };
+		1F478B0AEBD74784ABBCF575 /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03058B8D8D2E443BA96305AA /* PhotoService.swift */; };
+		048F1D57742744BC8812B17D /* PermissionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FEBCC918DE4DA9990975AC /* PermissionService.swift */; };
+		12B3EE1A8D2745199D5FD493 /* ContactServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2181E74565E3437993CE1E92 /* ContactServiceTests.swift */; };
+		8939213952D54FC7856E6A3F /* SimilarityServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9BBC721D654530B6B8979E /* SimilarityServiceTests.swift */; };
+		3B325542E9C84D18BCD7DE05 /* StorageFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF60F6A34EFD4BFBBAA4B172 /* StorageFormatterTests.swift */; };
+		21CB8E8FF01D4278843C5A2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 185D330382C04012B3B82AC1 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BEC43A6FDBE24572ACF96588 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FFBED9616BAE4A959657058A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5813761C05D74F76960DECC1;
+			remoteInfo = Sweeply;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		450F56914F8B488FB43926FE /* Sweeply.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sweeply.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B0AD528D0174BE885D259D3 /* SweeplyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SweeplyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3365346BD924F1CAD1E09F6 /* SwipeCleanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/ViewModels/SwipeCleanViewModel.swift"; sourceTree = "<group>"; };
+		E8B6EBB4803A40ADA581D1A2 /* LargeVideosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/ViewModels/LargeVideosViewModel.swift"; sourceTree = "<group>"; };
+		472D9DCA955646A3959C2A6F /* SimilarPhotosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/ViewModels/SimilarPhotosViewModel.swift"; sourceTree = "<group>"; };
+		0420381260A54285B12FF516 /* ReviewDeleteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/ViewModels/ReviewDeleteViewModel.swift"; sourceTree = "<group>"; };
+		7839F2BDAAAE47268F2BB7DA /* ContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/ViewModels/ContactsViewModel.swift"; sourceTree = "<group>"; };
+		FD5C4F127166461A8E4769B9 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/ViewModels/DashboardViewModel.swift"; sourceTree = "<group>"; };
+		44CC1872B72E446FAAA78555 /* ScreenshotsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/ViewModels/ScreenshotsViewModel.swift"; sourceTree = "<group>"; };
+		70AA0D6DAC214B1CBC90ED47 /* SweeplyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/App/SweeplyApp.swift"; sourceTree = "<group>"; };
+		8F359C8A9FA04F6E8AB69FE4 /* MediaAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Models/MediaAsset.swift"; sourceTree = "<group>"; };
+		5DD5348B367743F8B0105E03 /* ContactGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Models/ContactGroup.swift"; sourceTree = "<group>"; };
+		7761A9661E75495EAAEDF6D1 /* ContactItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Models/ContactItem.swift"; sourceTree = "<group>"; };
+		C59157C944D8448CB6663A3F /* CleanBatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Models/CleanBatch.swift"; sourceTree = "<group>"; };
+		386DDAC7F995421DB035196E /* SimilarGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Models/SimilarGroup.swift"; sourceTree = "<group>"; };
+		C0EB893FAE91424F95C8A792 /* StorageBreakdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Models/StorageBreakdown.swift"; sourceTree = "<group>"; };
+		6D57F94C77DF49C091126C9F /* ScreenshotsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Views/Screenshots/ScreenshotsView.swift"; sourceTree = "<group>"; };
+		284F9BF53C7A4DEC995467C3 /* SimilarPhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Views/SimilarPhotos/SimilarPhotosView.swift"; sourceTree = "<group>"; };
+		629364A4E248473B9E98516E /* SimilarGroupRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Views/SimilarPhotos/SimilarGroupRowView.swift"; sourceTree = "<group>"; };
+		E985DA6EB8AE4A9F9796590B /* ContactMergeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Views/Contacts/ContactMergeDetailView.swift"; sourceTree = "<group>"; };
+		6DDF483EFF8640479117BBDC /* DuplicateContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Views/Contacts/DuplicateContactsView.swift"; sourceTree = "<group>"; };
+		408110EE342E49598369D7D8 /* SwipeCleanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Views/SwipeClean/SwipeCleanView.swift"; sourceTree = "<group>"; };
+		DF397BFB5CCD49318D582AF4 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Views/Dashboard/DashboardView.swift"; sourceTree = "<group>"; };
+		80FF4F2DF4CE4E4694DBF29F /* StorageRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Views/Dashboard/StorageRingView.swift"; sourceTree = "<group>"; };
+		76B228BB4DE74C6182DC04A7 /* CategoryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Views/Dashboard/CategoryCardView.swift"; sourceTree = "<group>"; };
+		CB1BD0565B684C3DABF018CA /* ThumbnailImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Views/Common/ThumbnailImageView.swift"; sourceTree = "<group>"; };
+		C4DE7054A8B64CCC93F9510E /* PermissionNoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Views/Common/PermissionNoticeView.swift"; sourceTree = "<group>"; };
+		6A5C5BFDA47244059D715A59 /* ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Views/Common/ConfettiView.swift"; sourceTree = "<group>"; };
+		7F070BE8C4144DC7A833A4B0 /* CleanSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Views/Review/CleanSuccessView.swift"; sourceTree = "<group>"; };
+		73A490933C8345018D80B684 /* ReviewDeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Views/Review/ReviewDeleteView.swift"; sourceTree = "<group>"; };
+		96EA07F1482C4BEBA235238C /* LargeVideosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Views/LargeVideos/LargeVideosView.swift"; sourceTree = "<group>"; };
+		363334AE9F154AA0949C3BDE /* VideoPreviewSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Views/LargeVideos/VideoPreviewSheet.swift"; sourceTree = "<group>"; };
+		72419C4082DF4DFA9426AE63 /* VideoCompressSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Views/LargeVideos/VideoCompressSheet.swift"; sourceTree = "<group>"; };
+		4DF1697C904B4F58ACA9347D /* BlurryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Services/BlurryService.swift"; sourceTree = "<group>"; };
+		C8B9A1CD23274421BD122575 /* ContactService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Services/ContactService.swift"; sourceTree = "<group>"; };
+		AAAF0E7236C747AD800E9226 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Services/StorageService.swift"; sourceTree = "<group>"; };
+		9E47766DE8094F68985576CB /* SimilarityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Services/SimilarityService.swift"; sourceTree = "<group>"; };
+		4BF2850E052A46F7845BFC70 /* VideoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Services/VideoService.swift"; sourceTree = "<group>"; };
+		03058B8D8D2E443BA96305AA /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Services/PhotoService.swift"; sourceTree = "<group>"; };
+		73FEBCC918DE4DA9990975AC /* PermissionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sweeply/Services/PermissionService.swift"; sourceTree = "<group>"; };
+		2181E74565E3437993CE1E92 /* ContactServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SweeplyTests/ContactServiceTests.swift"; sourceTree = "<group>"; };
+		1D9BBC721D654530B6B8979E /* SimilarityServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SweeplyTests/SimilarityServiceTests.swift"; sourceTree = "<group>"; };
+		BF60F6A34EFD4BFBBAA4B172 /* StorageFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SweeplyTests/StorageFormatterTests.swift"; sourceTree = "<group>"; };
+		185D330382C04012B3B82AC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Sweeply/Resources/Assets.xcassets"; sourceTree = "<group>"; };
+		45033FC313644CF097701F0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Sweeply/App/Info.plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		12C10057385640259F3BE935 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2759B07F449D49ABB96BBE9A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FEDA626911DB448EBDB32DDF = {
+			isa = PBXGroup;
+			children = (
+				0289D6A59DCF4AF799F09792 /* Sweeply */,
+				8FEC6904D6784A2D91DECCC4 /* SweeplyTests */,
+				AB7C6C1193EC4203B03D4BC5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AB7C6C1193EC4203B03D4BC5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				450F56914F8B488FB43926FE /* Sweeply.app */,
+				6B0AD528D0174BE885D259D3 /* SweeplyTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0289D6A59DCF4AF799F09792 /* Sweeply */ = {
+			isa = PBXGroup;
+			children = (
+				E3365346BD924F1CAD1E09F6,
+				E8B6EBB4803A40ADA581D1A2,
+				472D9DCA955646A3959C2A6F,
+				0420381260A54285B12FF516,
+				7839F2BDAAAE47268F2BB7DA,
+				FD5C4F127166461A8E4769B9,
+				44CC1872B72E446FAAA78555,
+				70AA0D6DAC214B1CBC90ED47,
+				8F359C8A9FA04F6E8AB69FE4,
+				5DD5348B367743F8B0105E03,
+				7761A9661E75495EAAEDF6D1,
+				C59157C944D8448CB6663A3F,
+				386DDAC7F995421DB035196E,
+				C0EB893FAE91424F95C8A792,
+				6D57F94C77DF49C091126C9F,
+				284F9BF53C7A4DEC995467C3,
+				629364A4E248473B9E98516E,
+				E985DA6EB8AE4A9F9796590B,
+				6DDF483EFF8640479117BBDC,
+				408110EE342E49598369D7D8,
+				DF397BFB5CCD49318D582AF4,
+				80FF4F2DF4CE4E4694DBF29F,
+				76B228BB4DE74C6182DC04A7,
+				CB1BD0565B684C3DABF018CA,
+				C4DE7054A8B64CCC93F9510E,
+				6A5C5BFDA47244059D715A59,
+				7F070BE8C4144DC7A833A4B0,
+				73A490933C8345018D80B684,
+				96EA07F1482C4BEBA235238C,
+				363334AE9F154AA0949C3BDE,
+				72419C4082DF4DFA9426AE63,
+				4DF1697C904B4F58ACA9347D,
+				C8B9A1CD23274421BD122575,
+				AAAF0E7236C747AD800E9226,
+				9E47766DE8094F68985576CB,
+				4BF2850E052A46F7845BFC70,
+				03058B8D8D2E443BA96305AA,
+				73FEBCC918DE4DA9990975AC,
+				185D330382C04012B3B82AC1,
+				45033FC313644CF097701F0E,
+			);
+			name = Sweeply;
+			sourceTree = "<group>";
+		};
+		8FEC6904D6784A2D91DECCC4 /* SweeplyTests */ = {
+			isa = PBXGroup;
+			children = (
+				2181E74565E3437993CE1E92,
+				1D9BBC721D654530B6B8979E,
+				BF60F6A34EFD4BFBBAA4B172,
+			);
+			name = SweeplyTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5813761C05D74F76960DECC1 /* Sweeply */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3C943714422B4490AFD8BD1D /* Build configuration list for PBXNativeTarget "Sweeply" */;
+			buildPhases = (
+				04107FD9BC624BBDA2E6D5AF /* Sources */,
+				12C10057385640259F3BE935 /* Frameworks */,
+				06C1547542CA436BA29B0B14 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Sweeply;
+			productName = Sweeply;
+			productReference = 450F56914F8B488FB43926FE /* Sweeply.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8AB4B56C731747909F3B87D7 /* SweeplyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5C1B4B9A8F1445B894D43AAF /* Build configuration list for PBXNativeTarget "SweeplyTests" */;
+			buildPhases = (
+				16F053A6E88A434D83BD26D4 /* Sources */,
+				2759B07F449D49ABB96BBE9A /* Frameworks */,
+				86309E0686754A41AD0085F4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6375F5E716D14C11A7AD3B61 /* PBXTargetDependency */,
+			);
+			name = SweeplyTests;
+			productName = SweeplyTests;
+			productReference = 6B0AD528D0174BE885D259D3 /* SweeplyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FFBED9616BAE4A959657058A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					5813761C05D74F76960DECC1 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					8AB4B56C731747909F3B87D7 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = 5813761C05D74F76960DECC1;
+					};
+				};
+			};
+			buildConfigurationList = 47DCCB4297D345188063C12F /* Build configuration list for PBXProject "Sweeply" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FEDA626911DB448EBDB32DDF;
+			productRefGroup = AB7C6C1193EC4203B03D4BC5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5813761C05D74F76960DECC1 /* Sweeply */,
+				8AB4B56C731747909F3B87D7 /* SweeplyTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		06C1547542CA436BA29B0B14 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				21CB8E8FF01D4278843C5A2F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		86309E0686754A41AD0085F4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		04107FD9BC624BBDA2E6D5AF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				838FDAA17AD3437CBB023179,
+				408E48B32EED4E86B772930A,
+				F4F48BBF7A1641CA8B138BDA,
+				98E168136B9249EB9E311FE6,
+				5F871309609740719447E0DE,
+				04AA55B7B54142ED8F2AFBFD,
+				EEF8CF73DCC84B2586FC0545,
+				BF81C921B4AF47AC9697765F,
+				052D2BBFD6904D50B3A46D0C,
+				7AEE3058A71845308AC4A76A,
+				8880F06AEEB24537B72DB7B4,
+				A3F9FD9805014187BE476538,
+				B349993EABA34E92A65378DC,
+				C5551F19347E43A39F818D6B,
+				D82F59B60DCC4296A54AF3E8,
+				77412F2DCE204A18AE571933,
+				168582BE07294EB89256F56E,
+				A6A9CBA431654C0A992DD035,
+				263AA6CFBB7140AB99B6767E,
+				12909576A77C49D592E260E6,
+				EECB4CFA93434E998CDC072D,
+				02EE84A063A6405B9A39E7F9,
+				2895278D242D4E28AED3F803,
+				5ED79EFB943A4740A1AA513D,
+				86AE502A068640889F16F106,
+				C3D3D582B8EB4EF7BF51720D,
+				AA4D6264B21E49518A024267,
+				010DCA6C99224F4AB9706C86,
+				D50508EA082F47A6A9204488,
+				FC7CDA042D1F40D198F8C33B,
+				3A1FFB6BB8904A6FB21EFC72,
+				8EDB5CD1753F4914AE84E556,
+				D1D75911B6E549C6AEB49784,
+				42568CEEB9084291ADFA4F3F,
+				045440EE762A49CB869105B3,
+				6D8EF327FA3144E3878E417A,
+				1F478B0AEBD74784ABBCF575,
+				048F1D57742744BC8812B17D,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		16F053A6E88A434D83BD26D4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12B3EE1A8D2745199D5FD493,
+				8939213952D54FC7856E6A3F,
+				3B325542E9C84D18BCD7DE05,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6375F5E716D14C11A7AD3B61 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5813761C05D74F76960DECC1 /* Sweeply */;
+			targetProxy = BEC43A6FDBE24572ACF96588 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1B7F75104A6F403CA62B4C49 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		3B14A1B136684F37A6286A84 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = "wholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		75E9DE196082439F89B56F33 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Sweeply/App/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appfactory.Sweeply;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		4BA25D95820845BFB73CDF7C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Sweeply/App/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appfactory.Sweeply;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		57B3CA4D5D184A8881CADB2F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appfactory.SweeplyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sweeply.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Sweeply";
+			};
+			name = Debug;
+		};
+		05D9CBF90EC2490BA96B5183 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appfactory.SweeplyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sweeply.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Sweeply";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		47DCCB4297D345188063C12F /* Build configuration list for PBXProject "Sweeply" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B7F75104A6F403CA62B4C49 /* Debug */,
+				3B14A1B136684F37A6286A84 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3C943714422B4490AFD8BD1D /* Build configuration list for PBXNativeTarget "Sweeply" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				75E9DE196082439F89B56F33 /* Debug */,
+				4BA25D95820845BFB73CDF7C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5C1B4B9A8F1445B894D43AAF /* Build configuration list for PBXNativeTarget "SweeplyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				57B3CA4D5D184A8881CADB2F /* Debug */,
+				05D9CBF90EC2490BA96B5183 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = FFBED9616BAE4A959657058A /* Project object */;
+}
