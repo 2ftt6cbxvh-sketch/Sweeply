@@ -7,9 +7,14 @@ import Combine
 public final class LivePhotosViewModel: ObservableObject {
     @Published public var livePhotos: [LivePhotoItem] = []
     @Published public var selectedIds: Set<String> = []
+    @Published public var sortOrder: MediaSortOrder = .sizeDescending
     @Published public var isLoading: Bool = false
     @Published public var isConverting: Bool = false
     @Published public var feedbackMessage: String? = nil
+    
+    public var sortedLivePhotos: [LivePhotoItem] {
+        livePhotos.sorted(by: sortOrder)
+    }
     
     private let livePhotoService = LivePhotoService.shared
     

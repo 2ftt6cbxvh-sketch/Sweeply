@@ -52,19 +52,18 @@ public struct LivePhotosView: View {
                 }
                 .frame(maxHeight: .infinity)
             } else {
-                VStack(spacing: 0) {
-                    // Header control bar
+                VStack(spacing: 8) {
+                    // Header control bar with Liquid Glass Sort Bar
+                    SortControlBar(
+                        sortOrder: $viewModel.sortOrder,
+                        itemCount: viewModel.livePhotos.count,
+                        selectedBytes: viewModel.selectedTotalReclaimable
+                    )
+                    .padding(.horizontal)
+                    .padding(.top, 6)
+                    
                     HStack {
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text("\(viewModel.livePhotos.count) Live Photos")
-                                .font(.headline)
-                            Text("Save ~\(ByteCountFormatter.string(fromByteCount: viewModel.selectedTotalReclaimable, countStyle: .file)) by stripping video")
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                        }
-                        
                         Spacer()
-                        
                         Button {
                             viewModel.toggleSelectAll()
                         } label: {
@@ -73,14 +72,12 @@ public struct LivePhotosView: View {
                                 .foregroundStyle(Color.cyan)
                         }
                     }
-                    .liquidGlass(cornerRadius: 16, padding: 14)
                     .padding(.horizontal)
-                    .padding(.vertical, 8)
                     
                     // Grid
                     ScrollView {
                         LazyVGrid(columns: columns, spacing: 12) {
-                            ForEach(viewModel.livePhotos) { item in
+                            ForEach(viewModel.sortedLivePhotos) { item in
                                 let isSelected = viewModel.selectedIds.contains(item.id)
                                 
                                 Button {
@@ -182,6 +179,7 @@ public struct LivePhotosView: View {
             Text("This preserves your high-resolution photo while deleting the heavy 3-second background video clip. Reclaims ~70% space.")
         }
         .task {
+            permissionService.checkCurrentStatuses()
             if permissionService.hasPhotosAccess && viewModel.livePhotos.isEmpty {
                 await viewModel.load()
             }

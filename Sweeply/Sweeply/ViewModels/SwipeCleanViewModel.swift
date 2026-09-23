@@ -27,12 +27,24 @@ public final class SwipeCleanViewModel: ObservableObject {
         ByteCountFormatter.string(fromByteCount: totalTrashedBytes, countStyle: .file)
     }
     
-    public func loadDeck(limit: Int = 50) {
+    public func loadDeck(limit: Int = 60) {
         isLoading = true
-        let assets = photoService.fetchAllImages(limit: limit)
+        Task.detached(priority: .userInitiated) { [weak self] in
+            let assets = PhotoService.shared.fetchAllImages(limit: limit)
+            await MainActor.run {
+                guard let self = self else { return }
+                self.deck = assets
+                self.isLoading = false
+            }
+        }
+    }
+    
+    public func loadDeckAsync(limit: Int = 60) async {
+        isLoading = true
+        let assets = await Task.detached(priority: .userInitiated) {
+            PhotoService.shared.fetchAllImages(limit: limit)
+        }.value
         self.deck = assets
-        self.keptAssets = []
-        self.trashedAssets = []
         self.isLoading = false
     }
     

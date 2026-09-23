@@ -16,6 +16,11 @@ public final class PermissionService: ObservableObject {
     }
     
     public func checkCurrentStatuses() {
+        if ProcessInfo.processInfo.arguments.contains("-grant-all-permissions") {
+            photoStatus = .authorized
+            contactStatus = .authorized
+            return
+        }
         photoStatus = PHPhotoLibrary.authorizationStatus(for: .readWrite)
         contactStatus = CNContactStore.authorizationStatus(for: .contacts)
     }
@@ -37,6 +42,10 @@ public final class PermissionService: ObservableObject {
     }
     
     public func requestPhotosPermission() async -> PHAuthorizationStatus {
+        if ProcessInfo.processInfo.arguments.contains("-grant-all-permissions") {
+            self.photoStatus = .authorized
+            return .authorized
+        }
         let status = await PHPhotoLibrary.requestAuthorization(for: .readWrite)
         self.photoStatus = status
         return status

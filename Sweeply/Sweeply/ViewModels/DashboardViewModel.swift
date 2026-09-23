@@ -12,6 +12,7 @@ public final class DashboardViewModel: ObservableObject {
     @Published public var activeBatchForReview: CleanBatch? = nil
     @Published public var showSuccessScreen: Bool = false
     @Published public var lastCleanedBytes: Int64 = 0
+    @Published public var lastScanDate: Date? = nil
     
     private let storageService = StorageService.shared
     private let photoService = PhotoService.shared
@@ -78,6 +79,7 @@ public final class DashboardViewModel: ObservableObject {
         storage.similarPhotosBytes = similarSavings
         
         scanProgress = 1.0
+        lastScanDate = Date()
         isScanning = false
     }
     

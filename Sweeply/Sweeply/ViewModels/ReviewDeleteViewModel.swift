@@ -31,7 +31,7 @@ public final class ReviewDeleteViewModel: ObservableObject {
         isDeleting = true
         deletionError = nil
         
-        var freedBytes = batch.totalBytesToFree
+        let freedBytes = batch.totalBytesToFree
         
         do {
             // 1. Delete Photo / Video assets

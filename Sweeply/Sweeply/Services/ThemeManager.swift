@@ -29,17 +29,20 @@ public enum ThemeMode: String, CaseIterable, Identifiable {
 public final class ThemeManager: ObservableObject {
     public static let shared = ThemeManager()
     
-    private let storageKey = "sweeply_theme_mode"
+    private let storageKey = "sweeply_user_theme_preference"
     
-    @Published public var currentTheme: ThemeMode = .system {
+    @Published public var currentTheme: ThemeMode = .light {
         didSet {
-            UserDefaults.standard.set(currentTheme.rawValue, forKey: storageKey)
+            if !ProcessInfo.processInfo.arguments.contains("-theme-dark") &&
+               !ProcessInfo.processInfo.arguments.contains("-theme-light") {
+                UserDefaults.standard.set(currentTheme.rawValue, forKey: storageKey)
+            }
         }
     }
     
     private init() {
-        let saved = UserDefaults.standard.string(forKey: storageKey) ?? ThemeMode.system.rawValue
-        self.currentTheme = ThemeMode(rawValue: saved) ?? .system
+        let saved = UserDefaults.standard.string(forKey: storageKey) ?? ThemeMode.light.rawValue
+        self.currentTheme = ThemeMode(rawValue: saved) ?? .light
     }
     
     public var colorScheme: ColorScheme? {

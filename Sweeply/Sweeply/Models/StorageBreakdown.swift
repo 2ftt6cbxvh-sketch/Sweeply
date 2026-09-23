@@ -79,4 +79,22 @@ public struct StorageBreakdown: Equatable {
         guard totalDiskBytes > 0 else { return 1.0 }
         return Double(freeDiskBytes) / Double(totalDiskBytes)
     }
+    
+    /// Returns the percentage of filled/used storage occupied by the specified byte count
+    public func percentageOfFilledStorage(bytes: Int64) -> Double {
+        guard usedDiskBytes > 0 && bytes > 0 else { return 0.0 }
+        return min(100.0, (Double(bytes) / Double(usedDiskBytes)) * 100.0)
+    }
+    
+    /// Formats the percentage of filled storage for UI display (e.g. "2.4% of filled storage")
+    public func formattedPercentageOfFilledStorage(bytes: Int64) -> String {
+        let pct = percentageOfFilledStorage(bytes: bytes)
+        if pct < 0.1 && pct > 0 {
+            return "<0.1% of filled disk"
+        } else if pct <= 0 {
+            return "0% of filled disk"
+        } else {
+            return String(format: "%.1f%% of filled disk", pct)
+        }
+    }
 }

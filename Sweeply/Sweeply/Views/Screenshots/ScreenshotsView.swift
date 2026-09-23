@@ -56,14 +56,17 @@ public struct ScreenshotsView: View {
                 } else {
                     ScrollView {
                         VStack(spacing: 12) {
-                            // Header controls
+                            // Header controls with Liquid Glass Sort Bar
+                            SortControlBar(
+                                sortOrder: $viewModel.sortOrder,
+                                itemCount: viewModel.totalCount,
+                                selectedBytes: viewModel.selectedSavingsBytes
+                            )
+                            .padding(.horizontal, 16)
+                            .padding(.top, 6)
+                            
                             HStack {
-                                Text("\(viewModel.totalCount) Screenshots")
-                                    .font(.subheadline.weight(.semibold))
-                                    .foregroundStyle(.secondary)
-                                
                                 Spacer()
-                                
                                 Button(viewModel.selectedCount == viewModel.totalCount ? "Deselect All" : "Select All") {
                                     if viewModel.selectedCount == viewModel.totalCount {
                                         viewModel.deselectAll()
@@ -75,11 +78,10 @@ public struct ScreenshotsView: View {
                                 .foregroundStyle(.purple)
                             }
                             .padding(.horizontal, 16)
-                            .padding(.top, 12)
                             
                             // Photo Grid
                             LazyVGrid(columns: columns, spacing: 4) {
-                                ForEach(viewModel.screenshots) { asset in
+                                ForEach(viewModel.sortedScreenshots) { asset in
                                     let isSelected = viewModel.selectedIds.contains(asset.id)
                                     
                                     Button {
@@ -158,6 +160,7 @@ public struct ScreenshotsView: View {
         .navigationTitle("Screenshots")
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
+            permissionService.checkCurrentStatuses()
             if permissionService.hasPhotosAccess && viewModel.screenshots.isEmpty {
                 viewModel.load()
             }

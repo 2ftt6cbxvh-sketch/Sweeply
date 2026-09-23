@@ -152,24 +152,22 @@ public final class SimilarityService {
     }
     
     private func generateFeaturePrintAndSharpness(for asset: PHAsset) async -> (VNFeaturePrintObservation?, Float) {
-        await withCheckedContinuation { continuation in
+        await Task.detached(priority: .userInitiated) { [weak self] in
+            guard let self = self else { return (nil, 0.5) }
             let options = PHImageRequestOptions()
             options.deliveryMode = .fastFormat
             options.resizeMode = .fast
-            options.isSynchronous = false
+            options.isSynchronous = true
             options.isNetworkAccessAllowed = false
             
-            // Downscale to 300x300 for ultra-fast perceptual hashing
+            var result: (VNFeaturePrintObservation?, Float) = (nil, 0.5)
             PHImageManager.default().requestImage(
                 for: asset,
                 targetSize: CGSize(width: 300, height: 300),
                 contentMode: .aspectFill,
                 options: options
             ) { image, _ in
-                guard let image = image, let cgImage = image.cgImage else {
-                    continuation.resume(returning: (nil, 0.5))
-                    return
-                }
+                guard let image = image, let cgImage = image.cgImage else { return }
                 
                 let request = VNGenerateImageFeaturePrintRequest()
                 let handler = VNImageRequestHandler(cgImage: cgImage, options: [:])
@@ -177,15 +175,14 @@ public final class SimilarityService {
                 do {
                     try handler.perform([request])
                     let print = request.results?.first as? VNFeaturePrintObservation
-                    
-                    // Simple sharpness estimation via pixel gradient heuristic
                     let sharpness = self.estimateSharpness(cgImage: cgImage)
-                    continuation.resume(returning: (print, sharpness))
+                    result = (print, sharpness)
                 } catch {
-                    continuation.resume(returning: (nil, 0.5))
+                    result = (nil, 0.5)
                 }
             }
-        }
+            return result
+        }.value
     }
     
     private func estimateSharpness(cgImage: CGImage) -> Float {

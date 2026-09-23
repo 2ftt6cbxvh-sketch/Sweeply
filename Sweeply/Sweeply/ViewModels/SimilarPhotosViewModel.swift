@@ -6,9 +6,14 @@ import Combine
 @MainActor
 public final class SimilarPhotosViewModel: ObservableObject {
     @Published public var groups: [SimilarPhotoGroup] = []
+    @Published public var sortOrder: MediaSortOrder = .newest
     @Published public var isScanning: Bool = false
     @Published public var scanProgress: Double = 0.0
     @Published public var stagedBatch: CleanBatch? = nil
+    
+    public var sortedGroups: [SimilarPhotoGroup] {
+        groups.sorted(by: sortOrder)
+    }
     
     private let photoService = PhotoService.shared
     private let similarityService = SimilarityService.shared
@@ -56,9 +61,19 @@ public final class SimilarPhotosViewModel: ObservableObject {
         groups[groupIndex].toggleSelection(for: assetId)
     }
     
+    public func toggleSelection(groupId: UUID, assetId: String) {
+        guard let index = groups.firstIndex(where: { $0.id == groupId }) else { return }
+        groups[index].toggleSelection(for: assetId)
+    }
+    
     public func markAsBest(groupIndex: Int, assetId: String) {
         guard groups.indices.contains(groupIndex) else { return }
         groups[groupIndex].markAsBest(assetId: assetId)
+    }
+    
+    public func markAsBest(groupId: UUID, assetId: String) {
+        guard let index = groups.firstIndex(where: { $0.id == groupId }) else { return }
+        groups[index].markAsBest(assetId: assetId)
     }
     
     public func selectAllDuplicates() {

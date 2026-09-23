@@ -32,6 +32,9 @@ public struct ThumbnailImageView: View {
         .onAppear {
             loadImage()
         }
+        .onChange(of: asset.localIdentifier) { _ in
+            loadImage()
+        }
         .onDisappear {
             cancelImageLoad()
         }
@@ -39,6 +42,7 @@ public struct ThumbnailImageView: View {
     
     private func loadImage() {
         cancelImageLoad()
+        self.image = nil
         requestID = PhotoService.shared.requestThumbnail(for: asset, targetSize: targetSize) { loadedImage in
             if let loadedImage = loadedImage {
                 self.image = loadedImage

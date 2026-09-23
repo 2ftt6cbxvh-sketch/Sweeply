@@ -7,8 +7,13 @@ import Combine
 public final class ScreenshotsViewModel: ObservableObject {
     @Published public var screenshots: [MediaAsset] = []
     @Published public var selectedIds: Set<String> = []
+    @Published public var sortOrder: MediaSortOrder = .newest
     @Published public var isLoading: Bool = false
     @Published public var stagedBatch: CleanBatch? = nil
+    
+    public var sortedScreenshots: [MediaAsset] {
+        screenshots.sorted(by: sortOrder)
+    }
     
     private let photoService = PhotoService.shared
     

@@ -52,14 +52,17 @@ public struct LargeVideosView: View {
                 } else {
                     ScrollView {
                         LazyVStack(spacing: 12) {
-                            // Header controls
+                            // Header controls with Liquid Glass Sort Bar
+                            SortControlBar(
+                                sortOrder: $viewModel.sortOrder,
+                                itemCount: viewModel.videos.count,
+                                selectedBytes: viewModel.selectedSavingsBytes
+                            )
+                            .padding(.horizontal, 16)
+                            .padding(.top, 6)
+                            
                             HStack {
-                                Text("\(viewModel.videos.count) Videos · Largest First")
-                                    .font(.subheadline.weight(.semibold))
-                                    .foregroundStyle(.secondary)
-                                
                                 Spacer()
-                                
                                 Button(viewModel.selectedIds.count == viewModel.videos.count ? "Deselect All" : "Select All") {
                                     if viewModel.selectedIds.count == viewModel.videos.count {
                                         viewModel.deselectAll()
@@ -71,10 +74,9 @@ public struct LargeVideosView: View {
                                 .foregroundStyle(.orange)
                             }
                             .padding(.horizontal, 16)
-                            .padding(.top, 12)
                             
                             // Video rows
-                            ForEach(viewModel.videos) { asset in
+                            ForEach(viewModel.sortedVideos) { asset in
                                 let isSelected = viewModel.selectedIds.contains(asset.id)
                                 
                                 HStack(spacing: 14) {
@@ -149,10 +151,7 @@ public struct LargeVideosView: View {
                                     }
                                     .padding(.leading, 4)
                                 }
-                                .padding(12)
-                                .background(Color(uiColor: .systemBackground))
-                                .cornerRadius(16)
-                                .shadow(color: Color.black.opacity(0.03), radius: 6, x: 0, y: 2)
+                                .liquidGlass(cornerRadius: 16, padding: 12)
                                 .padding(.horizontal)
                             }
                             
@@ -200,7 +199,8 @@ public struct LargeVideosView: View {
         .sheet(item: $viewModel.selectedVideoForCompress) { asset in
             VideoCompressSheet(asset: asset, viewModel: viewModel)
         }
-        .onAppear {
+        .task {
+            permissionService.checkCurrentStatuses()
             if permissionService.hasPhotosAccess && viewModel.videos.isEmpty {
                 viewModel.load()
             }

@@ -15,7 +15,9 @@ public struct BlurryPhotosView: View {
     }
     
     public var body: some View {
-        Group {
+        ZStack {
+            AmbientGlassBackdrop()
+            
             if !permissionService.hasPhotosAccess {
                 PermissionNoticeView(
                     title: "Photo Access Required",
@@ -65,19 +67,18 @@ public struct BlurryPhotosView: View {
                 }
                 .frame(maxHeight: .infinity)
             } else {
-                VStack(spacing: 0) {
-                    // Header control bar
+                VStack(spacing: 8) {
+                    // Header control bar with Liquid Glass Sort Bar
+                    SortControlBar(
+                        sortOrder: $viewModel.sortOrder,
+                        itemCount: viewModel.blurryAssets.count,
+                        selectedBytes: viewModel.selectedTotalBytes
+                    )
+                    .padding(.horizontal)
+                    .padding(.top, 6)
+                    
                     HStack {
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text("\(viewModel.blurryAssets.count) Blurry Photos")
-                                .font(.headline)
-                            Text("\(ByteCountFormatter.string(fromByteCount: viewModel.selectedTotalBytes, countStyle: .file)) selected")
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                        }
-                        
                         Spacer()
-                        
                         Button {
                             viewModel.toggleSelectAll()
                         } label: {
@@ -86,14 +87,12 @@ public struct BlurryPhotosView: View {
                                 .foregroundStyle(Color.orange)
                         }
                     }
-                    .liquidGlass(cornerRadius: 16, padding: 14)
                     .padding(.horizontal)
-                    .padding(.vertical, 8)
                     
                     // Grid
                     ScrollView {
                         LazyVGrid(columns: columns, spacing: 12) {
-                            ForEach(viewModel.blurryAssets) { asset in
+                            ForEach(viewModel.sortedBlurryAssets) { asset in
                                 let isSelected = viewModel.selectedAssetIds.contains(asset.id)
                                 
                                 Button {
@@ -172,10 +171,10 @@ public struct BlurryPhotosView: View {
                 }
             }
         }
-        .background(AmbientGlassBackdrop())
         .navigationTitle("Blurry Photos")
         .navigationBarTitleDisplayMode(.inline)
         .task {
+            permissionService.checkCurrentStatuses()
             if permissionService.hasPhotosAccess && viewModel.blurryAssets.isEmpty {
                 await viewModel.scan()
             }

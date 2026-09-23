@@ -71,14 +71,17 @@ public struct SimilarPhotosView: View {
                 } else {
                     ScrollView {
                         LazyVStack(spacing: 16) {
-                            // Top Action bar
+                            // Top Liquid Glass Sort Bar
+                            SortControlBar(
+                                sortOrder: $viewModel.sortOrder,
+                                itemCount: viewModel.groups.count,
+                                selectedBytes: viewModel.totalSavingsBytes
+                            )
+                            .padding(.horizontal, 16)
+                            .padding(.top, 6)
+                            
                             HStack {
-                                Text("\(viewModel.groups.count) Groups · \(viewModel.totalDuplicatesFound) Duplicates")
-                                    .font(.subheadline.weight(.semibold))
-                                    .foregroundStyle(.secondary)
-                                
                                 Spacer()
-                                
                                 Button("Select All") {
                                     viewModel.selectAllDuplicates()
                                 }
@@ -95,16 +98,15 @@ public struct SimilarPhotosView: View {
                                 .foregroundStyle(.secondary)
                             }
                             .padding(.horizontal, 20)
-                            .padding(.top, 12)
                             
-                            ForEach(Array(viewModel.groups.enumerated()), id: \.element.id) { index, group in
+                            ForEach(viewModel.sortedGroups) { group in
                                 SimilarGroupRowView(
                                     group: group,
                                     onToggleSelection: { assetId in
-                                        viewModel.toggleSelection(groupIndex: index, assetId: assetId)
+                                        viewModel.toggleSelection(groupId: group.id, assetId: assetId)
                                     },
                                     onMarkAsBest: { assetId in
-                                        viewModel.markAsBest(groupIndex: index, assetId: assetId)
+                                        viewModel.markAsBest(groupId: group.id, assetId: assetId)
                                     }
                                 )
                                 .padding(.horizontal)
@@ -162,9 +164,13 @@ public struct SimilarPhotosView: View {
             }
         }
         .task {
+            permissionService.checkCurrentStatuses()
             if permissionService.hasPhotosAccess && viewModel.groups.isEmpty {
                 await viewModel.scan()
             }
+        }
+        .onAppear {
+            permissionService.checkCurrentStatuses()
         }
     }
 }

@@ -1,11 +1,10 @@
 import Foundation
 import Photos
-import CoreImage
+import CoreGraphics
 import UIKit
 
 public final class BlurryService {
     public static let shared = BlurryService()
-    private let context = CIContext(options: [.useSoftwareRenderer: false])
     
     private init() {}
     
@@ -18,94 +17,117 @@ public final class BlurryService {
             if isBlurry {
                 blurryAssets.append(asset)
             }
-            progressHandler?(Double(index + 1) / Double(total))
+            if index % 5 == 0 || index == assets.count - 1 {
+                progressHandler?(Double(index + 1) / Double(total))
+            }
         }
         
         return blurryAssets
     }
     
     private func isImageBlurry(asset: PHAsset) async -> Bool {
-        await withCheckedContinuation { continuation in
+        await Task.detached(priority: .userInitiated) { [weak self] in
+            guard let self = self else { return false }
             let options = PHImageRequestOptions()
-            options.deliveryMode = .highQualityFormat
-            options.resizeMode = .exact
-            options.isSynchronous = false
+            options.deliveryMode = .fastFormat
+            options.resizeMode = .fast
+            options.isSynchronous = true
             options.isNetworkAccessAllowed = false
             
-            // Analyze at 300x300 for crisp edge measurement
+            var isBlurry = false
             PHImageManager.default().requestImage(
                 for: asset,
-                targetSize: CGSize(width: 300, height: 300),
+                targetSize: CGSize(width: 128, height: 128),
                 contentMode: .aspectFill,
                 options: options
             ) { image, _ in
                 guard let image = image, let cgImage = image.cgImage else {
-                    continuation.resume(returning: false)
                     return
                 }
-                
-                let (isBlurry, _) = self.analyzeClarity(cgImage: cgImage)
-                continuation.resume(returning: isBlurry)
+                let (blurry, _) = self.analyzeClarity(cgImage: cgImage)
+                isBlurry = blurry
             }
-        }
+            return isBlurry
+        }.value
     }
     
     public func analyzeClarity(cgImage: CGImage) -> (isBlurry: Bool, edgeScore: Double) {
-        let ciImage = CIImage(cgImage: cgImage)
-        
-        // 1. Edge detection filter (Sobel/Gradient magnitude)
-        guard let edgeFilter = CIFilter(name: "CIEdges") else {
-            return (false, 50.0)
-        }
-        edgeFilter.setValue(ciImage, forKey: kCIInputImageKey)
-        edgeFilter.setValue(3.5, forKey: "inputIntensity")
-        
-        guard let edgeOutput = edgeFilter.outputImage else {
+        let width = 64
+        let height = 64
+        guard cgImage.width > 0 && cgImage.height > 0 else {
             return (false, 50.0)
         }
         
-        // 2. Measure overall edge energy across the image
-        guard let avgFilter = CIFilter(name: "CIAreaAverage") else {
+        var pixels = [UInt8](repeating: 0, count: width * height)
+        let colorSpace = CGColorSpaceCreateDeviceGray()
+        
+        guard let ctx = CGContext(
+            data: &pixels,
+            width: width,
+            height: height,
+            bitsPerComponent: 8,
+            bytesPerRow: width,
+            space: colorSpace,
+            bitmapInfo: CGImageAlphaInfo.none.rawValue
+        ) else {
             return (false, 50.0)
         }
-        avgFilter.setValue(edgeOutput, forKey: kCIInputImageKey)
-        avgFilter.setValue(CIVector(cgRect: edgeOutput.extent), forKey: kCIInputExtentKey)
         
-        guard let avgOutput = avgFilter.outputImage else {
-            return (false, 50.0)
+        ctx.interpolationQuality = .medium
+        ctx.draw(cgImage, in: CGRect(x: 0, y: 0, width: width, height: height))
+        
+        // 1. Calculate average brightness to detect accidental dark pocket/bag shots
+        var totalBrightness: Double = 0
+        for p in pixels {
+            totalBrightness += Double(p)
+        }
+        let avgBrightness = totalBrightness / Double(pixels.count)
+        
+        // Dark pocket shots have brightness < 5.0 out of 255
+        if avgBrightness < 5.0 {
+            return (true, 0.0)
         }
         
-        var edgeBitmap = [UInt8](repeating: 0, count: 4)
-        context.render(avgOutput,
-                       toBitmap: &edgeBitmap,
-                       rowBytes: 4,
-                       bounds: CGRect(x: 0, y: 0, width: 1, height: 1),
-                       format: .RGBA8,
-                       colorSpace: CGColorSpaceCreateDeviceRGB())
+        // 2. Laplacian convolution kernel:
+        // [  0,  1,  0 ]
+        // [  1, -4,  1 ]
+        // [  0,  1,  0 ]
+        var laplacianValues: [Double] = []
+        laplacianValues.reserveCapacity((width - 2) * (height - 2))
         
-        let edgeScore = Double(edgeBitmap[0] + edgeBitmap[1] + edgeBitmap[2]) / 3.0
+        var sumLaplacian: Double = 0
         
-        // 3. Measure average brightness to identify accidental black pocket/bag shots
-        var brightBitmap = [UInt8](repeating: 0, count: 4)
-        if let brightAvg = CIFilter(name: "CIAreaAverage") {
-            brightAvg.setValue(ciImage, forKey: kCIInputImageKey)
-            brightAvg.setValue(CIVector(cgRect: ciImage.extent), forKey: kCIInputExtentKey)
-            if let bOut = brightAvg.outputImage {
-                context.render(bOut,
-                               toBitmap: &brightBitmap,
-                               rowBytes: 4,
-                               bounds: CGRect(x: 0, y: 0, width: 1, height: 1),
-                               format: .RGBA8,
-                               colorSpace: CGColorSpaceCreateDeviceRGB())
+        for y in 1..<(height - 1) {
+            let rowOffset = y * width
+            let prevRowOffset = (y - 1) * width
+            let nextRowOffset = (y + 1) * width
+            
+            for x in 1..<(width - 1) {
+                let center = Double(pixels[rowOffset + x])
+                let top = Double(pixels[prevRowOffset + x])
+                let bottom = Double(pixels[nextRowOffset + x])
+                let left = Double(pixels[rowOffset + x - 1])
+                let right = Double(pixels[rowOffset + x + 1])
+                
+                let lap = (top + bottom + left + right) - (4.0 * center)
+                laplacianValues.append(lap)
+                sumLaplacian += lap
             }
         }
-        let brightness = Double(brightBitmap[0] + brightBitmap[1] + brightBitmap[2]) / 3.0
         
-        // True blur occurs when edge score is very low (< 3.0). Clear photos are typically 10.0 - 60.0.
-        // Accidental dark pocket shot has brightness < 5.0.
-        let isPocketShot = brightness < 5.0
-        let isDefiniteBlur = edgeScore < 2.8
+        let count = Double(laplacianValues.count)
+        guard count > 0 else { return (false, 50.0) }
         
-        return (isPocketShot || isDefiniteBlur, edgeScore)
+        let meanLaplacian = sumLaplacian / count
+        var varianceSum: Double = 0
+        for val in laplacianValues {
+            let diff = val - meanLaplacian
+            varianceSum += diff * diff
+        }
+        let variance = varianceSum / count
+        
+        // Threshold: sharp photos have variance > 40.0; blurry / out-of-focus photos have variance < 14.0
+        let isBlurry = variance < 14.0
+        return (isBlurry, variance)
     }
 }

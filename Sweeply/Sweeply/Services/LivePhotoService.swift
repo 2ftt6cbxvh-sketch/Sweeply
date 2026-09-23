@@ -58,9 +58,19 @@ public final class LivePhotoService {
             options.isNetworkAccessAllowed = true
             options.isSynchronous = false
             
+            var hasResumed = false
+            let lock = NSLock()
+            let safeResume: (Result<Int64, Error>) -> Void = { result in
+                lock.lock()
+                defer { lock.unlock() }
+                guard !hasResumed else { return }
+                hasResumed = true
+                continuation.resume(with: result)
+            }
+            
             imageManager.requestImageDataAndOrientation(for: item.phAsset, options: options) { data, uti, orientation, _ in
                 guard let data = data, let image = UIImage(data: data) else {
-                    continuation.resume(throwing: NSError(domain: "com.sweeply.livephoto", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to read still image data"]))
+                    safeResume(.failure(NSError(domain: "com.sweeply.livephoto", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to read still image data"])))
                     return
                 }
                 
@@ -74,9 +84,9 @@ public final class LivePhotoService {
                     PHAssetChangeRequest.deleteAssets([item.phAsset] as NSArray)
                 }) { success, error in
                     if success {
-                        continuation.resume(returning: item.reclaimableBytes)
+                        safeResume(.success(item.reclaimableBytes))
                     } else {
-                        continuation.resume(throwing: error ?? NSError(domain: "com.sweeply.livephoto", code: -2, userInfo: [NSLocalizedDescriptionKey: "PhotoKit conversion failed"]))
+                        safeResume(.failure(error ?? NSError(domain: "com.sweeply.livephoto", code: -2, userInfo: [NSLocalizedDescriptionKey: "PhotoKit conversion failed"])))
                     }
                 }
             }

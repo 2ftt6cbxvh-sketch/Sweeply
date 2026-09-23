@@ -1,11 +1,108 @@
 import SwiftUI
 
+public struct LiquidGlassBackplate: View {
+    public var cornerRadius: CGFloat
+    public var showsBorder: Bool
+    
+    @Environment(\.colorScheme) private var colorScheme
+    @ObservedObject private var motion = MotionManager.shared
+    
+    public init(cornerRadius: CGFloat = 22, showsBorder: Bool = true) {
+        self.cornerRadius = cornerRadius
+        self.showsBorder = showsBorder
+    }
+    
+    public var body: some View {
+        // Physical reflection offset from iPhone accelerometer / gyroscope tilt
+        let reflectionCenter = UnitPoint(
+            x: 0.20 + motion.tiltX * 0.20,
+            y: 0.12 + motion.tiltY * 0.20
+        )
+        let glintStart = UnitPoint(
+            x: 0.0 + motion.tiltX * 0.15,
+            y: 0.0 + motion.tiltY * 0.15
+        )
+        let glintEnd = UnitPoint(
+            x: 0.60 + motion.tiltX * 0.15,
+            y: 0.60 + motion.tiltY * 0.15
+        )
+        
+        ZStack {
+            // 1. Quantum Liquid Glass Diffusion Base
+            RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                .fill(.ultraThinMaterial)
+            
+            // 2. True Dark/Light Tint (Sleek deep slate in dark mode, crisp in light)
+            RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                .fill(
+                    colorScheme == .dark
+                        ? Color(red: 0.11, green: 0.11, blue: 0.13).opacity(0.85)
+                        : Color.white.opacity(0.65)
+                )
+            
+            // 3. Dynamic Tilt-Responsive Specular Water Dome (Moves naturally with iPhone tilt)
+            RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                .fill(
+                    RadialGradient(
+                        colors: [
+                            colorScheme == .dark ? Color.white.opacity(0.18) : Color.white.opacity(0.50),
+                            colorScheme == .dark ? Color.white.opacity(0.02) : Color.white.opacity(0.10),
+                            Color.clear
+                        ],
+                        center: reflectionCenter,
+                        startRadius: 0,
+                        endRadius: 180
+                    )
+                )
+            
+            // 4. Dynamic Tilt Specular Glint (Physical ray catch)
+            RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                .fill(
+                    LinearGradient(
+                        stops: [
+                            .init(color: colorScheme == .dark ? Color.white.opacity(0.20) : Color.white.opacity(0.55), location: 0.0),
+                            .init(color: Color.clear, location: 0.30)
+                        ],
+                        startPoint: glintStart,
+                        endPoint: glintEnd
+                    )
+                )
+        }
+        .overlay {
+            if showsBorder {
+                // 5. Razor-Thin Specular Lip
+                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                    .stroke(
+                        LinearGradient(
+                            stops: [
+                                .init(color: Color.white.opacity(colorScheme == .dark ? 0.35 : 0.75), location: 0.0),
+                                .init(color: Color.white.opacity(colorScheme == .dark ? 0.08 : 0.25), location: 0.35),
+                                .init(color: Color.clear, location: 0.70),
+                                .init(color: Color.white.opacity(colorScheme == .dark ? 0.12 : 0.30), location: 1.0)
+                            ],
+                            startPoint: glintStart,
+                            endPoint: glintEnd
+                        ),
+                        lineWidth: 0.8
+                    )
+            }
+        }
+        // 6. Fast Single-Pass Depth Shadow (120fps smooth scrolling)
+        .shadow(
+            color: colorScheme == .dark
+                ? Color.black.opacity(0.40)
+                : Color.black.opacity(0.06),
+            radius: 8,
+            x: 0,
+            y: 3
+        )
+    }
+}
+
 public struct LiquidGlassModifier: ViewModifier {
     public var cornerRadius: CGFloat
     public var padding: CGFloat
     public var showsBorder: Bool
-    
-    @Environment(\.colorScheme) private var colorScheme
     
     public init(cornerRadius: CGFloat = 22, padding: CGFloat = 0, showsBorder: Bool = true) {
         self.cornerRadius = cornerRadius
@@ -16,51 +113,9 @@ public struct LiquidGlassModifier: ViewModifier {
     public func body(content: Content) -> some View {
         content
             .padding(padding)
-            .background {
-                ZStack {
-                    // 1. Ultra-thin material blur to sample ambient background colors
-                    RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
-                        .fill(.ultraThinMaterial)
-                    
-                    // 2. Translucent glass tint with top-to-bottom specular gradient
-                    RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
-                        .fill(
-                            LinearGradient(
-                                colors: colorScheme == .dark
-                                    ? [Color.white.opacity(0.10), Color.white.opacity(0.02), Color.clear]
-                                    : [Color.white.opacity(0.70), Color.white.opacity(0.35), Color.white.opacity(0.15)],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
-                        )
-                }
-                .overlay {
-                    if showsBorder {
-                        // 3. Crisp luminous glass highlight border
-                        RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
-                            .stroke(
-                                LinearGradient(
-                                    stops: [
-                                        .init(color: colorScheme == .dark ? Color.white.opacity(0.45) : Color.white, location: 0.0),
-                                        .init(color: colorScheme == .dark ? Color.white.opacity(0.18) : Color.white.opacity(0.50), location: 0.35),
-                                        .init(color: Color.clear, location: 0.65),
-                                        .init(color: colorScheme == .dark ? Color.cyan.opacity(0.3) : Color.blue.opacity(0.2), location: 1.0)
-                                    ],
-                                    startPoint: .topLeading,
-                                    endPoint: .bottomTrailing
-                                ),
-                                lineWidth: 1.5
-                            )
-                    }
-                }
-                // 4. Soft ambient depth shadow
-                .shadow(
-                    color: colorScheme == .dark ? Color.black.opacity(0.5) : Color(red: 0.1, green: 0.2, blue: 0.4).opacity(0.10),
-                    radius: 18,
-                    x: 0,
-                    y: 8
-                )
-            }
+            .background(
+                LiquidGlassBackplate(cornerRadius: cornerRadius, showsBorder: showsBorder)
+            )
     }
 }
 
@@ -71,90 +126,33 @@ public struct AmbientGlassBackdrop: View {
     
     public var body: some View {
         ZStack {
-            // Base background
-            (colorScheme == .dark ? Color(red: 0.05, green: 0.07, blue: 0.12) : Color(red: 0.94, green: 0.96, blue: 0.99))
-                .ignoresSafeArea()
-            
-            // Glowing Ambient Color Orbs that shine through frosted glass
-            GeometryReader { geo in
-                // Orb 1: Electric Blue (Top Left)
-                Circle()
-                    .fill(
-                        RadialGradient(
-                            colors: [
-                                (colorScheme == .dark ? Color.blue.opacity(0.35) : Color.blue.opacity(0.22)),
-                                Color.clear
-                            ],
-                            center: .center,
-                            startRadius: 20,
-                            endRadius: 220
-                        )
-                    )
-                    .frame(width: 440, height: 440)
-                    .offset(x: -120, y: -100)
-                    .blur(radius: 50)
-                
-                // Orb 2: Vivid Violet / Purple (Top Right)
-                Circle()
-                    .fill(
-                        RadialGradient(
-                            colors: [
-                                (colorScheme == .dark ? Color.purple.opacity(0.30) : Color.purple.opacity(0.18)),
-                                Color.clear
-                            ],
-                            center: .center,
-                            startRadius: 20,
-                            endRadius: 200
-                        )
-                    )
-                    .frame(width: 400, height: 400)
-                    .offset(x: geo.size.width - 240, y: 40)
-                    .blur(radius: 55)
-                
-                // Orb 3: Cyan / Mint (Center / Bottom)
-                Circle()
-                    .fill(
-                        RadialGradient(
-                            colors: [
-                                (colorScheme == .dark ? Color.cyan.opacity(0.25) : Color.teal.opacity(0.16)),
-                                Color.clear
-                            ],
-                            center: .center,
-                            startRadius: 20,
-                            endRadius: 250
-                        )
-                    )
-                    .frame(width: 500, height: 500)
-                    .offset(x: -80, y: geo.size.height * 0.45)
-                    .blur(radius: 65)
-                
-                // Orb 4: Soft Coral / Pink (Bottom Right)
-                Circle()
-                    .fill(
-                        RadialGradient(
-                            colors: [
-                                (colorScheme == .dark ? Color.pink.opacity(0.20) : Color.pink.opacity(0.12)),
-                                Color.clear
-                            ],
-                            center: .center,
-                            startRadius: 20,
-                            endRadius: 200
-                        )
-                    )
-                    .frame(width: 380, height: 380)
-                    .offset(x: geo.size.width - 200, y: geo.size.height * 0.7)
-                    .blur(radius: 60)
+            // True Deep Dark Canvas in Dark Mode (Pure Apple OLED Black)
+            if colorScheme == .dark {
+                Color.black
+                    .ignoresSafeArea()
+            } else {
+                Color(red: 0.95, green: 0.96, blue: 0.98)
+                    .ignoresSafeArea()
             }
-            .ignoresSafeArea()
         }
     }
 }
 
 public struct GlassButtonStyle: ButtonStyle {
+    public init() {}
     public func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .scaleEffect(configuration.isPressed ? 0.97 : 1.0)
             .animation(.spring(response: 0.35, dampingFraction: 0.7), value: configuration.isPressed)
+    }
+}
+
+public struct SmoothCardButtonStyle: ButtonStyle {
+    public init() {}
+    public func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .scaleEffect(configuration.isPressed ? 0.985 : 1.0)
+            .animation(.spring(response: 0.22, dampingFraction: 0.72), value: configuration.isPressed)
     }
 }
 
@@ -163,3 +161,105 @@ public extension View {
         modifier(LiquidGlassModifier(cornerRadius: cornerRadius, padding: padding, showsBorder: showsBorder))
     }
 }
+
+public struct SortControlBar: View {
+    @Binding public var sortOrder: MediaSortOrder
+    public var itemCount: Int?
+    public var selectedBytes: Int64?
+    
+    @Environment(\.colorScheme) private var colorScheme
+    
+    public init(
+        sortOrder: Binding<MediaSortOrder>,
+        itemCount: Int? = nil,
+        selectedBytes: Int64? = nil
+    ) {
+        self._sortOrder = sortOrder
+        self.itemCount = itemCount
+        self.selectedBytes = selectedBytes
+    }
+    
+    public var body: some View {
+        HStack {
+            if let count = itemCount {
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("\(count) items")
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(Color.primary)
+                    
+                    if let bytes = selectedBytes, bytes > 0 {
+                        Text("\(ByteCountFormatter.string(fromByteCount: bytes, countStyle: .file)) selected")
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+            }
+            
+            Spacer()
+            
+            // Interactive Liquid Glass Sort Menu
+            Menu {
+                Picker("Sort Order", selection: $sortOrder) {
+                    ForEach(MediaSortOrder.allCases) { order in
+                        Label(order.title, systemImage: order.icon)
+                            .tag(order)
+                    }
+                }
+            } label: {
+                HStack(spacing: 6) {
+                    Image(systemName: "arrow.up.arrow.down.circle.fill")
+                        .font(.system(size: 14, weight: .bold))
+                        .foregroundStyle(Color.blue)
+                    
+                    Text("Sort: \(sortOrder.shortLabel)")
+                        .font(.caption.weight(.bold))
+                        .foregroundStyle(Color.primary)
+                    
+                    Image(systemName: "chevron.down")
+                        .font(.system(size: 10, weight: .bold))
+                        .foregroundStyle(.secondary)
+                }
+                .padding(.horizontal, 12)
+                .padding(.vertical, 8)
+                .background(
+                    Capsule()
+                        .fill(.ultraThinMaterial)
+                        .overlay(
+                            Capsule()
+                                .fill(
+                                    LinearGradient(
+                                        colors: [
+                                            Color.cyan.opacity(colorScheme == .dark ? 0.20 : 0.15),
+                                            Color.purple.opacity(colorScheme == .dark ? 0.10 : 0.08)
+                                        ],
+                                        startPoint: .topLeading,
+                                        endPoint: .bottomTrailing
+                                    )
+                                )
+                        )
+                        .overlay(
+                            Capsule().stroke(
+                                LinearGradient(
+                                    stops: [
+                                        .init(color: Color.white, location: 0.0),
+                                        .init(color: Color.cyan, location: 0.35),
+                                        .init(color: Color.white.opacity(0.3), location: 0.70),
+                                        .init(color: Color.pink.opacity(0.6), location: 1.0)
+                                    ],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                ),
+                                lineWidth: 1.2
+                            )
+                        )
+                )
+                .shadow(color: Color.cyan.opacity(colorScheme == .dark ? 0.25 : 0.15), radius: 8, x: 0, y: 3)
+            }
+            .onChange(of: sortOrder) { _, _ in
+                HapticService.shared.selection()
+            }
+        }
+        .liquidGlass(cornerRadius: 18, padding: 12)
+    }
+}
+

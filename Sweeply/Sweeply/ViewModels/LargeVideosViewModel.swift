@@ -7,8 +7,13 @@ import Combine
 public final class LargeVideosViewModel: ObservableObject {
     @Published public var videos: [MediaAsset] = []
     @Published public var selectedIds: Set<String> = []
+    @Published public var sortOrder: MediaSortOrder = .sizeDescending
     @Published public var isLoading: Bool = false
     @Published public var stagedBatch: CleanBatch? = nil
+    
+    public var sortedVideos: [MediaAsset] {
+        videos.sorted(by: sortOrder)
+    }
     
     // Video Compression state
     @Published public var selectedVideoForCompress: MediaAsset? = nil

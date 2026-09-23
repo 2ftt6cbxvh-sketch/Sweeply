@@ -11,6 +11,12 @@ final class ThemeManagerTests: XCTestCase {
         XCTAssertEqual(ThemeMode.dark.colorScheme, .dark)
     }
     
+    func testDefaultThemeIsLight() {
+        // Ensure default rawValue is "Light"
+        XCTAssertEqual(ThemeMode.light.rawValue, "Light")
+        XCTAssertEqual(ThemeMode.light.colorScheme, .light)
+    }
+    
     func testThemeToggleCycle() {
         let manager = ThemeManager.shared
         

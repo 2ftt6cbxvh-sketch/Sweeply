@@ -7,9 +7,14 @@ import Combine
 public final class BlurryPhotosViewModel: ObservableObject {
     @Published public var blurryAssets: [MediaAsset] = []
     @Published public var selectedAssetIds: Set<String> = []
+    @Published public var sortOrder: MediaSortOrder = .newest
     @Published public var isScanning: Bool = false
     @Published public var scanProgress: Double = 0.0
     @Published public var feedbackMessage: String? = nil
+    
+    public var sortedBlurryAssets: [MediaAsset] {
+        blurryAssets.sorted(by: sortOrder)
+    }
     
     private let blurryService = BlurryService.shared
     private let photoService = PhotoService.shared
@@ -30,18 +35,14 @@ public final class BlurryPhotosViewModel: ObservableObject {
         isScanning = true
         scanProgress = 0.0
         
-        do {
-            let allPhotos = photoService.fetchAllImages(limit: 150)
-            let detected = await blurryService.detectBlurryPhotos(assets: allPhotos) { [weak self] progress in
-                Task { @MainActor in
-                    self?.scanProgress = progress
-                }
+        let allPhotos = photoService.fetchAllImages(limit: 150)
+        let detected = await blurryService.detectBlurryPhotos(assets: allPhotos) { [weak self] progress in
+            Task { @MainActor in
+                self?.scanProgress = progress
             }
-            self.blurryAssets = detected
-            self.selectedAssetIds = Set(detected.map(\.id))
-        } catch {
-            self.feedbackMessage = "Scan error: \(error.localizedDescription)"
         }
+        self.blurryAssets = detected
+        self.selectedAssetIds = Set(detected.map(\.id))
         
         isScanning = false
     }

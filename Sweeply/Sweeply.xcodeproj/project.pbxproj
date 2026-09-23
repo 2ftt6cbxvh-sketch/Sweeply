@@ -62,7 +62,12 @@
 		E10000062A00000100000001 /* Sweeply/ViewModels/LivePhotosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20000062A00000100000001 /* Sweeply/ViewModels/LivePhotosViewModel.swift */; };
 		E10000072A00000100000001 /* Sweeply/Views/BlurryPhotos/BlurryPhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20000072A00000100000001 /* Sweeply/Views/BlurryPhotos/BlurryPhotosView.swift */; };
 		E10000082A00000100000001 /* Sweeply/Views/LivePhotos/LivePhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20000082A00000100000001 /* Sweeply/Views/LivePhotos/LivePhotosView.swift */; };
+		E10000102A00000100000001 /* Sweeply/Views/MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20000102A00000100000001 /* Sweeply/Views/MainTabView.swift */; };
+		E10000112A00000100000001 /* Sweeply/Views/Dashboard/StorageSegmentBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20000112A00000100000001 /* Sweeply/Views/Dashboard/StorageSegmentBarView.swift */; };
+		E10000122A00000100000001 /* Sweeply/Views/Dashboard/DashboardRecommendationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20000122A00000100000001 /* Sweeply/Views/Dashboard/DashboardRecommendationsView.swift */; };
 		E10000092A00000100000001 /* SweeplyTests/StandoutFeaturesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20000092A00000100000001 /* SweeplyTests/StandoutFeaturesTests.swift */; };
+		E10000132A00000100000001 /* SweeplyTests/SwipeCleanViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20000132A00000100000001 /* SweeplyTests/SwipeCleanViewModelTests.swift */; };
+		E10000142A00000100000001 /* SweeplyTests/BlurryServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20000142A00000100000001 /* SweeplyTests/BlurryServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,7 +139,12 @@
 		E20000062A00000100000001 /* Sweeply/ViewModels/LivePhotosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/ViewModels/LivePhotosViewModel.swift; sourceTree = "<group>"; };
 		E20000072A00000100000001 /* Sweeply/Views/BlurryPhotos/BlurryPhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Views/BlurryPhotos/BlurryPhotosView.swift; sourceTree = "<group>"; };
 		E20000082A00000100000001 /* Sweeply/Views/LivePhotos/LivePhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Views/LivePhotos/LivePhotosView.swift; sourceTree = "<group>"; };
+		E20000102A00000100000001 /* Sweeply/Views/MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Views/MainTabView.swift; sourceTree = "<group>"; };
+		E20000112A00000100000001 /* Sweeply/Views/Dashboard/StorageSegmentBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Views/Dashboard/StorageSegmentBarView.swift; sourceTree = "<group>"; };
+		E20000122A00000100000001 /* Sweeply/Views/Dashboard/DashboardRecommendationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeply/Views/Dashboard/DashboardRecommendationsView.swift; sourceTree = "<group>"; };
 		E20000092A00000100000001 /* SweeplyTests/StandoutFeaturesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweeplyTests/StandoutFeaturesTests.swift; sourceTree = "<group>"; };
+		E20000132A00000100000001 /* SweeplyTests/SwipeCleanViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweeplyTests/SwipeCleanViewModelTests.swift; sourceTree = "<group>"; };
+		E20000142A00000100000001 /* SweeplyTests/BlurryServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweeplyTests/BlurryServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +220,9 @@
 				E20000062A00000100000001 /* Sweeply/ViewModels/LivePhotosViewModel.swift */,
 				E20000072A00000100000001 /* Sweeply/Views/BlurryPhotos/BlurryPhotosView.swift */,
 				E20000082A00000100000001 /* Sweeply/Views/LivePhotos/LivePhotosView.swift */,
+				E20000102A00000100000001 /* Sweeply/Views/MainTabView.swift */,
+				E20000112A00000100000001 /* Sweeply/Views/Dashboard/StorageSegmentBarView.swift */,
+				E20000122A00000100000001 /* Sweeply/Views/Dashboard/DashboardRecommendationsView.swift */,
 			);
 			name = Sweeply;
 			sourceTree = "<group>";
@@ -240,6 +253,8 @@
 				2185C05F61B64727ABF6E35F /* SweeplyTests/StorageFormatterTests.swift */,
 				A7B200022A00000100000001 /* SweeplyTests/ThemeManagerTests.swift */,
 				E20000092A00000100000001 /* SweeplyTests/StandoutFeaturesTests.swift */,
+				E20000132A00000100000001 /* SweeplyTests/SwipeCleanViewModelTests.swift */,
+				E20000142A00000100000001 /* SweeplyTests/BlurryServiceTests.swift */,
 			);
 			name = SweeplyTests;
 			sourceTree = "<group>";
@@ -347,6 +362,8 @@
 				F386670F2A0046F09124063C /* SweeplyTests/StorageFormatterTests.swift in Sources */,
 				A7B200012A00000100000001 /* SweeplyTests/ThemeManagerTests.swift in Sources */,
 				E10000092A00000100000001 /* SweeplyTests/StandoutFeaturesTests.swift in Sources */,
+				E10000132A00000100000001 /* SweeplyTests/SwipeCleanViewModelTests.swift in Sources */,
+				E10000142A00000100000001 /* SweeplyTests/BlurryServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,6 +421,9 @@
 				E10000062A00000100000001 /* Sweeply/ViewModels/LivePhotosViewModel.swift in Sources */,
 				E10000072A00000100000001 /* Sweeply/Views/BlurryPhotos/BlurryPhotosView.swift in Sources */,
 				E10000082A00000100000001 /* Sweeply/Views/LivePhotos/LivePhotosView.swift in Sources */,
+				E10000102A00000100000001 /* Sweeply/Views/MainTabView.swift in Sources */,
+				E10000112A00000100000001 /* Sweeply/Views/Dashboard/StorageSegmentBarView.swift in Sources */,
+				E10000122A00000100000001 /* Sweeply/Views/Dashboard/DashboardRecommendationsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

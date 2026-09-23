@@ -20,24 +20,28 @@ public final class PhotoService {
         let result = PHAsset.fetchAssets(with: .image, options: options)
         var assets: [MediaAsset] = []
         result.enumerateObjects { asset, _, _ in
-            assets.append(MediaAsset(phAsset: asset))
+            let size = self.calculateAccurateSize(for: asset)
+            assets.append(MediaAsset(phAsset: asset, fileSize: size))
         }
         return assets
     }
     
     public func fetchScreenshots() -> [MediaAsset] {
-        let options = PHFetchOptions()
-        options.predicate = NSPredicate(format: "mediaType == %d AND (mediaSubtype & %d) != 0",
-                                      PHAssetMediaType.image.rawValue,
-                                      PHAssetMediaSubtype.photoScreenshot.rawValue)
-        options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        let result = PHAsset.fetchAssets(with: options)
         var assets: [MediaAsset] = []
-        result.enumerateObjects { asset, _, _ in
-            let cachedSize = self.getCachedSize(for: asset.localIdentifier)
-            assets.append(MediaAsset(phAsset: asset, fileSize: cachedSize ?? 0))
+        
+        // 1. Apple's native Smart Album for Screenshots
+        let collections = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumScreenshots, options: nil)
+        if let screenshotsAlbum = collections.firstObject {
+            let options = PHFetchOptions()
+            options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+            let result = PHAsset.fetchAssets(in: screenshotsAlbum, options: options)
+            result.enumerateObjects { asset, _, _ in
+                let size = self.calculateAccurateSize(for: asset)
+                assets.append(MediaAsset(phAsset: asset, fileSize: size))
+            }
         }
         
+        // 2. Fallback: Filter all image assets in Swift for screenshot aspect ratios or subtype
         if assets.isEmpty {
             let allOptions = PHFetchOptions()
             allOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
@@ -46,9 +50,9 @@ public final class PhotoService {
                 let maxDim = max(asset.pixelWidth, asset.pixelHeight)
                 let minDim = min(asset.pixelWidth, asset.pixelHeight)
                 let ratio = Double(maxDim) / Double(max(minDim, 1))
-                if ratio >= 1.95 && ratio <= 2.25 {
-                    let cachedSize = self.getCachedSize(for: asset.localIdentifier)
-                    assets.append(MediaAsset(phAsset: asset, fileSize: cachedSize ?? 0))
+                if asset.mediaSubtypes.contains(.photoScreenshot) || (ratio >= 1.95 && ratio <= 2.25) {
+                    let size = self.calculateAccurateSize(for: asset)
+                    assets.append(MediaAsset(phAsset: asset, fileSize: size))
                 }
             }
         }
@@ -62,8 +66,8 @@ public final class PhotoService {
         let result = PHAsset.fetchAssets(with: .video, options: options)
         var assets: [MediaAsset] = []
         result.enumerateObjects { asset, _, _ in
-            let cachedSize = self.getCachedSize(for: asset.localIdentifier)
-            assets.append(MediaAsset(phAsset: asset, fileSize: cachedSize ?? 0))
+            let size = self.calculateAccurateSize(for: asset)
+            assets.append(MediaAsset(phAsset: asset, fileSize: size))
         }
         // Sort largest to smallest
         assets.sort { $0.fileSize > $1.fileSize }
@@ -82,16 +86,18 @@ public final class PhotoService {
     }
     
     public func requestFullImage(for asset: PHAsset) async -> UIImage? {
-        await withCheckedContinuation { continuation in
+        await Task.detached(priority: .userInitiated) {
             let options = PHImageRequestOptions()
             options.deliveryMode = .highQualityFormat
             options.isNetworkAccessAllowed = true
-            options.isSynchronous = false
+            options.isSynchronous = true
             
-            imageManager.requestImage(for: asset, targetSize: CGSize(width: 800, height: 800), contentMode: .aspectFit, options: options) { image, _ in
-                continuation.resume(returning: image)
+            var resultImage: UIImage? = nil
+            self.imageManager.requestImage(for: asset, targetSize: CGSize(width: 800, height: 800), contentMode: .aspectFit, options: options) { image, _ in
+                resultImage = image
             }
-        }
+            return resultImage
+        }.value
     }
     
     public func calculateAccurateSize(for asset: PHAsset) -> Int64 {
@@ -126,6 +132,28 @@ public final class PhotoService {
         guard !assets.isEmpty else { return }
         try await PHPhotoLibrary.shared().performChanges {
             PHAssetChangeRequest.deleteAssets(assets as NSArray)
+        }
+    }
+    
+    public func createDemoMedia() async {
+        let renderer = UIGraphicsImageRenderer(size: CGSize(width: 1170, height: 2532))
+        let img1 = renderer.image { ctx in
+            UIColor.systemIndigo.setFill()
+            ctx.fill(CGRect(x: 0, y: 0, width: 1170, height: 2532))
+        }
+        let img2 = renderer.image { ctx in
+            UIColor.systemIndigo.setFill()
+            ctx.fill(CGRect(x: 0, y: 0, width: 1170, height: 2532))
+        }
+        let img3 = renderer.image { ctx in
+            UIColor.systemPurple.setFill()
+            ctx.fill(CGRect(x: 0, y: 0, width: 1170, height: 2532))
+        }
+        
+        try? await PHPhotoLibrary.shared().performChanges {
+            PHAssetChangeRequest.creationRequestForAsset(from: img1)
+            PHAssetChangeRequest.creationRequestForAsset(from: img2)
+            PHAssetChangeRequest.creationRequestForAsset(from: img3)
         }
     }
 }
