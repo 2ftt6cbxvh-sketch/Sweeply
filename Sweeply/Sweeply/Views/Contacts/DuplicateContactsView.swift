@@ -187,7 +187,7 @@ public struct DuplicateContactsView: View {
                     }
                 }
             }
-            .padding(.bottom, 24)
+            .padding(.bottom, 110)
         }
     }
     
@@ -281,7 +281,7 @@ public struct DuplicateContactsView: View {
                     }
                 }
             }
-            .padding(.bottom, 24)
+            .padding(.bottom, 110)
         }
     }
     

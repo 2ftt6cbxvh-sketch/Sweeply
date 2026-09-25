@@ -141,7 +141,7 @@ public struct BlurryPhotosView: View {
                             }
                         }
                         .padding(.horizontal)
-                        .padding(.bottom, 90)
+                        .padding(.bottom, 175)
                     }
                     
                     // Clean Action Bar
@@ -166,7 +166,7 @@ public struct BlurryPhotosView: View {
                         }
                         .liquidGlass(cornerRadius: 20, padding: 12)
                         .padding(.horizontal)
-                        .padding(.bottom, 8)
+                        .padding(.bottom, 94)
                     }
                 }
             }

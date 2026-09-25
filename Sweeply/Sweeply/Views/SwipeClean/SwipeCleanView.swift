@@ -150,12 +150,12 @@ public struct SwipeCleanView: View {
                     }
                 }
             }
-            .frame(maxHeight: 520)
+            .frame(maxHeight: 480)
             .padding(.horizontal, 20)
             
             // Bottom Action Controls
             actionButtonsBar
-                .padding(.bottom, 16)
+                .padding(.bottom, 96)
         }
     }
     

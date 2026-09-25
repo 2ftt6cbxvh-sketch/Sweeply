@@ -42,9 +42,18 @@ public struct DashboardView: View {
     }
     
     public init() {
+        var path = NavigationPath()
         if ProcessInfo.processInfo.arguments.contains("-route-blurry") {
-            var path = NavigationPath()
             path.append(DashboardRoute.blurryPhotos)
+            _navigationPath = State(initialValue: path)
+        } else if ProcessInfo.processInfo.arguments.contains("-route-livephotos") {
+            path.append(DashboardRoute.livePhotos)
+            _navigationPath = State(initialValue: path)
+        } else if ProcessInfo.processInfo.arguments.contains("-route-similar") {
+            path.append(DashboardRoute.similarPhotos)
+            _navigationPath = State(initialValue: path)
+        } else if ProcessInfo.processInfo.arguments.contains("-route-screenshots") {
+            path.append(DashboardRoute.screenshots)
             _navigationPath = State(initialValue: path)
         }
     }

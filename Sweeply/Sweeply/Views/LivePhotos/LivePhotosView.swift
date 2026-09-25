@@ -126,7 +126,7 @@ public struct LivePhotosView: View {
                             }
                         }
                         .padding(.horizontal)
-                        .padding(.bottom, 90)
+                        .padding(.bottom, 175)
                     }
                     
                     // Convert Action Button
@@ -156,7 +156,7 @@ public struct LivePhotosView: View {
                         }
                         .liquidGlass(cornerRadius: 20, padding: 12)
                         .padding(.horizontal)
-                        .padding(.bottom, 8)
+                        .padding(.bottom, 94)
                     }
                 }
             }

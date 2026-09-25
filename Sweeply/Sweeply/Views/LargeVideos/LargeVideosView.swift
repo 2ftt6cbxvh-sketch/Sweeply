@@ -156,7 +156,7 @@ public struct LargeVideosView: View {
                             }
                             
                             Spacer()
-                                .frame(height: 90)
+                                .frame(height: 175)
                         }
                     }
                 }
@@ -182,12 +182,10 @@ public struct LargeVideosView: View {
                         .cornerRadius(16)
                         .shadow(color: Color.orange.opacity(0.3), radius: 8, x: 0, y: 4)
                     }
-                    .padding(.horizontal, 20)
-                    .padding(.bottom, 12)
                 }
                 .liquidGlass(cornerRadius: 20, padding: 12)
                 .padding(.horizontal)
-                .padding(.bottom, 8)
+                .padding(.bottom, 94)
             }
         }
         .background(AmbientGlassBackdrop())
