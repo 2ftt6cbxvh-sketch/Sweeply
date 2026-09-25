@@ -90,6 +90,30 @@ public struct MainTabView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .animation(.easeInOut(duration: 0.16), value: selectedTab)
+            .gesture(
+                DragGesture(minimumDistance: 20, coordinateSpace: .local)
+                    .onEnded { value in
+                        let h = value.translation.width
+                        let v = value.translation.height
+                        // Only fire when clearly horizontal to avoid fighting scroll views
+                        guard abs(h) > abs(v) * 1.5, abs(h) > 50 else { return }
+                        let tabs = AppTab.allCases
+                        guard let idx = tabs.firstIndex(of: selectedTab) else { return }
+                        if h < 0, idx < tabs.count - 1 {
+                            // Swipe left → next tab
+                            HapticService.shared.selection()
+                            withAnimation(.spring(response: 0.30, dampingFraction: 0.78)) {
+                                selectedTab = tabs[idx + 1]
+                            }
+                        } else if h > 0, idx > 0 {
+                            // Swipe right → previous tab
+                            HapticService.shared.selection()
+                            withAnimation(.spring(response: 0.30, dampingFraction: 0.78)) {
+                                selectedTab = tabs[idx - 1]
+                            }
+                        }
+                    }
+            )
             
             // Floating iOS 26/27 Liquid Glass Bottom Navigation Bar
             liquidBottomNavBar

@@ -98,64 +98,75 @@ public struct SwipeCleanView: View {
     
     @ViewBuilder
     private var mainDeckContent: some View {
-        VStack(spacing: 14) {
-            // Top Counter Bar
-            counterHeader
-                .padding(.horizontal, 24)
-                .padding(.top, 6)
-            
-            // Card Deck Stack
-            ZStack {
-                if viewModel.deck.isEmpty {
-                    allCaughtUpCard
-                } else {
-                    // Peek background card
-                    if viewModel.deck.count > 1 {
-                        let nextAsset = viewModel.deck[1]
-                        cardView(for: nextAsset, isTop: false)
-                            .id(nextAsset.id)
-                            .scaleEffect(0.95)
-                            .offset(y: 12)
-                            .opacity(0.70)
-                    }
-                    
-                    // Active top card
-                    if let current = viewModel.currentAsset {
-                        cardView(for: current, isTop: true)
-                            .id(current.id)
-                            .offset(x: dragOffset.width, y: dragOffset.height * 0.25)
-                            .rotationEffect(.degrees(Double(dragOffset.width / 22.0)))
-                            .gesture(
-                                DragGesture()
-                                    .onChanged { gesture in
-                                        guard !isSwipingCard else { return }
-                                        dragOffset = gesture.translation
-                                    }
-                                    .onEnded { gesture in
-                                        guard !isSwipingCard else { return }
-                                        let translation = gesture.translation.width
-                                        let velocity = gesture.predictedEndTranslation.width - gesture.translation.width
-                                        
-                                        if translation > 80 || velocity > 120 {
-                                            performSwipe(direction: .right)
-                                        } else if translation < -80 || velocity < -120 {
-                                            performSwipe(direction: .left)
-                                        } else {
-                                            withAnimation(.spring(response: 0.35, dampingFraction: 0.75)) {
-                                                dragOffset = .zero
+        GeometryReader { geo in
+            let availH = geo.size.height
+            // Header ~56pt, action bar ~80pt, gaps ~40pt → ~54% for the card
+            let cardH = availH * 0.54
+
+            VStack(spacing: 0) {
+                // Top Counter Bar
+                counterHeader
+                    .padding(.horizontal, 20)
+                    .padding(.top, 8)
+                    .padding(.bottom, 12)
+
+                // Card Deck Stack
+                ZStack {
+                    if viewModel.deck.isEmpty {
+                        allCaughtUpCard
+                    } else {
+                        // Peek card underneath
+                        if viewModel.deck.count > 1 {
+                            let nextAsset = viewModel.deck[1]
+                            cardView(for: nextAsset, isTop: false)
+                                .id(nextAsset.id)
+                                .scaleEffect(0.94)
+                                .offset(y: 10)
+                                .opacity(0.65)
+                        }
+
+                        // Active top card
+                        if let current = viewModel.currentAsset {
+                            cardView(for: current, isTop: true)
+                                .id(current.id)
+                                .offset(x: dragOffset.width, y: dragOffset.height * 0.25)
+                                .rotationEffect(.degrees(Double(dragOffset.width / 22.0)))
+                                .gesture(
+                                    DragGesture()
+                                        .onChanged { gesture in
+                                            guard !isSwipingCard else { return }
+                                            dragOffset = gesture.translation
+                                        }
+                                        .onEnded { gesture in
+                                            guard !isSwipingCard else { return }
+                                            let translation = gesture.translation.width
+                                            let velocity = gesture.predictedEndTranslation.width - gesture.translation.width
+
+                                            if translation > 80 || velocity > 120 {
+                                                performSwipe(direction: .right)
+                                            } else if translation < -80 || velocity < -120 {
+                                                performSwipe(direction: .left)
+                                            } else {
+                                                withAnimation(.spring(response: 0.35, dampingFraction: 0.75)) {
+                                                    dragOffset = .zero
+                                                }
                                             }
                                         }
-                                    }
-                            )
+                                )
+                        }
                     }
                 }
+                .frame(height: cardH)
+                .padding(.horizontal, 16)
+
+                Spacer(minLength: 12)
+
+                // Bottom Action Controls
+                actionButtonsBar
+                    .padding(.bottom, 100)
+                    .padding(.top, 4)
             }
-            .frame(maxHeight: 480)
-            .padding(.horizontal, 20)
-            
-            // Bottom Action Controls
-            actionButtonsBar
-                .padding(.bottom, 96)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
     
