@@ -98,76 +98,71 @@ public struct SwipeCleanView: View {
     
     @ViewBuilder
     private var mainDeckContent: some View {
-        GeometryReader { geo in
-            let availH = geo.size.height
-            // Header ~56pt, action bar ~80pt, gaps ~40pt → ~54% for the card
-            let cardH = availH * 0.54
+        VStack(spacing: 0) {
+            // ── Counter Header ──
+            counterHeader
+                .padding(.horizontal, 16)
+                .padding(.top, 8)
+                .padding(.bottom, 10)
 
-            VStack(spacing: 0) {
-                // Top Counter Bar
-                counterHeader
-                    .padding(.horizontal, 20)
-                    .padding(.top, 8)
-                    .padding(.bottom, 12)
+            // ── Card Deck — fixed 3:4 portrait window, always contained ──
+            ZStack {
+                if viewModel.deck.isEmpty {
+                    allCaughtUpCard
+                } else {
+                    // Peek card (behind)
+                    if viewModel.deck.count > 1 {
+                        let nextAsset = viewModel.deck[1]
+                        cardView(for: nextAsset, isTop: false)
+                            .id(nextAsset.id)
+                            .scaleEffect(0.93)
+                            .offset(y: 8)
+                            .opacity(0.60)
+                    }
 
-                // Card Deck Stack
-                ZStack {
-                    if viewModel.deck.isEmpty {
-                        allCaughtUpCard
-                    } else {
-                        // Peek card underneath
-                        if viewModel.deck.count > 1 {
-                            let nextAsset = viewModel.deck[1]
-                            cardView(for: nextAsset, isTop: false)
-                                .id(nextAsset.id)
-                                .scaleEffect(0.94)
-                                .offset(y: 10)
-                                .opacity(0.65)
-                        }
-
-                        // Active top card
-                        if let current = viewModel.currentAsset {
-                            cardView(for: current, isTop: true)
-                                .id(current.id)
-                                .offset(x: dragOffset.width, y: dragOffset.height * 0.25)
-                                .rotationEffect(.degrees(Double(dragOffset.width / 22.0)))
-                                .gesture(
-                                    DragGesture()
-                                        .onChanged { gesture in
-                                            guard !isSwipingCard else { return }
-                                            dragOffset = gesture.translation
-                                        }
-                                        .onEnded { gesture in
-                                            guard !isSwipingCard else { return }
-                                            let translation = gesture.translation.width
-                                            let velocity = gesture.predictedEndTranslation.width - gesture.translation.width
-
-                                            if translation > 80 || velocity > 120 {
-                                                performSwipe(direction: .right)
-                                            } else if translation < -80 || velocity < -120 {
-                                                performSwipe(direction: .left)
-                                            } else {
-                                                withAnimation(.spring(response: 0.35, dampingFraction: 0.75)) {
-                                                    dragOffset = .zero
-                                                }
+                    // Active top card
+                    if let current = viewModel.currentAsset {
+                        cardView(for: current, isTop: true)
+                            .id(current.id)
+                            .offset(x: dragOffset.width, y: dragOffset.height * 0.20)
+                            .rotationEffect(.degrees(Double(dragOffset.width / 24.0)))
+                            .gesture(
+                                DragGesture(minimumDistance: 4)
+                                    .onChanged { gesture in
+                                        guard !isSwipingCard else { return }
+                                        dragOffset = gesture.translation
+                                    }
+                                    .onEnded { gesture in
+                                        guard !isSwipingCard else { return }
+                                        let dx = gesture.translation.width
+                                        let vx = gesture.predictedEndTranslation.width - gesture.translation.width
+                                        if dx > 80 || vx > 120 {
+                                            performSwipe(direction: .right)
+                                        } else if dx < -80 || vx < -120 {
+                                            performSwipe(direction: .left)
+                                        } else {
+                                            withAnimation(.spring(response: 0.35, dampingFraction: 0.75)) {
+                                                dragOffset = .zero
                                             }
                                         }
-                                )
-                        }
+                                    }
+                            )
                     }
                 }
-                .frame(height: cardH)
-                .padding(.horizontal, 16)
-
-                Spacer(minLength: 12)
-
-                // Bottom Action Controls
-                actionButtonsBar
-                    .padding(.bottom, 100)
-                    .padding(.top, 4)
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            // 3:4 portrait window — consistent on every device, clips rotation bleed
+            .aspectRatio(3/4, contentMode: .fit)
+            .padding(.horizontal, 16)
+            .clipped()
+
+            Spacer(minLength: 8)
+
+            // ── Action Buttons ──
+            actionButtonsBar
+                .padding(.top, 8)
+                .padding(.bottom, 104) // clears the floating nav dock (84pt dock + 20pt margin)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
     
     // MARK: - Header
