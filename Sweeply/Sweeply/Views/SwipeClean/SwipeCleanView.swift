@@ -110,7 +110,7 @@ public struct SwipeCleanView: View {
                 .padding(.top, 10)
                 .padding(.bottom, 12)
 
-            // ── Card window — fixed 420 pt, hard-clipped ──────────────────
+            // ── Card window — floating, 470 pt ────────────────────────────
             ZStack {
                 if viewModel.deck.isEmpty {
                     allCaughtUpCard
@@ -136,11 +136,13 @@ public struct SwipeCleanView: View {
                     }
                 }
             }
-            // The clipShape here CONTAINS all rotation / offset bleed:
             .frame(maxWidth: .infinity)
-            .frame(height: 420)
+            .frame(height: 470)
             .padding(.horizontal, 16)
-            .clipShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
+            // ── Floating elevation — three shadow layers ───────────────────
+            .shadow(color: Color.black.opacity(0.32), radius: 24, x: 0, y: 14)
+            .shadow(color: Color.black.opacity(0.14), radius: 8,  x: 0, y: 4)
+            .shadow(color: Color.black.opacity(0.06), radius: 2,  x: 0, y: 1)
 
             Spacer(minLength: 0)
 
@@ -208,33 +210,33 @@ public struct SwipeCleanView: View {
     @ViewBuilder
     private func cardView(for asset: MediaAsset, isTop: Bool) -> some View {
         ZStack(alignment: .bottom) {
-            // Letterbox background
-            Color(white: 0.08)
+            // ── Letterbox / pillarbox background ──────────────────────────
+            Color(white: 0.07)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
 
-            // Photo — fills window, cropped
+            // ── Photo — always fully visible, letterboxed if needed ───────
             ThumbnailImageView(
                 asset: asset.phAsset,
-                targetSize: CGSize(width: 700, height: 900)
+                targetSize: CGSize(width: 700, height: 900),
+                contentMode: .fit
             )
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .clipped()
 
-            // KEEP / CLEAN stamps (top card only)
+            // ── KEEP / CLEAN stamps ───────────────────────────────────────
             if isTop {
                 stampOverlay
             }
 
-            // Bottom vignette
+            // ── Bottom vignette ───────────────────────────────────────────
             infoVignette(asset: asset)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .clipShape(RoundedRectangle(cornerRadius: 26, style: .continuous))
         .overlay(
-            RoundedRectangle(cornerRadius: 22, style: .continuous)
+            RoundedRectangle(cornerRadius: 26, style: .continuous)
                 .stroke(borderColor(isTop: isTop), lineWidth: isTop ? 2.0 : 1.2)
         )
-        .shadow(color: .black.opacity(isTop ? 0.40 : 0.20), radius: isTop ? 16 : 8, x: 0, y: isTop ? 8 : 4)
+        // Per-card shadow removed — floating shadow is on the container ZStack
     }
 
     private func borderColor(isTop: Bool) -> Color {
