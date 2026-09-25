@@ -6,16 +6,19 @@ public struct SwipeCleanView: View {
     @StateObject private var permissionService = PermissionService.shared
     @State private var dragOffset: CGSize = .zero
     @State private var isSwipingCard: Bool = false
+
     public let onCleanRequested: (CleanBatch) -> Void
-    
+
     public init(onCleanRequested: @escaping (CleanBatch) -> Void) {
         self.onCleanRequested = onCleanRequested
     }
-    
+
+    // MARK: - Body
+
     public var body: some View {
         ZStack {
             AmbientGlassBackdrop()
-            
+
             Group {
                 if !permissionService.hasPhotosAccess {
                     permissionRequiredView
@@ -26,8 +29,7 @@ public struct SwipeCleanView: View {
                 }
             }
         }
-        .navigationTitle("Swipe to Clean")
-        .navigationBarTitleDisplayMode(.inline)
+        // Title already set by MainTabView's NavigationStack — don't duplicate
         .toolbar {
             if !viewModel.trashedAssets.isEmpty {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -59,9 +61,9 @@ public struct SwipeCleanView: View {
             }
         }
     }
-    
-    // MARK: - Subviews
-    
+
+    // MARK: - Permission / Loading
+
     @ViewBuilder
     private var permissionRequiredView: some View {
         PermissionNoticeView(
@@ -80,261 +82,251 @@ public struct SwipeCleanView: View {
                 }
             }
         }
-        .frame(maxHeight: .infinity)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
-    
+
     @ViewBuilder
     private var loadingView: some View {
         VStack(spacing: 16) {
             ProgressView()
                 .scaleEffect(1.2)
                 .tint(.blue)
-            Text("Loading photos for Fast Deck...")
+            Text("Loading photos…")
                 .font(.subheadline.weight(.medium))
                 .foregroundStyle(.secondary)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
-    
+
+    // MARK: - Main Deck Layout
+
     @ViewBuilder
     private var mainDeckContent: some View {
         VStack(spacing: 0) {
-            // ── Counter Header ──
+
+            // ── Stats bar ──────────────────────────────────────────────────
             counterHeader
                 .padding(.horizontal, 16)
-                .padding(.top, 8)
-                .padding(.bottom, 10)
+                .padding(.top, 10)
+                .padding(.bottom, 12)
 
-            // ── Card Deck — fixed 3:4 portrait window, always contained ──
+            // ── Card window — fixed 420 pt, hard-clipped ──────────────────
             ZStack {
                 if viewModel.deck.isEmpty {
                     allCaughtUpCard
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else {
-                    // Peek card (behind)
+                    // Back card (peek)
                     if viewModel.deck.count > 1 {
-                        let nextAsset = viewModel.deck[1]
-                        cardView(for: nextAsset, isTop: false)
-                            .id(nextAsset.id)
+                        let next = viewModel.deck[1]
+                        cardView(for: next, isTop: false)
+                            .id(next.id)
                             .scaleEffect(0.93)
                             .offset(y: 8)
-                            .opacity(0.60)
+                            .opacity(0.55)
                     }
 
-                    // Active top card
+                    // Top (draggable) card
                     if let current = viewModel.currentAsset {
                         cardView(for: current, isTop: true)
                             .id(current.id)
-                            .offset(x: dragOffset.width, y: dragOffset.height * 0.20)
-                            .rotationEffect(.degrees(Double(dragOffset.width / 24.0)))
-                            .gesture(
-                                DragGesture(minimumDistance: 4)
-                                    .onChanged { gesture in
-                                        guard !isSwipingCard else { return }
-                                        dragOffset = gesture.translation
-                                    }
-                                    .onEnded { gesture in
-                                        guard !isSwipingCard else { return }
-                                        let dx = gesture.translation.width
-                                        let vx = gesture.predictedEndTranslation.width - gesture.translation.width
-                                        if dx > 80 || vx > 120 {
-                                            performSwipe(direction: .right)
-                                        } else if dx < -80 || vx < -120 {
-                                            performSwipe(direction: .left)
-                                        } else {
-                                            withAnimation(.spring(response: 0.35, dampingFraction: 0.75)) {
-                                                dragOffset = .zero
-                                            }
-                                        }
-                                    }
-                            )
+                            .offset(x: dragOffset.width, y: dragOffset.height * 0.18)
+                            .rotationEffect(.degrees(Double(dragOffset.width / 26.0)))
+                            .gesture(cardDragGesture)
                     }
                 }
             }
-            // 3:4 portrait window — consistent on every device, clips rotation bleed
-            .aspectRatio(3/4, contentMode: .fit)
+            // The clipShape here CONTAINS all rotation / offset bleed:
+            .frame(maxWidth: .infinity)
+            .frame(height: 420)
             .padding(.horizontal, 16)
-            .clipped()
+            .clipShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
 
-            Spacer(minLength: 8)
+            Spacer(minLength: 0)
 
-            // ── Action Buttons ──
+            // ── Action buttons ─────────────────────────────────────────────
             actionButtonsBar
-                .padding(.top, 8)
-                .padding(.bottom, 104) // clears the floating nav dock (84pt dock + 20pt margin)
+                .padding(.top, 16)
+                // 84 pt dock height + 20 pt margin + extra safety = 110
+                .padding(.bottom, 110)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
-    
-    // MARK: - Header
-    
+
+    // MARK: - Drag Gesture
+
+    private var cardDragGesture: some Gesture {
+        DragGesture(minimumDistance: 6)
+            .onChanged { g in
+                guard !isSwipingCard else { return }
+                dragOffset = g.translation
+            }
+            .onEnded { g in
+                guard !isSwipingCard else { return }
+                let dx = g.translation.width
+                let vx = g.predictedEndTranslation.width - g.translation.width
+                if dx > 80 || vx > 120 {
+                    performSwipe(direction: .right)
+                } else if dx < -80 || vx < -120 {
+                    performSwipe(direction: .left)
+                } else {
+                    withAnimation(.spring(response: 0.35, dampingFraction: 0.75)) {
+                        dragOffset = .zero
+                    }
+                }
+            }
+    }
+
+    // MARK: - Counter Header
+
     @ViewBuilder
     private var counterHeader: some View {
         HStack {
-            HStack(spacing: 6) {
-                Image(systemName: "checkmark.circle.fill")
-                    .font(.system(size: 14, weight: .bold))
-                    .foregroundStyle(.green)
-                Text("\(viewModel.keptAssets.count) Kept")
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(.primary)
-            }
-            .padding(.horizontal, 12)
-            .padding(.vertical, 6)
-            .liquidGlass(cornerRadius: 14, padding: 0)
-            
+            Label("\(viewModel.keptAssets.count) Kept", systemImage: "checkmark.circle.fill")
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(.green)
+                .padding(.horizontal, 12)
+                .padding(.vertical, 7)
+                .liquidGlass(cornerRadius: 14, padding: 0)
+
             Spacer()
-            
-            HStack(spacing: 6) {
-                Image(systemName: "trash.fill")
-                    .font(.system(size: 14, weight: .bold))
-                    .foregroundStyle(.red)
-                Text("\(viewModel.trashedAssets.count) To Clean (\(viewModel.formattedTrashedBytes))")
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(.primary)
-            }
+
+            Label(
+                "\(viewModel.trashedAssets.count) To Clean  \(viewModel.formattedTrashedBytes)",
+                systemImage: "trash.fill"
+            )
+            .font(.subheadline.weight(.semibold))
+            .foregroundStyle(.red)
             .padding(.horizontal, 12)
-            .padding(.vertical, 6)
+            .padding(.vertical, 7)
             .liquidGlass(cornerRadius: 14, padding: 0)
         }
     }
-    
-    // MARK: - Single Card View
-    
+
+    // MARK: - Single Card
+
     @ViewBuilder
     private func cardView(for asset: MediaAsset, isTop: Bool) -> some View {
         ZStack(alignment: .bottom) {
-            // ── Fixed Window Background (letterbox for odd aspect ratios) ──
-            Color(white: 0.10)
+            // Letterbox background
+            Color(white: 0.08)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
 
-            // ── Photo fills the window, cropped to fit ──
+            // Photo — fills window, cropped
             ThumbnailImageView(
                 asset: asset.phAsset,
-                targetSize: CGSize(width: 800, height: 1000)
+                targetSize: CGSize(width: 700, height: 900)
             )
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .clipped()
 
-            // ── Stamp Overlays (top card only) ──
+            // KEEP / CLEAN stamps (top card only)
             if isTop {
-                VStack {
-                    HStack {
-                        // KEEP STAMP
-                        let keepOpacity = min(max(Double(dragOffset.width / 60.0), 0.0), 1.0)
-                        if keepOpacity > 0 {
-                            Text("KEEP")
-                                .font(.system(size: 32, weight: .black, design: .rounded))
-                                .foregroundStyle(Color.green)
-                                .padding(.horizontal, 14)
-                                .padding(.vertical, 8)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .stroke(Color.green, lineWidth: 3.5)
-                                )
-                                .rotationEffect(.degrees(-16))
-                                .opacity(keepOpacity)
-                                .padding(.leading, 24)
-                                .padding(.top, 24)
-                        }
-
-                        Spacer()
-
-                        // CLEAN STAMP
-                        let cleanOpacity = min(max(Double(-dragOffset.width / 60.0), 0.0), 1.0)
-                        if cleanOpacity > 0 {
-                            Text("CLEAN")
-                                .font(.system(size: 32, weight: .black, design: .rounded))
-                                .foregroundStyle(Color.red)
-                                .padding(.horizontal, 14)
-                                .padding(.vertical, 8)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .stroke(Color.red, lineWidth: 3.5)
-                                )
-                                .rotationEffect(.degrees(16))
-                                .opacity(cleanOpacity)
-                                .padding(.trailing, 24)
-                                .padding(.top, 24)
-                        }
-                    }
-                    Spacer()
-                }
+                stampOverlay
             }
 
-            // ── Bottom Info Vignette ──
-            HStack {
-                VStack(alignment: .leading, spacing: 3) {
-                    Text(asset.formattedDate)
-                        .font(.caption.weight(.medium))
-                        .foregroundStyle(Color.white.opacity(0.85))
-                    Text(asset.formattedSize)
-                        .font(.headline.weight(.bold))
-                        .foregroundStyle(Color.white)
-                }
-                Spacer()
-
-                HStack(spacing: 4) {
-                    Image(systemName: "hand.draw.fill")
-                        .font(.caption2)
-                    Text("Swipe")
-                        .font(.caption2.weight(.bold))
-                }
-                .foregroundStyle(Color.white.opacity(0.75))
-                .padding(.horizontal, 8)
-                .padding(.vertical, 4)
-                .background(Capsule().fill(Color.white.opacity(0.20)))
-            }
-            .padding(16)
-            .background(
-                LinearGradient(
-                    colors: [Color.clear, Color.black.opacity(0.85)],
-                    startPoint: .top,
-                    endPoint: .bottom
-                )
-            )
+            // Bottom vignette
+            infoVignette(asset: asset)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
-        // Visible border rim — always present, brightens on swipe direction
+        .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
         .overlay(
-            RoundedRectangle(cornerRadius: 24, style: .continuous)
-                .stroke(
-                    isTop
-                        ? (dragOffset.width > 20
-                            ? Color.green.opacity(0.6 + min(Double(dragOffset.width / 200), 0.4))
-                            : dragOffset.width < -20
-                                ? Color.red.opacity(0.6 + min(Double(-dragOffset.width / 200), 0.4))
-                                : Color.white.opacity(0.35))
-                        : Color.white.opacity(0.18),
-                    lineWidth: isTop ? 1.8 : 1.2
-                )
+            RoundedRectangle(cornerRadius: 22, style: .continuous)
+                .stroke(borderColor(isTop: isTop), lineWidth: isTop ? 2.0 : 1.2)
         )
-        .shadow(color: Color.black.opacity(0.35), radius: 14, x: 0, y: 7)
+        .shadow(color: .black.opacity(isTop ? 0.40 : 0.20), radius: isTop ? 16 : 8, x: 0, y: isTop ? 8 : 4)
     }
-    
-    // MARK: - All Caught Up Card
-    
+
+    private func borderColor(isTop: Bool) -> Color {
+        guard isTop else { return Color.white.opacity(0.18) }
+        if dragOffset.width > 20 {
+            return Color.green.opacity(min(0.5 + Double(dragOffset.width) / 200, 1.0))
+        } else if dragOffset.width < -20 {
+            return Color.red.opacity(min(0.5 + Double(-dragOffset.width) / 200, 1.0))
+        }
+        return Color.white.opacity(0.32)
+    }
+
+    @ViewBuilder
+    private var stampOverlay: some View {
+        VStack {
+            HStack {
+                let keepOp = min(max(Double(dragOffset.width / 55.0), 0), 1.0)
+                if keepOp > 0 {
+                    Text("KEEP")
+                        .font(.system(size: 30, weight: .black, design: .rounded))
+                        .foregroundStyle(.green)
+                        .padding(.horizontal, 12).padding(.vertical, 7)
+                        .overlay(RoundedRectangle(cornerRadius: 9).stroke(Color.green, lineWidth: 3))
+                        .rotationEffect(.degrees(-16))
+                        .opacity(keepOp)
+                        .padding(.leading, 20).padding(.top, 20)
+                }
+                Spacer()
+                let cleanOp = min(max(Double(-dragOffset.width / 55.0), 0), 1.0)
+                if cleanOp > 0 {
+                    Text("CLEAN")
+                        .font(.system(size: 30, weight: .black, design: .rounded))
+                        .foregroundStyle(.red)
+                        .padding(.horizontal, 12).padding(.vertical, 7)
+                        .overlay(RoundedRectangle(cornerRadius: 9).stroke(Color.red, lineWidth: 3))
+                        .rotationEffect(.degrees(16))
+                        .opacity(cleanOp)
+                        .padding(.trailing, 20).padding(.top, 20)
+                }
+            }
+            Spacer()
+        }
+    }
+
+    @ViewBuilder
+    private func infoVignette(asset: MediaAsset) -> some View {
+        HStack {
+            VStack(alignment: .leading, spacing: 2) {
+                Text(asset.formattedDate)
+                    .font(.caption.weight(.medium))
+                    .foregroundStyle(Color.white.opacity(0.82))
+                Text(asset.formattedSize)
+                    .font(.headline.weight(.bold))
+                    .foregroundStyle(.white)
+            }
+            Spacer()
+            HStack(spacing: 4) {
+                Image(systemName: "hand.draw.fill").font(.caption2)
+                Text("Swipe").font(.caption2.weight(.bold))
+            }
+            .foregroundStyle(Color.white.opacity(0.75))
+            .padding(.horizontal, 8).padding(.vertical, 4)
+            .background(Capsule().fill(Color.white.opacity(0.18)))
+        }
+        .padding(14)
+        .background(
+            LinearGradient(
+                colors: [.clear, Color.black.opacity(0.80)],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+        )
+    }
+
+    // MARK: - All Caught Up
+
     @ViewBuilder
     private var allCaughtUpCard: some View {
         VStack(spacing: 18) {
             ZStack {
-                Circle()
-                    .fill(Color.blue.opacity(0.15))
-                    .frame(width: 80, height: 80)
+                Circle().fill(Color.blue.opacity(0.15)).frame(width: 80, height: 80)
                 Image(systemName: "sparkles")
                     .font(.system(size: 38, weight: .bold))
                     .foregroundStyle(Color.blue)
             }
-            
             Text("All Caught Up!")
                 .font(.title2.weight(.bold))
-                .foregroundStyle(Color.primary)
-            
             Text("You've reviewed all photos in this deck.")
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
-            
+
             if !viewModel.trashedAssets.isEmpty {
                 Button {
                     if let batch = viewModel.prepareCleanBatch() {
@@ -347,128 +339,101 @@ public struct SwipeCleanView: View {
                     }
                     .font(.headline.weight(.bold))
                     .foregroundStyle(.white)
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 50)
+                    .frame(maxWidth: .infinity).frame(height: 50)
                     .background(Color.red)
                     .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                     .shadow(color: Color.red.opacity(0.35), radius: 8, y: 4)
                 }
                 .buttonStyle(SmoothCardButtonStyle())
                 .padding(.horizontal, 20)
-                .padding(.top, 4)
             }
-            
-            Button("Load More Photos") {
-                viewModel.loadDeck()
-            }
-            .font(.subheadline.weight(.semibold))
-            .buttonStyle(.bordered)
+
+            Button("Load More Photos") { viewModel.loadDeck() }
+                .font(.subheadline.weight(.semibold))
+                .buttonStyle(.bordered)
         }
+        .padding(24)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .liquidGlass(cornerRadius: 24, padding: 24)
+        .liquidGlass(cornerRadius: 24, padding: 0)
     }
-    
-    // MARK: - Bottom Action Buttons
-    
+
+    // MARK: - Action Buttons
+
     @ViewBuilder
     private var actionButtonsBar: some View {
-        HStack(spacing: 28) {
+        HStack(spacing: 24) {
             // Undo
-            Button {
+            circleButton(
+                icon: "arrow.uturn.backward",
+                size: 50, iconSize: 18,
+                color: .yellow,
+                disabled: viewModel.keptAssets.isEmpty && viewModel.trashedAssets.isEmpty
+            ) {
                 HapticService.shared.selection()
-                withAnimation(.spring(response: 0.35, dampingFraction: 0.75)) {
-                    viewModel.undo()
-                }
-            } label: {
-                Image(systemName: "arrow.uturn.backward")
-                    .font(.system(size: 19, weight: .bold))
-                    .foregroundStyle(viewModel.keptAssets.isEmpty && viewModel.trashedAssets.isEmpty ? Color.secondary.opacity(0.3) : Color.yellow)
-                    .frame(width: 52, height: 52)
-                    .background(
-                        Circle()
-                            .fill(Color.yellow.opacity(viewModel.keptAssets.isEmpty && viewModel.trashedAssets.isEmpty ? 0.05 : 0.15))
-                    )
-                    .overlay(
-                        Circle()
-                            .stroke(Color.yellow.opacity(viewModel.keptAssets.isEmpty && viewModel.trashedAssets.isEmpty ? 0.1 : 0.4), lineWidth: 1)
-                    )
+                withAnimation(.spring(response: 0.35, dampingFraction: 0.75)) { viewModel.undo() }
             }
-            .buttonStyle(SmoothCardButtonStyle())
-            .disabled(viewModel.keptAssets.isEmpty && viewModel.trashedAssets.isEmpty)
-            
-            // Clean (Left)
-            Button {
+
+            // Delete / Clean
+            circleButton(
+                icon: "xmark",
+                size: 64, iconSize: 25,
+                color: .red,
+                disabled: viewModel.deck.isEmpty || isSwipingCard
+            ) {
                 performSwipe(direction: .left)
-            } label: {
-                Image(systemName: "xmark")
-                    .font(.system(size: 26, weight: .bold))
-                    .foregroundStyle(viewModel.deck.isEmpty ? Color.secondary.opacity(0.3) : Color.red)
-                    .frame(width: 66, height: 66)
-                    .background(
-                        Circle()
-                            .fill(Color.red.opacity(viewModel.deck.isEmpty ? 0.05 : 0.15))
-                    )
-                    .overlay(
-                        Circle()
-                            .stroke(Color.red.opacity(viewModel.deck.isEmpty ? 0.1 : 0.45), lineWidth: 1.2)
-                    )
-                    .shadow(color: Color.red.opacity(viewModel.deck.isEmpty ? 0 : 0.25), radius: 8, y: 3)
             }
-            .buttonStyle(SmoothCardButtonStyle())
-            .disabled(viewModel.deck.isEmpty || isSwipingCard)
-            
-            // Keep (Right)
-            Button {
+
+            // Keep
+            circleButton(
+                icon: "checkmark",
+                size: 64, iconSize: 25,
+                color: .green,
+                disabled: viewModel.deck.isEmpty || isSwipingCard
+            ) {
                 performSwipe(direction: .right)
-            } label: {
-                Image(systemName: "checkmark")
-                    .font(.system(size: 26, weight: .bold))
-                    .foregroundStyle(viewModel.deck.isEmpty ? Color.secondary.opacity(0.3) : Color.green)
-                    .frame(width: 66, height: 66)
-                    .background(
-                        Circle()
-                            .fill(Color.green.opacity(viewModel.deck.isEmpty ? 0.05 : 0.15))
-                    )
-                    .overlay(
-                        Circle()
-                            .stroke(Color.green.opacity(viewModel.deck.isEmpty ? 0.1 : 0.45), lineWidth: 1.2)
-                    )
-                    .shadow(color: Color.green.opacity(viewModel.deck.isEmpty ? 0 : 0.25), radius: 8, y: 3)
             }
-            .buttonStyle(SmoothCardButtonStyle())
-            .disabled(viewModel.deck.isEmpty || isSwipingCard)
         }
     }
-    
-    // MARK: - Swipe Action Execution
-    
-    private enum SwipeDirection {
-        case left
-        case right
+
+    @ViewBuilder
+    private func circleButton(
+        icon: String, size: CGFloat, iconSize: CGFloat,
+        color: Color, disabled: Bool,
+        action: @escaping () -> Void
+    ) -> some View {
+        Button(action: action) {
+            Image(systemName: icon)
+                .font(.system(size: iconSize, weight: .bold))
+                .foregroundStyle(disabled ? color.opacity(0.25) : color)
+                .frame(width: size, height: size)
+                .background(Circle().fill(color.opacity(disabled ? 0.05 : 0.14)))
+                .overlay(Circle().stroke(color.opacity(disabled ? 0.10 : 0.45), lineWidth: 1.2))
+                .shadow(color: color.opacity(disabled ? 0 : 0.28), radius: 8, y: 3)
+        }
+        .buttonStyle(SmoothCardButtonStyle())
+        .disabled(disabled)
     }
-    
+
+    // MARK: - Swipe Execution
+
+    private enum SwipeDirection { case left, right }
+
     private func performSwipe(direction: SwipeDirection) {
         guard !viewModel.deck.isEmpty, !isSwipingCard else { return }
         isSwipingCard = true
         HapticService.shared.impact(direction == .left ? .heavy : .medium)
-        
-        let targetX: CGFloat = direction == .right ? 600 : -600
-        
-        withAnimation(.spring(response: 0.28, dampingFraction: 0.78)) {
-            dragOffset = CGSize(width: targetX, height: 20)
+
+        let targetX: CGFloat = direction == .right ? 500 : -500
+
+        withAnimation(.spring(response: 0.26, dampingFraction: 0.80)) {
+            dragOffset = CGSize(width: targetX, height: 16)
         }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.22) {
-            if direction == .right {
-                viewModel.swipeRight()
-            } else {
-                viewModel.swipeLeft()
-            }
-            
-            // Reset dragOffset synchronously without animation so next card starts centered
-            var transaction = Transaction()
-            transaction.disablesAnimations = true
-            withTransaction(transaction) {
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.20) {
+            if direction == .right { viewModel.swipeRight() } else { viewModel.swipeLeft() }
+            var tx = Transaction()
+            tx.disablesAnimations = true
+            withTransaction(tx) {
                 dragOffset = .zero
                 isSwipingCard = false
             }

@@ -67,7 +67,8 @@ public struct MainTabView: View {
                     SwipeCleanView(onCleanRequested: { batch in
                         activeSheet = .review(batch)
                     })
-                    .navigationTitle("Swipe Clean")
+                    .navigationTitle("Swipe to Clean")
+                    .navigationBarTitleDisplayMode(.inline)
                 }
                 .opacity(selectedTab == .swipe ? 1 : 0)
                 .allowsHitTesting(selectedTab == .swipe)
