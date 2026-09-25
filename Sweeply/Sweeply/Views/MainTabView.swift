@@ -89,6 +89,7 @@ public struct MainTabView: View {
                 .allowsHitTesting(selectedTab == .contacts)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .animation(.easeInOut(duration: 0.16), value: selectedTab)
             
             // Floating iOS 26/27 Liquid Glass Bottom Navigation Bar
             liquidBottomNavBar
@@ -179,7 +180,7 @@ public struct MainTabView: View {
         Button {
             if selectedTab != tab {
                 HapticService.shared.selection()
-                withAnimation(.spring(response: 0.36, dampingFraction: 0.74)) {
+                withAnimation(.spring(response: 0.30, dampingFraction: 0.78)) {
                     selectedTab = tab
                 }
             }

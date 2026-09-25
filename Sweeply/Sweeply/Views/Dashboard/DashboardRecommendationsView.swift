@@ -121,7 +121,7 @@ public struct DashboardRecommendationsView: View {
                     .multilineTextAlignment(.leading)
             }
         }
-        .buttonStyle(.plain)
+        .buttonStyle(SmoothCardButtonStyle())
         .liquidGlass(cornerRadius: 18, padding: 16)
     }
 }

@@ -119,8 +119,12 @@ public struct BlurryPhotosView: View {
                                         .foregroundStyle(.white)
                                         .padding(.horizontal, 8)
                                         .padding(.vertical, 4)
-                                        .background(.ultraThinMaterial)
+                                        .background(Color.black.opacity(0.68))
                                         .cornerRadius(8)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 8)
+                                                .stroke(Color.white.opacity(0.20), lineWidth: 0.8)
+                                        )
                                         .padding(8)
                                         
                                         // Selection checkmark

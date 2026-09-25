@@ -11,6 +11,10 @@ public struct ThumbnailImageView: View {
     public init(asset: PHAsset, targetSize: CGSize = CGSize(width: 200, height: 200)) {
         self.asset = asset
         self.targetSize = targetSize
+        // Instant synchronous cache pre-fill to eliminate blank flashes during scrolling
+        if let cached = PhotoService.shared.getCachedThumbnail(for: asset.localIdentifier) {
+            _image = State(initialValue: cached)
+        }
     }
     
     public var body: some View {
@@ -21,16 +25,14 @@ public struct ThumbnailImageView: View {
                     .aspectRatio(contentMode: .fill)
             } else {
                 Rectangle()
-                    .fill(Color(uiColor: .secondarySystemBackground))
-                    .overlay(
-                        ProgressView()
-                            .scaleEffect(0.8)
-                    )
+                    .fill(Color(uiColor: .secondarySystemBackground).opacity(0.7))
             }
         }
         .clipped()
         .onAppear {
-            loadImage()
+            if image == nil {
+                loadImage()
+            }
         }
         .onChange(of: asset.localIdentifier) { _ in
             loadImage()
@@ -41,8 +43,11 @@ public struct ThumbnailImageView: View {
     }
     
     private func loadImage() {
+        if let cached = PhotoService.shared.getCachedThumbnail(for: asset.localIdentifier) {
+            self.image = cached
+            return
+        }
         cancelImageLoad()
-        self.image = nil
         requestID = PhotoService.shared.requestThumbnail(for: asset, targetSize: targetSize) { loadedImage in
             if let loadedImage = loadedImage {
                 self.image = loadedImage
@@ -51,7 +56,7 @@ public struct ThumbnailImageView: View {
     }
     
     private func cancelImageLoad() {
-        if let id = requestID {
+        if let id = requestID, id != 0 {
             PHImageManager.default().cancelImageRequest(id)
             requestID = nil
         }

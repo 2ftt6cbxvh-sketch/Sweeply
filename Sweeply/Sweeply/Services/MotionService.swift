@@ -17,7 +17,7 @@ public final class MotionManager: ObservableObject {
     
     public func startMotionUpdates() {
         guard motionManager.isDeviceMotionAvailable else { return }
-        motionManager.deviceMotionUpdateInterval = 1.0 / 30.0
+        motionManager.deviceMotionUpdateInterval = 1.0 / 20.0
         motionManager.startDeviceMotionUpdates(to: .main) { [weak self] motion, _ in
             guard let self = self, let motion = motion else { return }
             let roll = CGFloat(motion.attitude.roll)
@@ -27,14 +27,16 @@ public final class MotionManager: ObservableObject {
             let targetY = max(min(pitch * 0.6, 1.0), -1.0)
             
             // Smooth damping
-            let newX = self.tiltX * 0.82 + targetX * 0.18
-            let newY = self.tiltY * 0.82 + targetY * 0.18
+            let newX = self.tiltX * 0.80 + targetX * 0.20
+            let newY = self.tiltY * 0.80 + targetY * 0.20
             
-            // Deadband threshold: Only publish if visual difference is perceptible
-            // Prevents 30-45 continuous frame invalidations per second when device is resting
-            if abs(newX - self.tiltX) > 0.012 || abs(newY - self.tiltY) > 0.012 {
-                self.tiltX = newX
-                self.tiltY = newY
+            // Deadband threshold: Only publish when user actively tilts the device
+            // Filters out micro hand tremors so views remain at 0 invalidations when steady or scrolling
+            if abs(newX - self.tiltX) > 0.035 || abs(newY - self.tiltY) > 0.035 {
+                withAnimation(.easeOut(duration: 0.16)) {
+                    self.tiltX = newX
+                    self.tiltY = newY
+                }
             }
         }
     }

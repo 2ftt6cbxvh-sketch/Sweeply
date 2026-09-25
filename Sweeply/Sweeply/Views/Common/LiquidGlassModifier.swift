@@ -28,25 +28,21 @@ public struct LiquidGlassBackplate: View {
         )
         
         ZStack {
-            // 1. Quantum Liquid Glass Diffusion Base
-            RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
-                .fill(.ultraThinMaterial)
-            
-            // 2. True Dark/Light Tint (Sleek deep slate in dark mode, crisp in light)
+            // 1. Quantum Liquid Glass Diffusion Base (Fast single-pass translucent acrylic)
             RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
                 .fill(
                     colorScheme == .dark
-                        ? Color(red: 0.11, green: 0.11, blue: 0.13).opacity(0.85)
-                        : Color.white.opacity(0.65)
+                        ? Color(red: 0.11, green: 0.11, blue: 0.14).opacity(0.85)
+                        : Color.white.opacity(0.72)
                 )
             
-            // 3. Dynamic Tilt-Responsive Specular Water Dome (Moves naturally with iPhone tilt)
+            // 2. Dynamic Tilt-Responsive Specular Water Dome (Moves naturally with iPhone tilt)
             RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
                 .fill(
                     RadialGradient(
                         colors: [
-                            colorScheme == .dark ? Color.white.opacity(0.18) : Color.white.opacity(0.50),
-                            colorScheme == .dark ? Color.white.opacity(0.02) : Color.white.opacity(0.10),
+                            colorScheme == .dark ? Color.white.opacity(0.16) : Color.white.opacity(0.45),
+                            colorScheme == .dark ? Color.white.opacity(0.02) : Color.white.opacity(0.08),
                             Color.clear
                         ],
                         center: reflectionCenter,
@@ -55,7 +51,7 @@ public struct LiquidGlassBackplate: View {
                     )
                 )
             
-            // 4. Dynamic Tilt Specular Glint (Physical ray catch)
+            // 3. Dynamic Tilt Specular Glint (Physical ray catch)
             RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
                 .fill(
                     LinearGradient(
@@ -70,7 +66,7 @@ public struct LiquidGlassBackplate: View {
         }
         .overlay {
             if showsBorder {
-                // 5. Razor-Thin Specular Lip
+                // 4. Razor-Thin Specular Lip
                 RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
                     .stroke(
                         LinearGradient(
@@ -87,14 +83,14 @@ public struct LiquidGlassBackplate: View {
                     )
             }
         }
-        // 6. Fast Single-Pass Depth Shadow (120fps smooth scrolling)
+        // 5. Fast Single-Pass Depth Shadow (120fps smooth scrolling)
         .shadow(
             color: colorScheme == .dark
-                ? Color.black.opacity(0.40)
-                : Color.black.opacity(0.06),
-            radius: 8,
+                ? Color.black.opacity(0.35)
+                : Color.black.opacity(0.05),
+            radius: 6,
             x: 0,
-            y: 3
+            y: 2
         )
     }
 }

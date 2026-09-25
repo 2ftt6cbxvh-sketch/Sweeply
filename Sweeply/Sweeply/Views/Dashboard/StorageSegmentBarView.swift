@@ -987,23 +987,7 @@ public struct FloatingStorageRing: View {
                 )
                 .frame(width: 82, height: 82)
             
-            // Diffuse Ambient Glow Behind Arc
-            Circle()
-                .trim(from: 0.0, to: CGFloat(targetProgress))
-                .stroke(
-                    LinearGradient(
-                        colors: ringGradients,
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    ),
-                    style: StrokeStyle(lineWidth: 10, lineCap: .round)
-                )
-                .frame(width: 82, height: 82)
-                .rotationEffect(.degrees(-90))
-                .blur(radius: 5)
-                .opacity(colorScheme == .dark ? 0.45 : 0.25)
-            
-            // Active Liquid Arc
+            // Active Liquid Arc (Single-pass hardware accelerated)
             Circle()
                 .trim(from: 0.0, to: CGFloat(targetProgress))
                 .stroke(
@@ -1016,8 +1000,8 @@ public struct FloatingStorageRing: View {
                 )
                 .frame(width: 82, height: 82)
                 .rotationEffect(.degrees(-90))
-                .shadow(color: ringGradients.first?.opacity(colorScheme == .dark ? 0.35 : 0.2) ?? Color.clear, radius: 4, x: 0, y: 1)
-                .animation(.spring(response: 0.7, dampingFraction: 0.75), value: targetProgress)
+                .shadow(color: ringGradients.first?.opacity(colorScheme == .dark ? 0.45 : 0.25) ?? Color.clear, radius: 6, x: 0, y: 2)
+                .animation(.spring(response: 0.5, dampingFraction: 0.8), value: targetProgress)
             
             // Center Pod
             VStack(spacing: 1) {

@@ -34,27 +34,7 @@ public struct StorageRingView: View {
                             .frame(width: 217, height: 217)
                     )
                 
-                // Diffuse Soft Ambient Arc (Subtle optical illumination)
-                Circle()
-                    .trim(from: 0.0, to: CGFloat(min(max(breakdown.usedPercentage, 0.03), 1.0)))
-                    .stroke(
-                        LinearGradient(
-                            colors: [
-                                Color(red: 0.10, green: 0.60, blue: 1.0),
-                                Color(red: 0.25, green: 0.45, blue: 0.95),
-                                Color(red: 0.40, green: 0.35, blue: 0.90)
-                            ],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        ),
-                        style: StrokeStyle(lineWidth: 22, lineCap: .round)
-                    )
-                    .frame(width: 195, height: 195)
-                    .rotationEffect(.degrees(-90))
-                    .blur(radius: 6)
-                    .opacity(colorScheme == .dark ? 0.35 : 0.20)
-                
-                // Active Minimal Optical Storage Arc
+                // Active Minimal Optical Storage Arc (Single-pass hardware accelerated)
                 Circle()
                     .trim(from: 0.0, to: CGFloat(min(max(breakdown.usedPercentage, 0.03), 1.0)))
                     .stroke(
@@ -71,8 +51,8 @@ public struct StorageRingView: View {
                     )
                     .frame(width: 195, height: 195)
                     .rotationEffect(.degrees(-90))
-                    .shadow(color: Color(red: 0.10, green: 0.50, blue: 1.0).opacity(colorScheme == .dark ? 0.25 : 0.15), radius: 6, x: 0, y: 2)
-                    .animation(.spring(response: 0.9, dampingFraction: 0.75), value: breakdown.usedPercentage)
+                    .shadow(color: Color(red: 0.10, green: 0.50, blue: 1.0).opacity(colorScheme == .dark ? 0.35 : 0.20), radius: 8, x: 0, y: 3)
+                    .animation(.spring(response: 0.7, dampingFraction: 0.8), value: breakdown.usedPercentage)
                 
                 // Center Glass Pod with Stats
                 VStack(spacing: 4) {

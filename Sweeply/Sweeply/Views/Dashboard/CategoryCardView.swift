@@ -36,11 +36,20 @@ public struct CategoryCardView: View {
         HStack(spacing: 16) {
             // 3D Liquid Glass Icon Capsule
             ZStack {
-                // Subtle optical caustic tint behind the icon
+                // Subtle optical caustic tint behind the icon (0 blur passes)
                 Circle()
-                    .fill(iconColor.opacity(colorScheme == .dark ? 0.20 : 0.14))
-                    .frame(width: 52, height: 52)
-                    .blur(radius: 6)
+                    .fill(
+                        RadialGradient(
+                            colors: [
+                                iconColor.opacity(colorScheme == .dark ? 0.22 : 0.16),
+                                iconColor.opacity(0.0)
+                            ],
+                            center: .center,
+                            startRadius: 8,
+                            endRadius: 28
+                        )
+                    )
+                    .frame(width: 56, height: 56)
                 
                 // Frosted Liquid Droplet Pod
                 RoundedRectangle(cornerRadius: 16, style: .continuous)

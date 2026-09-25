@@ -8,8 +8,16 @@ public final class PhotoService {
     
     private var sizeCache: [String: Int64] = [:]
     private let cacheQueue = DispatchQueue(label: "com.sweeply.sizecache", attributes: .concurrent)
+    private let thumbnailCache = NSCache<NSString, UIImage>()
     
-    private init() {}
+    private init() {
+        thumbnailCache.countLimit = 400
+        thumbnailCache.totalCostLimit = 64 * 1024 * 1024
+    }
+    
+    public func getCachedThumbnail(for identifier: String) -> UIImage? {
+        thumbnailCache.object(forKey: identifier as NSString)
+    }
     
     public func fetchAllImages(limit: Int? = nil) -> [MediaAsset] {
         let options = PHFetchOptions()
@@ -75,12 +83,24 @@ public final class PhotoService {
     }
     
     public func requestThumbnail(for asset: PHAsset, targetSize: CGSize, completion: @escaping (UIImage?) -> Void) -> PHImageRequestID {
+        let identifier = asset.localIdentifier
+        if let cached = thumbnailCache.object(forKey: identifier as NSString) {
+            completion(cached)
+            return 0
+        }
+        
         let options = PHImageRequestOptions()
         options.deliveryMode = .opportunistic
         options.isNetworkAccessAllowed = true
         options.resizeMode = .fast
         
-        return imageManager.requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFill, options: options) { image, _ in
+        return imageManager.requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFill, options: options) { [weak self] image, info in
+            if let image = image {
+                let isDegraded = (info?[PHImageResultIsDegradedKey] as? Bool) ?? false
+                if !isDegraded {
+                    self?.thumbnailCache.setObject(image, forKey: identifier as NSString)
+                }
+            }
             completion(image)
         }
     }
