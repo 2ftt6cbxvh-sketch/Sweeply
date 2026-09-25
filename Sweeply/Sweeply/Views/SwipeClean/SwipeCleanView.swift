@@ -208,15 +208,19 @@ public struct SwipeCleanView: View {
     @ViewBuilder
     private func cardView(for asset: MediaAsset, isTop: Bool) -> some View {
         ZStack(alignment: .bottom) {
-            // Photo Thumbnail
+            // ── Fixed Window Background (letterbox for odd aspect ratios) ──
+            Color(white: 0.10)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+
+            // ── Photo fills the window, cropped to fit ──
             ThumbnailImageView(
                 asset: asset.phAsset,
                 targetSize: CGSize(width: 800, height: 1000)
             )
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .clipped()
-            
-            // Stamp Overlays on Top Card
+
+            // ── Stamp Overlays (top card only) ──
             if isTop {
                 VStack {
                     HStack {
@@ -237,9 +241,9 @@ public struct SwipeCleanView: View {
                                 .padding(.leading, 24)
                                 .padding(.top, 24)
                         }
-                        
+
                         Spacer()
-                        
+
                         // CLEAN STAMP
                         let cleanOpacity = min(max(Double(-dragOffset.width / 60.0), 0.0), 1.0)
                         if cleanOpacity > 0 {
@@ -261,8 +265,8 @@ public struct SwipeCleanView: View {
                     Spacer()
                 }
             }
-            
-            // Bottom Info Vignette
+
+            // ── Bottom Info Vignette ──
             HStack {
                 VStack(alignment: .leading, spacing: 3) {
                     Text(asset.formattedDate)
@@ -273,7 +277,7 @@ public struct SwipeCleanView: View {
                         .foregroundStyle(Color.white)
                 }
                 Spacer()
-                
+
                 HStack(spacing: 4) {
                     Image(systemName: "hand.draw.fill")
                         .font(.caption2)
@@ -296,11 +300,21 @@ public struct SwipeCleanView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+        // Visible border rim — always present, brightens on swipe direction
         .overlay(
             RoundedRectangle(cornerRadius: 24, style: .continuous)
-                .stroke(Color.white.opacity(0.25), lineWidth: 1)
+                .stroke(
+                    isTop
+                        ? (dragOffset.width > 20
+                            ? Color.green.opacity(0.6 + min(Double(dragOffset.width / 200), 0.4))
+                            : dragOffset.width < -20
+                                ? Color.red.opacity(0.6 + min(Double(-dragOffset.width / 200), 0.4))
+                                : Color.white.opacity(0.35))
+                        : Color.white.opacity(0.18),
+                    lineWidth: isTop ? 1.8 : 1.2
+                )
         )
-        .shadow(color: Color.black.opacity(0.30), radius: 12, x: 0, y: 6)
+        .shadow(color: Color.black.opacity(0.35), radius: 14, x: 0, y: 7)
     }
     
     // MARK: - All Caught Up Card

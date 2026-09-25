@@ -90,30 +90,6 @@ public struct MainTabView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .animation(.easeInOut(duration: 0.16), value: selectedTab)
-            .gesture(
-                DragGesture(minimumDistance: 20, coordinateSpace: .local)
-                    .onEnded { value in
-                        let h = value.translation.width
-                        let v = value.translation.height
-                        // Only fire when clearly horizontal to avoid fighting scroll views
-                        guard abs(h) > abs(v) * 1.5, abs(h) > 50 else { return }
-                        let tabs = AppTab.allCases
-                        guard let idx = tabs.firstIndex(of: selectedTab) else { return }
-                        if h < 0, idx < tabs.count - 1 {
-                            // Swipe left → next tab
-                            HapticService.shared.selection()
-                            withAnimation(.spring(response: 0.30, dampingFraction: 0.78)) {
-                                selectedTab = tabs[idx + 1]
-                            }
-                        } else if h > 0, idx > 0 {
-                            // Swipe right → previous tab
-                            HapticService.shared.selection()
-                            withAnimation(.spring(response: 0.30, dampingFraction: 0.78)) {
-                                selectedTab = tabs[idx - 1]
-                            }
-                        }
-                    }
-            )
             
             // Floating iOS 26/27 Liquid Glass Bottom Navigation Bar
             liquidBottomNavBar
@@ -194,6 +170,28 @@ public struct MainTabView: View {
         }
         .padding(.horizontal, 20)
         .padding(.bottom, 22)
+        // Tab-switching swipe — gesture lives only on the nav pill, not on screen content
+        .simultaneousGesture(
+            DragGesture(minimumDistance: 30, coordinateSpace: .local)
+                .onEnded { value in
+                    let h = value.translation.width
+                    let v = value.translation.height
+                    guard abs(h) > abs(v) * 1.2, abs(h) > 40 else { return }
+                    let tabs = AppTab.allCases
+                    guard let idx = tabs.firstIndex(of: selectedTab) else { return }
+                    if h < 0, idx < tabs.count - 1 {
+                        HapticService.shared.selection()
+                        withAnimation(.spring(response: 0.30, dampingFraction: 0.78)) {
+                            selectedTab = tabs[idx + 1]
+                        }
+                    } else if h > 0, idx > 0 {
+                        HapticService.shared.selection()
+                        withAnimation(.spring(response: 0.30, dampingFraction: 0.78)) {
+                            selectedTab = tabs[idx - 1]
+                        }
+                    }
+                }
+        )
     }
     
     // MARK: - Individual Tab Item with iOS 27 Liquid Glass Selection Pill
