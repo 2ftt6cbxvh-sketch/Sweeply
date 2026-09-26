@@ -36,6 +36,7 @@ public struct SwipeCleanView: View {
                     Button {
                         if let batch = viewModel.prepareCleanBatch() {
                             onCleanRequested(batch)
+                            viewModel.clearAfterClean()
                         }
                     } label: {
                         HStack(spacing: 5) {
@@ -333,6 +334,7 @@ public struct SwipeCleanView: View {
                 Button {
                     if let batch = viewModel.prepareCleanBatch() {
                         onCleanRequested(batch)
+                        viewModel.clearAfterClean()
                     }
                 } label: {
                     HStack(spacing: 8) {

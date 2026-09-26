@@ -76,4 +76,10 @@ public final class SwipeCleanViewModel: ObservableObject {
             assets: trashedAssets
         )
     }
+    
+    /// Call this after a successful delete so counters reset to zero.
+    public func clearAfterClean() {
+        trashedAssets.removeAll()
+        keptAssets.removeAll()
+    }
 }
